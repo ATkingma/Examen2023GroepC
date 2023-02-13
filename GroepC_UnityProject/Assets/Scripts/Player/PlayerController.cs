@@ -54,7 +54,20 @@ namespace GroepC
         /// </summary>
         private float downForce;
 
+        /// <summary>
+        /// States when the player is dashing.
+        /// </summary>
         private bool isDashing;
+
+        /// <summary>
+        /// The cooldown of the dash.
+        /// </summary>
+        [SerializeField] private float cooldown = .1f;
+
+        /// <summary>
+        /// The time when dashing is allowed again.
+        /// </summary>
+        private float nextDash;
 
         /// <summary>
         /// This update is used to call the movement for the player.
@@ -99,10 +112,16 @@ namespace GroepC
             cameraTransform.localRotation = xQuat * yQuat;
         }
 
+        /// <summary>
+        /// Handles dashing when pressing leftshift/space
+        /// </summary>
+        /// <returns></returns>
         private IEnumerator Dash()
         {
-            if(Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.Space))
+            if(Input.GetButtonDown("Dash") && Time.time > nextDash)
             {
+                nextDash = Time.time + cooldown;
+
                 isDashing = true;
                 yield return new WaitForSeconds(.1f);
                 isDashing = false;
@@ -121,10 +140,7 @@ namespace GroepC
             direction *= Time.deltaTime;
 
             if(isDashing)
-            {
                 direction = playerCamera.transform.rotation * new Vector3(0, 0, dashSpeed * Time.deltaTime);
-                //direction.Normalize();
-            }
 
             controller.Move(direction);
         }
