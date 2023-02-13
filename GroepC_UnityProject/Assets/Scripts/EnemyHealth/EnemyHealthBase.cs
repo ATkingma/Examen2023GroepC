@@ -1,8 +1,11 @@
 using UnityEngine;
 
-namespace GroepC
+namespace GroepC.EnemyHealth
 {
-	public class Health : MonoBehaviour
+	/// <summary>
+	/// is the base of the enemyHealth
+	/// </summary>
+	public class EnemyHealthBase : MonoBehaviour
 	{
 		/// <summary>
 		/// The amount of health the healthclass object has
@@ -13,10 +16,10 @@ namespace GroepC
 		/// <summary>
 		/// Subtracks the damage from the current health
 		/// </summary>
-		/// <param name="damage"></param>
-		public virtual void DoDamage(float damage)
+		/// <param name="_damage"></param>
+		public virtual void DoDamage(float _damage)
 		{
-			healthAmount = -damage;
+			healthAmount -= _damage;
 			CheckHealth();
 		}
 
@@ -25,7 +28,7 @@ namespace GroepC
 		/// </summary>
 		private void CheckHealth()
 		{
-			if (healthAmount > 0)
+			if (healthAmount <= 0)
 			{
 				Death();
 			}
