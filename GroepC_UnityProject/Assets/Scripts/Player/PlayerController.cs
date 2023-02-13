@@ -40,6 +40,11 @@ namespace GroepC
         [SerializeField] private float movementSpeed;
 
         /// <summary>
+        /// The speed of the dash.
+        /// </summary>
+        [SerializeField] private float dashSpeed;
+
+        /// <summary>
         /// The amount of gravity applied each second.
         /// </summary>
         [SerializeField] private float gravity;
@@ -49,12 +54,15 @@ namespace GroepC
         /// </summary>
         private float downForce;
 
+        private bool isDashing;
+
         /// <summary>
         /// This update is used to call the movement for the player.
         /// </summary>
         private void Update()
         {
             RotateCamera();
+            StartCoroutine(Dash());
             ApplyMovement();
         }
 
@@ -91,6 +99,16 @@ namespace GroepC
             cameraTransform.localRotation = xQuat * yQuat;
         }
 
+        private IEnumerator Dash()
+        {
+            if(Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.Space))
+            {
+                isDashing = true;
+                yield return new WaitForSeconds(.1f);
+                isDashing = false;
+            }
+        }
+
         /// <summary>
         /// Applies the movement onto the <see cref="CharacterController"/>.
         /// </summary>
@@ -101,6 +119,13 @@ namespace GroepC
             direction.y = ApplyGravity();
             direction *= movementSpeed;
             direction *= Time.deltaTime;
+
+            if(isDashing)
+            {
+                direction = playerCamera.transform.rotation * new Vector3(0, 0, dashSpeed * Time.deltaTime);
+                //direction.Normalize();
+            }
+
             controller.Move(direction);
         }
     }
