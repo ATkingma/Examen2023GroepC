@@ -39,11 +39,15 @@ public class VolumeMixer : MonoBehaviour
 
     private void Start()
     {
-        // Set the initial slider values to the current mixer values
-        mainVolumeSlider.value = GetVolumeLevel("Master");
-        musicVolumeSlider.value = GetVolumeLevel("Music");
-        soundEffectsSlider.value = GetVolumeLevel("Sound Effects");
-        UISoundSlider.value = GetVolumeLevel("UI");
+        SavedSettings saves = SettingsManager.Instance.GetSavedSettings();
+        mainVolumeSlider.value = saves.MasterVolume;
+        SetMainVolume(saves.MasterVolume);
+        musicVolumeSlider.value = saves.MusicVolume;
+        SetMusicVolume(saves.MusicVolume);
+        soundEffectsSlider.value = saves.SoundEffects;
+        SetSoundEffectsVolume(saves.SoundEffects);
+        UISoundSlider.value = saves.UIVolume;
+        SetUIVolume(saves.UIVolume);
     }
 
     /// <summary>
@@ -109,5 +113,13 @@ public class VolumeMixer : MonoBehaviour
     private void SetVolumeLevel(string parameterName, float volume)
     {
         audioMixer.SetFloat(parameterName, volume);
+    }
+
+    /// <summary>
+    /// Saves the volume of the sliders.
+    /// </summary>
+    public void SaveVolume()
+    {
+        SettingsManager.Instance.SaveVolume(mainVolumeSlider.value,musicVolumeSlider.value,soundEffectsSlider.value,UISoundSlider.value);
     }
 }

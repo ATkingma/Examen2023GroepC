@@ -25,9 +25,14 @@ public class GameSettings : MonoBehaviour
     private Resolution[] resolutions;
     
     /// <summary>
-    /// an bool that saves if the user is fullscreen or not.
+    /// An bool that saves if the user is fullscreen or not.
     /// </summary>
     private bool isFullscreen;
+
+    /// <summary>
+    /// Resolution that wil be saved later.
+    /// </summary>
+    private Resolution currentResolutions;
 
     private void Start()
     {
@@ -52,6 +57,10 @@ public class GameSettings : MonoBehaviour
         resolutionDropdown.value = currentResolutionIndex;
         resolutionDropdown.RefreshShownValue();
 
+        SavedSettings saves = SettingsManager.Instance.GetSavedSettings();
+        Screen.SetResolution(saves.SavedResolution.width, saves.SavedResolution.height, Screen.fullScreen);
+        Screen.fullScreen = saves.IsFullScreen;
+        isFullscreen = saves.IsFullScreen;
     }
 
     /// <summary>
@@ -61,6 +70,7 @@ public class GameSettings : MonoBehaviour
     public void SetResolution(int resolutionIndex)
     {
         Resolution resolution = resolutions[resolutionIndex];
+        currentResolutions = resolution;
         Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
     }
 
@@ -72,5 +82,13 @@ public class GameSettings : MonoBehaviour
         isFullscreen =! isFullscreen;
         toggleText.gameObject.SetActive(isFullscreen);
         Screen.fullScreen = isFullscreen;
+    }
+
+    /// <summary>
+    /// Saves the settings of the current fullscreen mode and also of the current selected resolutions.
+    /// </summary>
+    public void SaveSettings()
+    {
+        SettingsManager.Instance.SaveGameSettings(currentResolutions, Screen.fullScreen);
     }
 }
