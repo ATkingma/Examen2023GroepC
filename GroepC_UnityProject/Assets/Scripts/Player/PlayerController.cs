@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace GroepC
+namespace GroepC.Player
 {
     /// <summary>
     /// This class controls the player. It is used to connect the <see cref="CharacterController"/> for the player.
@@ -68,6 +68,15 @@ namespace GroepC
         /// The time when dashing is allowed again.
         /// </summary>
         private float nextDash;
+
+        /// <summary>
+        /// Turns off the cursor.
+        /// </summary>
+        private void Awake()
+        {
+            Cursor.visible = false;
+            Cursor.lockState= CursorLockMode.Locked;
+        }
 
         /// <summary>
         /// This update is used to call the movement for the player.
