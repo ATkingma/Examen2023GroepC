@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.Rendering;
 using UnityEngine.UI;
 
 /// <summary>
@@ -41,49 +42,49 @@ public class VolumeMixer : MonoBehaviour
     {
         SavedSettings saves = SettingsManager.Instance.GetSavedSettings();
         mainVolumeSlider.value = saves.MasterVolume;
-        SetMainVolume(saves.MasterVolume);
+        SetVolumeLevel("Master",saves.MasterVolume);
         musicVolumeSlider.value = saves.MusicVolume;
-        SetMusicVolume(saves.MusicVolume);
+        SetVolumeLevel("Music", saves.MusicVolume);
         soundEffectsSlider.value = saves.SoundEffects;
-        SetSoundEffectsVolume(saves.SoundEffects);
+        SetVolumeLevel("Sound Effects", saves.SoundEffects);
         UISoundSlider.value = saves.UIVolume;
-        SetUIVolume(saves.UIVolume);
+        SetVolumeLevel("UI", saves.UIVolume);
     }
 
     /// <summary>
     /// Sets the main volume.
     /// </summary>
     /// <param name="volume"></param>
-    public void SetMainVolume(float volume)
+    public void SetMainVolume()
     {
-        SetVolumeLevel("Master", volume);
+        SetVolumeLevel("Master", mainVolumeSlider.value);
     }
 
     /// <summary>
     /// Sets the music volume.
     /// </summary>
     /// <param name="volume"></param>
-    public void SetMusicVolume(float volume)
+    public void SetMusicVolume()
     {
-        SetVolumeLevel("Music", volume);
+        SetVolumeLevel("Music", musicVolumeSlider.value);
     }
 
     /// <summary>
     /// Sets the sound effect Volume.
     /// </summary>
     /// <param name="volume"></param>
-    public void SetSoundEffectsVolume(float volume)
+    public void SetSoundEffectsVolume()
     {
-        SetVolumeLevel("Sound Effects", volume);
+        SetVolumeLevel("Sound Effects", soundEffectsSlider.value);
     }
 
     /// <summary>
     /// Sets the UI Volume.
     /// </summary>
     /// <param name="volume"></param>
-    public void SetUIVolume(float volume)
+    public void SetUIVolume()
     {
-        SetVolumeLevel("UI", volume);
+        SetVolumeLevel("UI", UISoundSlider.value);
     }
 
     /// <summary>
