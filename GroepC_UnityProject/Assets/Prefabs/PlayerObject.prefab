@@ -637,8 +637,8 @@ MonoBehaviour:
   cameraSensitivity: 1
   yRotationLimit: 70
   movementSpeed: 10
-  dashSpeed: 50
-  gravity: 1
+  dashSpeed: 10
+  gravity: 20
   cooldown: 0.1
 --- !u!114 &3623344097667786391
 MonoBehaviour:
@@ -669,7 +669,6 @@ GameObject:
   - component: {fileID: 3623344097804270560}
   - component: {fileID: 3623344097804270565}
   - component: {fileID: 3623344097804270562}
-  - component: {fileID: 3623344097804270563}
   - component: {fileID: 3623344097804270564}
   m_Layer: 0
   m_Name: 'Sniper(mesh) '
@@ -743,19 +742,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &3623344097804270563
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3623344097804270561}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &3623344097804270564
 MonoBehaviour:
   m_ObjectHideFlags: 0

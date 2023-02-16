@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace GroepC.Player
@@ -50,14 +49,24 @@ namespace GroepC.Player
         [SerializeField] private float gravity;
 
         /// <summary>
-        /// The amount of down force the player gets, gets stronger based on how long in air.
+        /// The force on the y axis.
         /// </summary>
         private float downForce;
 
         /// <summary>
-        /// States when the player is dashing.
+        /// The amount of down force the player gets, gets stronger based on how long in air.
         /// </summary>
         private bool isDashing;
+
+        /// <summary>
+        /// States when the player is jumping.
+        /// </summary>
+        private bool isJumping;
+
+        /// <summary>
+        /// The amount of jump power added when interacting with the jump pad.
+        /// </summary>
+        private float jumpPower;
 
         /// <summary>
         /// The cooldown of the dash.
@@ -100,9 +109,18 @@ namespace GroepC.Player
         /// <returns>Gravity when not on the ground.</returns>
         private float ApplyGravity()
         {
-            if(!controller.isGrounded)
-                return downForce -= gravity * Time.deltaTime;
-            return downForce = -1f * Time.deltaTime;
+            if (!controller.isGrounded)
+                downForce -= gravity * Time.deltaTime;
+            else
+                downForce = -.1f;
+
+            if (isJumping)
+            {
+                downForce += jumpPower;
+                isJumping = false;
+            }
+
+            return downForce;
         }
 
         /// <summary>
@@ -122,9 +140,9 @@ namespace GroepC.Player
         }
 
         /// <summary>
-        /// Handles dashing when pressing leftshift/space
+        /// Handles dashing when pressing leftshift/space.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Waits for .1 sec to reset the cooldown.</returns>
         private IEnumerator Dash()
         {
             if(Input.GetButtonDown("Dash") && Time.time > nextDash)
@@ -137,21 +155,34 @@ namespace GroepC.Player
             }
         }
 
+
+        Vector3 direction;
         /// <summary>
         /// Applies the movement onto the <see cref="CharacterController"/>.
         /// </summary>
         private void ApplyMovement()
         {
-            Vector3 direction = CalculateMovement();
+            direction = CalculateMovement();
+            direction.y = 0;
             direction.Normalize();
-            direction.y = ApplyGravity();
             direction *= movementSpeed;
+            direction.y = ApplyGravity();
             direction *= Time.deltaTime;
 
             if(isDashing)
-                direction = playerCamera.transform.rotation * new Vector3(0, 0, dashSpeed * Time.deltaTime);
+                direction *= dashSpeed;
 
             controller.Move(direction);
+        }
+
+        /// <summary>
+        /// Sets the jump power for the player.
+        /// </summary>
+        /// <param name="power">The amount of power for the jump.</param>
+        public void SetJumpPower(float power)
+        {
+            jumpPower = power;
+            isJumping = true;
         }
     }
 }

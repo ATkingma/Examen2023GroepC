@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace GroepC.Player
@@ -17,6 +15,11 @@ namespace GroepC.Player
         private float currentHealth;
 
         /// <summary>
+        /// Initializes the health script. Called when spawning in the player.
+        /// </summary>
+        public void Setup() => currentHealth = maxHealth;
+
+        /// <summary>
         /// Makes the player take damage.
         /// </summary>
         /// <param name="damageAmount">The amount of damage the player will take.</param>
@@ -30,7 +33,10 @@ namespace GroepC.Player
             if (currentHealth == 0)
                 Die();
         }
-
+        
+        /// <summary>
+        /// Activates when the player health reaches 0.
+        /// </summary>
         private void Die()
         {
             // Player dies here!

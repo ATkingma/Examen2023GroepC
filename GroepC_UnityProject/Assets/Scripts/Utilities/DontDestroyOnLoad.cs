@@ -9,9 +9,6 @@ namespace GroepC.Utilities
     /// </summary>
     public class DontDestroyOnLoad : MonoBehaviour
     {
-        private void Awake()
-        {
-            DontDestroyOnLoad(this);
-        }
+        private void Awake() => DontDestroyOnLoad(this);
     }
 }

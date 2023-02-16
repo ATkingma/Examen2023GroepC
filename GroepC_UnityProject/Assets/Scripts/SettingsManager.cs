@@ -43,7 +43,7 @@ public class SettingsManager : MonoBehaviour
     /// <param name="music"></param>
     /// <param name="soundEffects"></param>
     /// <param name="ui"></param>
-    public void SaveVolume(float master = 0,float music = 0, float soundEffects = 0, float ui = 0)
+    public void SaveVolume(float master = 0, float music = 0, float soundEffects = 0, float ui = 0)
     {
         string jsonString = PlayerPrefs.GetString(playerPrefName);
         SavedSettings newSettings = JsonUtility.FromJson<SavedSettings>(jsonString);
