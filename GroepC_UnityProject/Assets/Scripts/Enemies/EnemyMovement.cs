@@ -59,14 +59,29 @@ namespace GroepC.Enemies
 				if (Vector3.Distance(transform.position, target.transform.position)> stoppingDistance)
 				{
 					agent.destination = target.transform.position;
-				}
+                }
 				else
 				{
 					agent.destination = transform.position;
 				}
 
-				LookAtTarget(target.transform.position);
-			}
+                Ray ray = new Ray(transform.position, target.transform.position - transform.position);
+
+
+                float maxDistance = Vector3.Distance(transform.position, target.transform.position);
+
+                RaycastHit hit;
+
+                // Perform the raycast
+                if (Physics.Raycast(ray, out hit, maxDistance))
+                {
+                    // Check if the object hit by the ray is the target transform
+                    if (hit.transform == target.transform)
+                    {
+                        LookAtTarget(target.transform.position);
+                    }
+                }
+            }
 		}
 		
 		/// <summary>
