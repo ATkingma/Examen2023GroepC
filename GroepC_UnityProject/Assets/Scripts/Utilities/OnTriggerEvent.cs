@@ -22,12 +22,14 @@ namespace GroepC.Utilities
 		[SerializeField]
 		private LayerMask targetLayer;
 
+		/// <summary>
+		/// Triggers the event when colliding with the <see cref="targetLayer"/>.
+		/// </summary>
+		/// <param name="other">The collider this collider has collition with.</param>
 		private void OnTriggerEnter(Collider other)
 		{
-			if(other.gameObject.layer!= targetLayer) 
-			{ 
+			if(other.gameObject.layer!= targetLayer)
 				triggerEvent.Invoke();
-			}
 		}
 	}
 }

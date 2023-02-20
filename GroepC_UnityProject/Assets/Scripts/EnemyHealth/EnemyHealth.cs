@@ -1,15 +1,14 @@
 using GroepC.Managers;
 using System.Collections;
 using UnityEngine;
+
 namespace GroepC.EnemyHealth
 {
-
     /// <summary>
     /// Health of the enemy that will be walking.
     /// </summary>
     public class EnemyHealth : EnemyHealthBase
 	{
-
 		/// <summary>
 		/// The time that will be waited for the object to be destroyed after dying.
 		/// </summary>

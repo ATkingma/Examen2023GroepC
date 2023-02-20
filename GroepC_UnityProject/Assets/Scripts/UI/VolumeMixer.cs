@@ -41,6 +41,9 @@ namespace GroepC.UI
         [SerializeField]
         private Slider UISoundSlider;
 
+        /// <summary>
+        /// Sets the setting values.
+        /// </summary>
         private void Start()
         {
             SavedSettings saves = SettingsManager.Instance.GetSavedSettings();
@@ -57,74 +60,48 @@ namespace GroepC.UI
         /// <summary>
         /// Sets the main volume.
         /// </summary>
-        /// <param name="volume"></param>
-        public void SetMainVolume()
-        {
-            SetVolumeLevel("Master", mainVolumeSlider.value);
-        }
+        public void SetMainVolume() => SetVolumeLevel("Master", mainVolumeSlider.value);
 
         /// <summary>
         /// Sets the music volume.
         /// </summary>
-        /// <param name="volume"></param>
-        public void SetMusicVolume()
-        {
-            SetVolumeLevel("Music", musicVolumeSlider.value);
-        }
+        public void SetMusicVolume() => SetVolumeLevel("Music", musicVolumeSlider.value);
 
         /// <summary>
         /// Sets the sound effect Volume.
         /// </summary>
-        /// <param name="volume"></param>
-        public void SetSoundEffectsVolume()
-        {
-            SetVolumeLevel("Sound Effects", soundEffectsSlider.value);
-        }
+        public void SetSoundEffectsVolume() => SetVolumeLevel("Sound Effects", soundEffectsSlider.value);
 
         /// <summary>
         /// Sets the UI Volume.
         /// </summary>
-        /// <param name="volume"></param>
-        public void SetUIVolume()
-        {
-            SetVolumeLevel("UI", UISoundSlider.value);
-        }
+        public void SetUIVolume() => SetVolumeLevel("UI", UISoundSlider.value);
 
         /// <summary>
-        /// GEts the volume level.
+        /// Gets the volume level.
         /// </summary>
         /// <param name="parameterName"></param>
-        /// <returns></returns>
+        /// <returns>The volume level.</returns>
         private float GetVolumeLevel(string parameterName)
         {
             float volume;
             bool result = audioMixer.GetFloat(parameterName, out volume);
             if (result)
-            {
                 return volume;
-            }
             else
-            {
                 return 0f;
-            }
         }
 
         /// <summary>
         /// Sets the volume level of an audiomixer group.
         /// </summary>
-        /// <param name="parameterName"></param>
-        /// <param name="volume"></param>
-        private void SetVolumeLevel(string parameterName, float volume)
-        {
-            audioMixer.SetFloat(parameterName, volume);
-        }
+        /// <param name="parameterName">The parameter name.</param>
+        /// <param name="volume">The volume to set the parameter to.</param>
+        private void SetVolumeLevel(string parameterName, float volume) => audioMixer.SetFloat(parameterName, volume);
 
         /// <summary>
         /// Saves the volume of the sliders.
         /// </summary>
-        public void SaveVolume()
-        {
-            SettingsManager.Instance.SaveVolume(mainVolumeSlider.value, musicVolumeSlider.value, soundEffectsSlider.value, UISoundSlider.value);
-        }
+        public void SaveVolume() => SettingsManager.Instance.SaveVolume(mainVolumeSlider.value, musicVolumeSlider.value, soundEffectsSlider.value, UISoundSlider.value);
     }
 }

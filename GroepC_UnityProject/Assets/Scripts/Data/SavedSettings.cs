@@ -9,6 +9,9 @@ namespace GroepC.Data
     [Serializable]
     public class SavedSettings
     {
+        /// <summary>
+        /// <see cref="SavedSettings"/>.
+        /// </summary>
         public SavedSettings()
         {
             MasterVolume = 0;

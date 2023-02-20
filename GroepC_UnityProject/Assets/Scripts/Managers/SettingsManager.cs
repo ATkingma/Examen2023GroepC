@@ -9,33 +9,30 @@ namespace GroepC.Managers
     public class SettingsManager : MonoBehaviour
     {
         /// <summary>
-        /// The instance of this class.
+        /// The instance for this class.
         /// </summary>
-        private static SettingsManager instance;
+        public static SettingsManager Instance;
+
         /// <summary>
         /// The instance of this class.
         /// </summary>
-        public static SettingsManager Instance => instance;
+        public static SettingsManager InstanceInstance;
 
         /// <summary>
         /// The Save name of this class that will be used for the playerPrefs.
         /// </summary>
         const string playerPrefName = "SettingsManager";
 
-
+        /// <summary>
+        /// Sets the instance for this class.
+        /// </summary>
         private void Awake()
         {
-            if (Instance != null)
-            {
-                Destroy(Instance);
-            }
-            instance = this;
+            Instance = this;
 
             string savedjson = PlayerPrefs.GetString(playerPrefName);
             if (savedjson == string.Empty)
-            {
                 SetupSaves();
-            }
         }
 
         /// <summary>
@@ -50,10 +47,10 @@ namespace GroepC.Managers
         /// <summary>
         /// Saved the volume of al given variables if one is empty is filled in with 0.
         /// </summary>
-        /// <param name="master"></param>
-        /// <param name="music"></param>
-        /// <param name="soundEffects"></param>
-        /// <param name="ui"></param>
+        /// <param name="master">The master sound value.</param>
+        /// <param name="music">The music sound value.</param>
+        /// <param name="soundEffects">Sound effects sound value.</param>
+        /// <param name="ui">UI sound value.</param>
         public void SaveVolume(float master = 0, float music = 0, float soundEffects = 0, float ui = 0)
         {
             string jsonString = PlayerPrefs.GetString(playerPrefName);
@@ -69,8 +66,8 @@ namespace GroepC.Managers
         /// <summary>
         /// Saves the resultion and the fullscreen ration.
         /// </summary>
-        /// <param name="res"></param>
-        /// <param name="fullScreen"></param>
+        /// <param name="res">The resolution settings.</param>
+        /// <param name="fullScreen">Defines the fullscreen.</param>
         public void SaveGameSettings(Resolution res, bool fullScreen)
         {
             string jsonString = PlayerPrefs.GetString(playerPrefName);
@@ -84,7 +81,7 @@ namespace GroepC.Managers
         /// <summary>
         /// Saves the settings to json.
         /// </summary>
-        /// <param name="newSettings"></param>
+        /// <param name="newSettings">The new settings.</param>
         public void SaveSettings(SavedSettings newSettings)
         {
             string jsonString = JsonUtility.ToJson(newSettings);
@@ -94,7 +91,7 @@ namespace GroepC.Managers
         /// <summary>
         /// Gets the settings from json.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>The saved settings.</returns>
         public SavedSettings GetSavedSettings()
         {
             string jsonString = PlayerPrefs.GetString(playerPrefName);

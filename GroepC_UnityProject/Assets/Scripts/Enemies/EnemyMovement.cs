@@ -1,6 +1,5 @@
 using GroepC.Player;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -75,58 +74,55 @@ namespace GroepC.Enemies
 		/// </summary>
 		private bool isAttacking;
 
-
 		/// <summary>
 		/// An random range that is given at the awake.
 		/// </summary>
         private float speed;
-        private void Awake()
-        {
-            speed = Random.Range(minSpeed, maxSpeed);	
-        }
-        private void Start()
+
+		/// <summary>
+		/// Sets the speed at a random value.
+		/// </summary>
+        private void Awake() => speed = Random.Range(minSpeed, maxSpeed);
+
+		/// <summary>
+		/// Sets the agent speed, and ready to move.
+		/// </summary>
+		private void Start()
 		{
 			goToTarget = true;
 			agent.speed = speed;
 		}
 
+		/// <summary>
+		/// Makes the agent move towards the target.
+		/// </summary>
 		private void Update()
 		{
 			if (goToTarget)
 			{
 				float distance = Vector3.Distance(transform.position, target.transform.position);
 				if(distance<= attackRange&&!isAttacking)
-				{
 					StartCoroutine(Attack());
-                }
 
 				if (distance > stoppingDistance)
-				{
 					agent.destination = target.transform.position;
-                }
 				else
-				{
 					agent.destination = transform.position;
-				}
 
-                Ray ray = new Ray(transform.position, target.transform.position - transform.position);
-
-
+				Ray ray = new Ray(transform.position, target.transform.position - transform.position);
                 float maxDistance = Vector3.Distance(transform.position, target.transform.position);
 
-                RaycastHit hit;
-
                 // Perform the raycast
-                if (Physics.Raycast(ray, out hit, maxDistance))
+                if (Physics.Raycast(ray, out RaycastHit hit, maxDistance))
                 {
                     // Check if the object hit by the ray is the target transform
                     if (hit.transform == target.transform)
                     {
                         LookAtTarget(target.transform.position);
-						if (isAttacking)
-						{
-							target.GetComponent<PlayerHealth>().DoDamage(damage);
-							isAttacking = false;
+                        if (isAttacking)
+                        {
+                            target.GetComponent<PlayerHealth>().DoDamage(damage);
+                            isAttacking = false;
                         }
                     }
                 }
@@ -136,7 +132,7 @@ namespace GroepC.Enemies
 		/// <summary>
 		/// Function that slerps to the lookPosition.
 		/// </summary>
-		/// <param name="lookPosition"></param>
+		/// <param name="lookPosition">The position to look at.</param>
 		private void LookAtTarget(Vector3 lookPosition)
 		{
 			lookPosition.y = transform.position.y;
@@ -147,7 +143,7 @@ namespace GroepC.Enemies
 		/// <summary>
 		/// Lets the enemy attack and plays the animation.
 		/// </summary>
-		/// <returns></returns>
+		/// <returns>Wait for the animation to end.</returns>
 		private IEnumerator Attack()
 		{
 			animator.SetBool("Attack", true);
@@ -162,9 +158,6 @@ namespace GroepC.Enemies
 		/// Sets an new target for the EnemyMovement Class.
 		/// </summary>
 		/// <param name="newTarget">Is the new target.</param>
-        public void SetTarget(GameObject newTarget)
-        {
-            target = newTarget;
-        }
-    }
+        public void SetTarget(GameObject newTarget) => target = newTarget;
+	}
 }

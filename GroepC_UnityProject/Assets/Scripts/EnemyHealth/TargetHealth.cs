@@ -1,4 +1,3 @@
-using GroepC;
 using GroepC.Managers;
 using UnityEngine;
 
@@ -27,10 +26,7 @@ namespace GroepC.EnemyHealth
 		[SerializeField]
 		private float fallSpeed = 2;
 
-		private void Start()
-		{
-			rb.isKinematic = true;
-		}
+		private void Start() => rb.isKinematic = true;
 
 		/// <summary>
 		/// Inheranted death.

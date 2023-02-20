@@ -38,6 +38,9 @@ namespace GroepC.UI
         /// </summary>
         private Resolution currentResolutions;
 
+        /// <summary>
+        /// Sets the screen resolution.
+        /// </summary>
         private void Start()
         {
             resolutions = Screen.resolutions;
@@ -57,6 +60,7 @@ namespace GroepC.UI
                     currentResolutionIndex = i;
                 }
             }
+
             resolutionDropdown.AddOptions(options);
             resolutionDropdown.value = currentResolutionIndex;
             resolutionDropdown.RefreshShownValue();
@@ -70,7 +74,7 @@ namespace GroepC.UI
         /// <summary>
         /// Function for setting the resolution.
         /// </summary>
-        /// <param name="resolutionIndex"></param>
+        /// <param name="resolutionIndex">Resoltion options.</param>
         public void SetResolution(int resolutionIndex)
         {
             Resolution resolution = resolutions[resolutionIndex];
@@ -91,9 +95,6 @@ namespace GroepC.UI
         /// <summary>
         /// Saves the settings of the current fullscreen mode and also of the current selected resolutions.
         /// </summary>
-        public void SaveSettings()
-        {
-            SettingsManager.Instance.SaveGameSettings(currentResolutions, Screen.fullScreen);
-        }
+        public void SaveSettings() => SettingsManager.Instance.SaveGameSettings(currentResolutions, Screen.fullScreen);
     }
 }

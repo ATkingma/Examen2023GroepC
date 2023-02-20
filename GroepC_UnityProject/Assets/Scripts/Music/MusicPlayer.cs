@@ -25,18 +25,22 @@ namespace GroepC.Music
         /// </summary>
         private int currentClip = 0;
 
+        /// <summary>
+        /// Sets the audio source, and starts the next clip.
+        /// </summary>
         void Start()
         {
             audioSource = GetComponent<AudioSource>();
             PlayNextClip();
         }
 
+        /// <summary>
+        /// Start the player if not already playing.
+        /// </summary>
         void Update()
         {
             if (!audioSource.isPlaying)
-            {
                 PlayNextClip();
-            }
         }
 
         /// <summary>
@@ -45,9 +49,7 @@ namespace GroepC.Music
         void PlayNextClip()
         {
             if (currentClip >= audioClips.Length)
-            {
                 currentClip = 0;
-            }
 
             audioSource.clip = audioClips[currentClip];
             audioSource.Play();

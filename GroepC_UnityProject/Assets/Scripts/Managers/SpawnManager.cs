@@ -1,5 +1,4 @@
 using GroepC.Enemies;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -13,12 +12,7 @@ namespace GroepC.Managers
         /// <summary>
         /// The instance of this class.
         /// </summary>
-        private static SpawnManager instance;
-
-        /// <summary>
-        /// The instance of this class.
-        /// </summary>
-        public static SpawnManager Instance => instance;
+        public static SpawnManager Instance;
 
         /// <summary>
         /// The points where an prefab can spawn randomly on.
@@ -89,19 +83,15 @@ namespace GroepC.Managers
         /// </summary>
         private float increaseTime = 0f;
 
-        private void Awake()
-        {
-            if (Instance != null)
-            {
-                Destroy(Instance);
-            }
-            instance = this;
-        }
+        /// <summary>
+        /// Sets the instance.
+        /// </summary>
+        private void Awake() => Instance = this;
 
-        private void Start()
-        {
-            InvokeRepeating("SpawnEnemy", 0f, spawnRate);
-        }
+        /// <summary>
+        /// Invokes the <see cref="SpawnEnemy"/> based on the <see cref="spawnRate"/>
+        /// </summary>
+        private void Start() => InvokeRepeating(nameof(SpawnEnemy), 0f, spawnRate);
 
         /// <summary>
         /// Spawns enemies.
@@ -132,6 +122,9 @@ namespace GroepC.Managers
             }
         }
 
+        /// <summary>
+        /// Increases spawn time values.
+        /// </summary>
         private void Update()
         {
             increaseTime += Time.deltaTime;
@@ -140,9 +133,8 @@ namespace GroepC.Managers
             {
                 maxEnemies += maxEnemiesIncreaseAmount;
                 if (spawnRate > minSpawnRate)
-                {
-                    spawnRate -=spawnRateDecreaseAmount;
-                }
+                    spawnRate -= spawnRateDecreaseAmount;
+
                 increaseTime = 0f;
             }
         }

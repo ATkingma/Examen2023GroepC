@@ -22,7 +22,7 @@ namespace GroepC.Interactable
         /// <summary>
         /// Base function for child classes that tells them the player hit this hitbox.
         /// </summary>
-        /// <param name="player">The player collider</param>
+        /// <param name="player">The player collider.</param>
         protected virtual void Interact(PlayerController player) { }
     }
 }
