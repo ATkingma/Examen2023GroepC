@@ -23,9 +23,15 @@ namespace GroepC.Enemies
 		[SerializeField]
 		private Animator animator;
 
+		/// <summary>
+		/// The damage amount the enemy can do.
+		/// </summary>
 		[SerializeField]
 		private float damage;
 
+		/// <summary>
+		/// The range of the Enemy where an attack can be started.
+		/// </summary>
         [SerializeField]
 		private float attackRange;
 
@@ -120,7 +126,8 @@ namespace GroepC.Enemies
 						if (isAttacking)
 						{
 							target.GetComponent<PlayerHealth>().DoDamage(damage);
-						}
+							isAttacking = false;
+                        }
                     }
                 }
             }
@@ -137,6 +144,10 @@ namespace GroepC.Enemies
 			transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, lookSpeed * Time.deltaTime);
 		}
 
+		/// <summary>
+		/// Lets the enemy attack and plays the animation.
+		/// </summary>
+		/// <returns></returns>
 		private IEnumerator Attack()
 		{
 			animator.SetBool("Attack", true);
