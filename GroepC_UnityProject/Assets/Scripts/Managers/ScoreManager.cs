@@ -26,7 +26,7 @@ namespace GroepC.Managers
         /// <summary>
         /// Adds score.
         /// </summary>
-        /// <param name="addedScore"></param>
+        /// <param name="addedScore">The amount of score to add.</param>
         public void AddScore(int addedScore) => score += addedScore;
 
         /// <summary>

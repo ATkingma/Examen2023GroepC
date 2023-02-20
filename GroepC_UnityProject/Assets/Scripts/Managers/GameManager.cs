@@ -15,16 +15,6 @@ namespace GroepC.Managers
         public static GameManager Instance;
 
         /// <summary>
-        /// The player prefab to spawn in.
-        /// </summary>
-        [SerializeField] private GameObject playerPrefab;
-
-        /// <summary>
-        /// The spawn location for the player.
-        /// </summary>
-        [SerializeField] private Vector3 spawnLocation;
-
-        /// <summary>
         /// The selected <see cref="GameModes"/>.
         /// </summary>
         private GameModes selectGamemode;
@@ -40,20 +30,20 @@ namespace GroepC.Managers
         private void Awake() => Instance = this;
 
         /// <summary>
-        /// Spawns the player on start.
-        /// </summary>
-        private void Start() => SpawnPlayer();
-
-        /// <summary>
-        /// Spawns in the player on the set location.
-        /// </summary>
-        private void SpawnPlayer() => Instantiate(playerPrefab, spawnLocation, quaternion.identity).GetComponentInChildren<PlayerHealth>().Setup();
-
-        /// <summary>
         /// Sets the gamemode for the game.
         /// </summary>
         /// <param name="mode">The mode to set.</param>
         public void SetGamemode(GameModes mode) => selectGamemode = mode;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private void Update() => CheckFinishConditions();
+
+        private void CheckFinishConditions()
+        {
+
+        }
     }
 
     /// <summary>
