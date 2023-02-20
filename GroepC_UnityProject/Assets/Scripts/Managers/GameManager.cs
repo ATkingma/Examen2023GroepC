@@ -61,8 +61,8 @@ namespace GroepC.Managers
     /// </summary>
     public enum GameModes
     {
-        Tutorial,
-        timed,
-        endless,
+        Tutorial = 0,
+        timed= 1,
+        endless = 2,
     }
 }

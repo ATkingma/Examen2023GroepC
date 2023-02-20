@@ -775,8 +775,10 @@ MonoBehaviour:
   player: {fileID: 1624332532}
   spawnRate: 1
   maxEnemies: 10
-  maxEnemiesIncreaseInterval: 30
+  increaseInterval: 30
   maxEnemiesIncreaseAmount: 1
+  spawnRateDecreaseAmount: 0.01
+  minSpawnRate: 0.03
 --- !u!4 &99942052
 Transform:
   m_ObjectHideFlags: 0
@@ -5051,7 +5053,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1554046447
 Transform:
   m_ObjectHideFlags: 0
