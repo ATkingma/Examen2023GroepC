@@ -23,7 +23,7 @@ namespace GroepC.Player
         /// Makes the player take damage.
         /// </summary>
         /// <param name="damageAmount">The amount of damage the player will take.</param>
-        private void DoDamage(float damageAmount)
+        public void DoDamage(float damageAmount)
         {
             if (currentHealth == 0)
                 return;

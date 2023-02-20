@@ -1,3 +1,4 @@
+using GroepC.Enemies;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,13 +11,13 @@ namespace GroepC.Managers
         public static SpawnManager Instance => instance;
 
         [SerializeField]
+        private GameObject[] spawnPoints;
+
+        [SerializeField]
         private GameObject enemyPrefab;
 
         [SerializeField]
-        private Transform playerTransform;
-
-        [SerializeField]
-        private float spawnRadius = 10f;
+        private GameObject player;
 
         [SerializeField]
         private float spawnRate = 1f;
@@ -25,14 +26,20 @@ namespace GroepC.Managers
         private int maxEnemies = 10;
 
         [SerializeField]
-        private float maxEnemiesIncreaseInterval = 30f;
+        private float increaseInterval = 30f;
 
         [SerializeField]
         private int maxEnemiesIncreaseAmount = 1;
 
+        [SerializeField]
+        private float spawnRateDecreaseAmount = 0.01f;
+
+        [SerializeField]
+        private float minSpawnRate = 0.03f;
+
         private int currentEnemies = 0;
         private List<GameObject> spawnedEnemies = new List<GameObject>();
-        private float timeSinceMaxEnemiesIncrease = 0f;
+        private float increaseTime = 0f;
 
         private void Awake()
         {
@@ -51,11 +58,13 @@ namespace GroepC.Managers
         private void SpawnEnemy()
         {
             if (currentEnemies >= maxEnemies) return;
+            if (spawnPoints.Length <= 0) return;
 
-            Vector3 spawnPos = playerTransform.position + Random.insideUnitSphere * spawnRadius;
-            spawnPos.y = playerTransform.position.y;
+            int spawnPointIndex = Random.Range(0, spawnPoints.Length);
+            Vector3 spawnPos = spawnPoints[spawnPointIndex].transform.position;
             GameObject enemy = Instantiate(enemyPrefab, spawnPos, Quaternion.identity);
             spawnedEnemies.Add(enemy);
+            enemy.GetComponent<EnemyMovement>().SetTarget(player);
             currentEnemies++;
         }
 
@@ -70,12 +79,16 @@ namespace GroepC.Managers
 
         private void Update()
         {
-            timeSinceMaxEnemiesIncrease += Time.deltaTime;
+            increaseTime += Time.deltaTime;
 
-            if (timeSinceMaxEnemiesIncrease >= maxEnemiesIncreaseInterval)
+            if (increaseTime >= increaseInterval)
             {
                 maxEnemies += maxEnemiesIncreaseAmount;
-                timeSinceMaxEnemiesIncrease = 0f;
+                if (spawnRate > minSpawnRate)
+                {
+                    spawnRate -=spawnRateDecreaseAmount;
+                }
+                increaseTime = 0f;
             }
         }
     }

@@ -1,45 +1,37 @@
-using GroepC;
 using GroepC.Managers;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 namespace GroepC.EnemyHealth
 {
-	/// <summary>
-	/// Health of the enemy that wil be walking.
-	/// </summary>
-	public class EnemyHealth : EnemyHealthBase
+
+    /// <summary>
+    /// Health of the enemy that will be walking.
+    /// </summary>
+    public class EnemyHealth : EnemyHealthBase
 	{
-		/// <summary>
-		/// The name of the animation bool that can be triggert when the enemy is death.
-		/// </summary>
-		[SerializeField]
-		private string deathBoolName = "IsDeath";
 
 		/// <summary>
-		/// Animator that wil be assigned to the enemy.
+		/// The time that will be waited for the object to be destroyed after dying.
 		/// </summary>
-		[SerializeField]
-		private Animator anim;
+        [SerializeField]
+        private float destroyTimer;
 
-		/// <summary>
-		/// Death Function that wil be called from the base.
-		/// </summary>
-		public override void Death()
+        /// <summary>
+        /// Death Function that will be called from the base.
+        /// </summary>
+        public override void Death()
 		{
 			StartCoroutine(PlayEnemyDeath());
 		}
 
 		/// <summary>
-		/// Animation player that wil drop ammo when animation isplayed and then destroy the object holder.
+		/// Animation player that will drop ammo when animation isplayed and then destroy the object holder.
 		/// </summary>
 		/// <returns></returns>
 		private IEnumerator PlayEnemyDeath()
 		{
-			anim.SetBool(deathBoolName, true);
-			AnimatorStateInfo animStateInfo = anim.GetCurrentAnimatorStateInfo(0);
-			float NTime = animStateInfo.normalizedTime;
-			yield return NTime > 1.0f;
+			//enables ragdoll
+			yield return new WaitForSeconds(destroyTimer);
 			DropManager.Instance.DropAmmo(transform.position);
 			Destroy(gameObject);
 		}
