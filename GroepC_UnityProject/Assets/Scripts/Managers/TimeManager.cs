@@ -7,6 +7,8 @@ namespace GroepC.Managers
     /// </summary>
     public class TimeManager : MonoBehaviour
     {
+        public static TimeManager Instance;
+
         /// <summary>
         /// The current time in hour/minute/second
         /// </summary>
@@ -18,9 +20,35 @@ namespace GroepC.Managers
         public Vector3 Time => currenTimeValues;
 
         /// <summary>
+        /// The start amount of points.
+        /// </summary>
+        [SerializeField] private float endlessPoints = 100;
+
+        /// <summary>
+        /// The decrease amount to reduce the point, get multiplied by minutes ingame.
+        /// </summary>
+        [SerializeField] private float startDecreaseValue = 1;
+
+        /// <summary>
+        /// The amount of points the player has left.
+        /// </summary>
+        public float EndlessPoints => endlessPoints;
+
+        /// <summary>
+        /// Sets te instance of this class.
+        /// </summary>
+        private void Awake() => Instance = this;
+
+        /// <summary>
         /// Adds time each frame.
         /// </summary>
-        private void Update() => AddTime();
+        private void Update()
+        {
+            if (GameManager.Instance.SelectGamemode == GameModes.timed)
+                AddTime();
+            else
+                DecreaseEndlessPoints();
+        }
 
         /// <summary>
         /// Adds time and calculates the minutes/hours.
@@ -38,6 +66,12 @@ namespace GroepC.Managers
                     currenTimeValues.x++;
                 }
             }
+        }
+
+        private void DecreaseEndlessPoints()
+        {
+            float endlessDecreaseValue = startDecreaseValue * (Time.y * .1f);
+            endlessPoints -= endlessDecreaseValue * UnityEngine.Time.deltaTime;
         }
     }
 }
