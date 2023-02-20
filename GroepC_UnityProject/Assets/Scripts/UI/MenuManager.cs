@@ -1,3 +1,5 @@
+using GroepC.Managers;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -43,6 +45,27 @@ namespace GroepC.UI
         public void LoadScene(int sceneId)
         {
             SceneManager.LoadScene(sceneId);
+        }
+
+        public void SetGamemode(int mode)
+        {
+            GameModes gameMode;
+            switch (mode)
+            {
+                case 0:
+                    gameMode = GameModes.Tutorial;
+                    break;
+                case 1:
+                    gameMode = GameModes.timed;
+                    break;
+                case 2:
+                    gameMode = GameModes.endless;
+                    break;
+                default:
+                    throw new ArgumentException("Invalid game mode value.");
+            }
+
+            GameManager.Instance.SetGamemode(gameMode);
         }
     }
 }
