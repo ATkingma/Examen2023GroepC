@@ -1,7 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.IO;
-using Unity.VisualScripting;
 using UnityEngine;
 
 /// <summary>
@@ -18,23 +14,16 @@ public class SettingsManager : MonoBehaviour
     private void Awake()
     {
         if (Instance != null)
-        {
             Destroy(Instance);
-        }
-        instance= this;
+
+        instance = this;
 
         string savedjson = PlayerPrefs.GetString(playerPrefName);
         if (savedjson==string.Empty)
-        {
             SetupSaves();
-        }
     }
 
-    private void SetupSaves()
-    {
-        string newValue = JsonUtility.ToJson(new SavedSettings());
-        PlayerPrefs.SetString(playerPrefName, newValue);
-    }
+    private void SetupSaves() => PlayerPrefs.SetString(playerPrefName, JsonUtility.ToJson(new SavedSettings()));
 
     /// <summary>
     /// Saved the volume of al given variables if one is empty is filled in with 0.
@@ -74,19 +63,11 @@ public class SettingsManager : MonoBehaviour
     /// Saves the settings to json.
     /// </summary>
     /// <param name="newSettings"></param>
-    public void SaveSettings(SavedSettings newSettings)
-    {
-        string jsonString = JsonUtility.ToJson(newSettings);
-        PlayerPrefs.SetString(playerPrefName, jsonString);  
-    }
+    public void SaveSettings(SavedSettings newSettings) => PlayerPrefs.SetString(playerPrefName, JsonUtility.ToJson(newSettings));
 
     /// <summary>
     /// Gets the settings from json.
     /// </summary>
     /// <returns></returns>
-    public SavedSettings GetSavedSettings()
-    {
-        string jsonString = PlayerPrefs.GetString(playerPrefName);
-        return JsonUtility.FromJson<SavedSettings>(jsonString);
-    }
+    public SavedSettings GetSavedSettings() => JsonUtility.FromJson<SavedSettings>(PlayerPrefs.GetString(playerPrefName));
 }
