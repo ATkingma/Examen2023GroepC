@@ -2,7 +2,7 @@ using GroepC.Managers;
 using System.Collections;
 using UnityEngine;
 
-namespace GroepC.EnemyHealth
+namespace GroepC.Enemies
 {
     /// <summary>
     /// Health of the enemy that will be walking.
@@ -18,10 +18,7 @@ namespace GroepC.EnemyHealth
         /// <summary>
         /// Death Function that will be called from the base.
         /// </summary>
-        public override void Death()
-		{
-			StartCoroutine(PlayEnemyDeath());
-		}
+        public override void Death() => StartCoroutine(PlayEnemyDeath());
 
 		/// <summary>
 		/// Animation player that will drop ammo when animation isplayed and then destroy the object holder.

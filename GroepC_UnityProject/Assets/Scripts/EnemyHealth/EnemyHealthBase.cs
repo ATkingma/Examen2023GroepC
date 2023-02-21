@@ -1,6 +1,5 @@
 using UnityEngine;
-
-namespace GroepC.EnemyHealth
+namespace GroepC.Enemies
 {
 	/// <summary>
 	/// is the base of the enemyHealth
@@ -29,17 +28,12 @@ namespace GroepC.EnemyHealth
 		private void CheckHealth()
 		{
 			if (healthAmount <= 0)
-			{
 				Death();
-			}
 		}
 
 		/// <summary>
 		/// function that handles the death of an health object
 		/// </summary>
-		public virtual void Death()
-		{
-			Destroy(gameObject);
-		}
+		public virtual void Death() => Destroy(gameObject);
 	}
 }

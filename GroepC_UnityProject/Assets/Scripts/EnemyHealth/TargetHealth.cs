@@ -1,7 +1,7 @@
 using GroepC.Managers;
 using UnityEngine;
 
-namespace GroepC.EnemyHealth
+namespace GroepC.Enemies
 {
 	/// <summary>
 	/// Health for an target dummy.

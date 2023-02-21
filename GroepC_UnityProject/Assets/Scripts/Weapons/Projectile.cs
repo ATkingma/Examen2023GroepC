@@ -1,5 +1,5 @@
 using UnityEngine;
-using GroepC.EnemyHealth;
+using GroepC.Enemies;
 
 namespace GroepC.Weapons
 {

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4201228573930873345}
   - component: {fileID: 4201228573930873344}
   - component: {fileID: 4201228573930873347}
-  - component: {fileID: 4201228573930873346}
+  - component: {fileID: -3876940858083402497}
   m_Layer: 0
   m_Name: Enemy with skin
   m_TagString: Untagged
@@ -144,7 +144,7 @@ MonoBehaviour:
   lookSpeed: 5.5
   stoppingDistance: 4
   target: {fileID: 0}
---- !u!114 &4201228573930873346
+--- !u!114 &-3876940858083402497
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -153,10 +153,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 4201228573930873349}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 578e70cdb514ff345ad14687cfd500ee, type: 3}
+  m_Script: {fileID: 11500000, guid: f386064a5f7b52347b5f3799d4341fe6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   healthAmount: 10
+  destroyTimer: 1
 --- !u!1001 &4201228575520179476
 PrefabInstance:
   m_ObjectHideFlags: 0
