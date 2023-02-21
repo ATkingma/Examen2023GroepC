@@ -14,7 +14,21 @@ namespace GroepC.Utilities
         /// </summary>
         [SerializeField]
         private int sceneIndex;
+
+        /// <summary>
+        /// An bool that will load an scene on start when enabled.
+        /// </summary>
+        [SerializeField]
+        private bool loadOnStart;
         private void Start()
+        {
+            if (loadOnStart)
+            {
+                LoadScene();
+            }
+        }
+
+        public void LoadScene()
         {
             SceneManager.LoadScene(sceneIndex);
         }

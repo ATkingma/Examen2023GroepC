@@ -6,7 +6,7 @@ using UnityEngine.Events;
 namespace GroepC.Utilities
 {
 	/// <summary>
-	/// This wil be an Utilitie that can be ussed as an general trigger event.
+	/// This will be an Utilitie that can be ussed as an general trigger event.
 	/// </summary>
 	public class OnTriggerEvent : MonoBehaviour
 	{
@@ -17,19 +17,33 @@ namespace GroepC.Utilities
 		private UnityEvent triggerEvent;
 
 		/// <summary>
-		/// The layer that wil be checked OnTriggerEnter.
+		/// The Tag that wil be checked OnTriggerEnter.
 		/// </summary>
 		[SerializeField]
-		private LayerMask targetLayer;
+		private GameTags tag;
 
 		/// <summary>
-		/// Triggers the event when colliding with the <see cref="targetLayer"/>.
+		/// Triggers the event when colliding with the <see cref="tag"/>.
 		/// </summary>
 		/// <param name="other">The collider this collider has collition with.</param>
 		private void OnTriggerEnter(Collider other)
 		{
-			if(other.gameObject.layer!= targetLayer)
+			if (other.gameObject.CompareTag(tag.ToString()))
 				triggerEvent.Invoke();
 		}
+	}
+
+	/// <summary>
+	/// Tags that are in game.
+	/// </summary>
+	enum GameTags
+	{
+		UnTagged,
+		Respawn,
+		Finish,
+		EditorOnly,
+		MainCamera,
+		Player,
+		GameController,
 	}
 }
