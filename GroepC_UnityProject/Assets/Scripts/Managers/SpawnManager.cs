@@ -146,6 +146,14 @@ namespace GroepC.Managers
             }
         }
 
+        public void RemoveTarget(GameObject target)
+        {
+            if (spawnedTargets.Contains(target))
+            {
+                spawnedTargets.Remove(target);
+            }
+        }
+
         /// <summary>
         /// Spawns enemies.
         /// </summary>
