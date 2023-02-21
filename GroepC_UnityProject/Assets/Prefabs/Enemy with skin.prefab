@@ -136,7 +136,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 4201228573930873344}
-  speed: 5
+  animator: {fileID: 0}
+  damage: 0
+  attackRange: 0
+  minSpeed: 3.5
+  maxSpeed: 5
   lookSpeed: 5.5
   stoppingDistance: 4
   target: {fileID: 0}
@@ -152,7 +156,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 578e70cdb514ff345ad14687cfd500ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthAmount: 0
+  healthAmount: 10
 --- !u!1001 &4201228575520179476
 PrefabInstance:
   m_ObjectHideFlags: 0

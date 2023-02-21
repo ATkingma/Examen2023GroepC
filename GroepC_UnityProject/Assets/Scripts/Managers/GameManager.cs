@@ -45,6 +45,9 @@ namespace GroepC.Managers
         /// </summary>
         private void Update() => CheckFinishConditions();
 
+        /// <summary>
+        /// Sets the state of the game to started.
+        /// </summary>
         public void StartGame() => gameHasStarted = true;
 
         /// <summary>
@@ -71,8 +74,10 @@ namespace GroepC.Managers
         /// <summary>
         /// Ends the game.
         /// </summary>
-        private void EndGame()
+        public void EndGame()
         {
+            gameHasStarted = false;
+
             switch (selectGamemode)
             {
                 case GameModes.timed:
@@ -93,8 +98,8 @@ namespace GroepC.Managers
     /// </summary>
     public enum GameModes
     {
-        Tutorial = 0,
-        timed= 1,
-        endless = 2,
+        Tutorial,
+        timed,
+        endless,
     }
 }

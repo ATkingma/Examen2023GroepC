@@ -1,6 +1,7 @@
 using Unity.Mathematics;
 using UnityEngine;
 using GroepC.Player;
+using GroepC.Managers;
 
 /// <summary>
 /// Manages spawning the player.
@@ -17,10 +18,17 @@ public class PlayerManager : MonoBehaviour
     /// </summary>
     [SerializeField] private Vector3 spawnLocation;
 
+    /// <summary>
+    /// Initiates spawning the player.
+    /// </summary>
     private void OnEnable() => SpawnPlayer();
 
     /// <summary>
     /// Spawns in the player on the set location.
     /// </summary>
-    private void SpawnPlayer() => Instantiate(playerPrefab, spawnLocation, quaternion.identity).GetComponentInChildren<PlayerHealth>().Setup();
+    private void SpawnPlayer()
+    {
+        Instantiate(playerPrefab, spawnLocation, quaternion.identity).GetComponentInChildren<PlayerHealth>().Setup();
+        GameManager.Instance.StartGame();
+    }
 }

@@ -29,6 +29,7 @@ namespace GroepC.EnemyHealth
 		/// <returns></returns>
 		private IEnumerator PlayEnemyDeath()
 		{
+			SpawnManager.Instance.RemoveEnemy(gameObject);
 			//enables ragdoll
 			yield return new WaitForSeconds(destroyTimer);
 			DropManager.Instance.DropAmmo(transform.position);

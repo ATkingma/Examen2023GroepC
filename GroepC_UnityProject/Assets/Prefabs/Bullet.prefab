@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3923625972526026232}
   - component: {fileID: 8360509090518933815}
   - component: {fileID: 6530936521253540576}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8676201844882550615}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -127,3 +127,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3793c528a62f9740ad75ba85acfc98c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitTags:
+  - Enemy
+  - Untagged

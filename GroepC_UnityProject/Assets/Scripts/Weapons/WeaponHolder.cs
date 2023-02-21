@@ -113,6 +113,7 @@ namespace GroepC.Weapons
                     Vector3 dir = spawnedProjectile.transform.forward;
 
                     spawnedProjectile.velocity = dir * velocity;
+                    spawnedProjectile.GetComponent<Projectile>().Setup(weapon.Damage);
                 }
             }
         }

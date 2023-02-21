@@ -155,8 +155,11 @@ namespace GroepC.Player
             }
         }
 
-
+        /// <summary>
+        /// The direction of the player
+        /// </summary>
         Vector3 direction;
+
         /// <summary>
         /// Applies the movement onto the <see cref="CharacterController"/>.
         /// </summary>
