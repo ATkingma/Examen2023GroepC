@@ -21,7 +21,7 @@ namespace GroepC.Weapons
         /// <summary>
         /// For now, destroys the projectile after 1 second.
         /// </summary>
-        private void OnEnable() => Destroy(gameObject, 1);
+        //private void OnEnable() => Destroy(gameObject, 1);
 
         /// <summary>
         /// Sets the damage for the projectile.
@@ -31,13 +31,15 @@ namespace GroepC.Weapons
 
         private void OnTriggerEnter(Collider other)
         {
+
+            Debug.Log(other.transform.name);
             int count = hitTags.Length;
             for (int i = 0; i < count; i++)
                 if (other.gameObject.CompareTag(hitTags[i]))
                     if (other.GetComponent<EnemyHealthBase>())
                         other.GetComponent<EnemyHealthBase>().DoDamage(damageAmount);
             //particle
-            Destroy(gameObject);
+
         }
     }
 }

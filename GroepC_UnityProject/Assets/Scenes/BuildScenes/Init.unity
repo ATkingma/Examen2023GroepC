@@ -257,7 +257,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ammoDrops:
-  - prefab: {fileID: 8676201844882550615, guid: 1777d955d0c5ea04caa9700c119dcb1b, type: 3}
+  - prefab: {fileID: 605326596}
     dropChance: 0
   - prefab: {fileID: 605326596}
     dropChance: 0

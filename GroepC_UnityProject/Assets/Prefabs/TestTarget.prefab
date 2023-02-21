@@ -14,8 +14,7 @@ GameObject:
   - component: {fileID: 8757920072318651090}
   - component: {fileID: 8757920072318651086}
   - component: {fileID: 4118198232837313596}
-  - component: {fileID: 42375535895280394}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: TestTarget
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -129,18 +128,5 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.05321016, y: 2, z: 0.9010348}
+  m_Size: {x: 0.46611118, y: 2, z: 0.9010348}
   m_Center: {x: 0.0056472933, y: 1.0000033, z: 0}
---- !u!65 &42375535895280394
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8451858154762254383}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.64996594, y: 0.06849619, z: 1.8760021}
-  m_Center: {x: -6.0263045e-11, y: 0.030831229, z: -0.08489549}

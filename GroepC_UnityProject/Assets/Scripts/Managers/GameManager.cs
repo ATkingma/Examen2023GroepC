@@ -66,7 +66,7 @@ namespace GroepC.Managers
             switch (selectGamemode)
             {
                 case GameModes.timed:
-                    if (SpawnManager.Instance.EnemiesLeft == 0)
+                    if (SpawnManager.Instance.TargetsLeft == 0)
                         EndGame();
                     break;
                 case GameModes.endless:
