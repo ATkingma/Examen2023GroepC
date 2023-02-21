@@ -1,5 +1,6 @@
 using GroepC.Enemies;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using UnityEngine;
 
 namespace GroepC.Managers
@@ -20,6 +21,12 @@ namespace GroepC.Managers
         [SerializeField]
         private GameObject[] spawnPoints;
 
+
+        /// <summary>
+        /// The prefab of the targets that will be spawned.
+        /// </summary>
+        [SerializeField]
+        private GameObject targetPrefab;
         /// <summary>
         /// The prefab that will be spawned.
         /// </summary>
@@ -72,7 +79,17 @@ namespace GroepC.Managers
         /// The current amount of enemies that are spawned.
         /// </summary>
         private int currentEnemies = 0;
-        
+
+        /// <summary>
+        /// An list of targets.
+        /// </summary>
+        private List<GameObject> spawnedTargets = new List<GameObject>();
+
+        /// <summary>
+        /// The amount of targets left.
+        /// </summary>
+        public int TargetsLeft => spawnedTargets.Count;
+
         /// <summary>
         /// An list of enemies.
         /// </summary>
@@ -96,13 +113,38 @@ namespace GroepC.Managers
         /// <summary>
         /// Invokes the <see cref="SpawnEnemy"/> based on the <see cref="spawnRate"/>
         /// </summary>
-        private void Start() => InvokeRepeating(nameof(SpawnEnemy), 0f, spawnRate);
-
+        private void Start()
+        {
+            switch (GameManager.Instance.SelectGamemode)
+            {
+                case GameModes.timed:
+                    SpawnTargets();
+                    break;
+                case GameModes.endless:
+                    InvokeRepeating(nameof(SpawnEnemy), 0f, spawnRate);
+                    break;
+            }
+        }
         /// <summary>
         /// Sets the given gameobject as the new target.
         /// </summary>
         /// <param name="newtarget">The new target.</param>
         public void SetTarget(GameObject newtarget) => player = newtarget;
+
+        /// <summary>
+        /// Spawns Targets.
+        /// </summary>
+        private void SpawnTargets()
+        {
+            for (int i = 0; i < spawnPoints.Length; i++)
+            {
+                Vector3 spawnPos = spawnPoints[i].transform.position;
+                GameObject enemy = Instantiate(targetPrefab, spawnPos, Quaternion.identity);
+                float randomRotation = Random.Range(0, 360);
+                enemy.transform.rotation = Quaternion.Euler(new Vector3(0, randomRotation, 0));
+                spawnedTargets.Add(enemy);
+            }
+        }
 
         /// <summary>
         /// Spawns enemies.
@@ -111,7 +153,7 @@ namespace GroepC.Managers
         {
             if (currentEnemies >= maxEnemies) return;
             if (spawnPoints.Length <= 0) return;
-
+            if (!player) return;
             int spawnPointIndex = Random.Range(0, spawnPoints.Length);
             Vector3 spawnPos = spawnPoints[spawnPointIndex].transform.position;
             GameObject enemy = Instantiate(enemyPrefab, spawnPos, Quaternion.identity);

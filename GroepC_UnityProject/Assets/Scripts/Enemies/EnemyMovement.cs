@@ -209,10 +209,5 @@ namespace GroepC.Enemies
 		/// <param name="newTarget">Is the new target.</param>
         public void SetTarget(GameObject newTarget) => target = newTarget;
 
-        private void OnDrawGizmos()
-        {
-            Gizmos.color = Color.red;
-            Gizmos.DrawWireCube(attackPosition.position, attackSize);
-        }
     }
 }

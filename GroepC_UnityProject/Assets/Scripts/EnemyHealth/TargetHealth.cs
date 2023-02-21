@@ -15,12 +15,6 @@ namespace GroepC.Enemies
 		private Rigidbody rb;
 
 		/// <summary>
-		/// The direction the target falls when he is death.
-		/// </summary>
-		[SerializeField]
-		private Vector3 falDirection = Vector3.right;
-
-		/// <summary>
 		/// The speed amount the target falls when dying.
 		/// </summary>
 		[SerializeField]
@@ -43,7 +37,7 @@ namespace GroepC.Enemies
 		private void DoTargetDeath()
 		{
 			rb.isKinematic = false;
-			rb.velocity = falDirection * fallSpeed;
+			rb.velocity = Vector3.back * fallSpeed;
 		}
 	}
 }
