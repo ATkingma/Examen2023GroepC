@@ -1,5 +1,6 @@
 using GroepC.Player;
 using System.Collections;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -65,24 +66,44 @@ namespace GroepC.Enemies
 		private GameObject target;
 
 		/// <summary>
-		/// Can be triggert in the future is an bool that keeps track if the enemy may move to the target.
+		/// The time after the attack, This can be used to let the enemy wait an few sec before attacking again.
 		/// </summary>
-		private bool goToTarget;
+		[SerializeField]
+		private float attackCooldown;
+
+		[SerializeField]
+		private Vector3 attackSize;
+
+		[SerializeField]
+		private Transform attackPosition;
+
+        public LayerMask m_LayerMask;
+
+        /// <summary>
+        /// Can be triggert in the future is an bool that keeps track if the enemy may move to the target.
+        /// </summary>
+        private bool goToTarget;
 
 		/// <summary>
 		/// Can be triggert if the bool is attacking.
 		/// </summary>
 		private bool isAttacking;
 
+
 		/// <summary>
-		/// An random range that is given at the awake.
+		/// Can be trigger for checking an boxcollider for the player and doing damage after.
 		/// </summary>
+		private bool checkCollider;
+
+        /// <summary>
+        /// An random range that is given at the awake.
+        /// </summary>
         private float speed;
 
 		/// <summary>
 		/// Sets the speed at a random value.
 		/// </summary>
-        private void Awake() => speed = Random.Range(minSpeed, maxSpeed);
+        private void Awake() => speed = UnityEngine.Random.Range(minSpeed, maxSpeed);
 
 		/// <summary>
 		/// Sets the agent speed, and ready to move.
@@ -101,39 +122,81 @@ namespace GroepC.Enemies
 			if (goToTarget)
 			{
 				float distance = Vector3.Distance(transform.position, target.transform.position);
-				if(distance<= attackRange&&!isAttacking)
-					StartCoroutine(Attack());
+				if (distance <= attackRange && !isAttacking)
+					Attack();
+
 
 				if (distance > stoppingDistance)
 					agent.destination = target.transform.position;
 				else
 					agent.destination = transform.position;
 
-				Ray ray = new Ray(transform.position, target.transform.position - transform.position);
-                float maxDistance = Vector3.Distance(transform.position, target.transform.position);
+				Ray lookRay = new Ray(transform.position, target.transform.position - transform.position);
+				float lookDist = Vector3.Distance(transform.position, target.transform.position);
 
-                // Perform the raycast
-                if (Physics.Raycast(ray, out RaycastHit hit, maxDistance))
+				if (Physics.Raycast(lookRay, out RaycastHit hit, lookDist))
+				{
+					if (hit.transform == target.transform)
+					{
+						LookAtTarget(target.transform.position);
+					}
+				}
+
+                if (isAttacking&&checkCollider)
                 {
-                    // Check if the object hit by the ray is the target transform
-                    if (hit.transform == target.transform)
-                    {
-                        LookAtTarget(target.transform.position);
-                        if (isAttacking)
-                        {
-                            target.GetComponent<PlayerHealth>().DoDamage(damage);
-                            isAttacking = false;
-                        }
-                    }
+					MyCollisions();
                 }
-            }
+			}
 		}
-		
-		/// <summary>
-		/// Function that slerps to the lookPosition.
-		/// </summary>
-		/// <param name="lookPosition">The position to look at.</param>
-		private void LookAtTarget(Vector3 lookPosition)
+
+		public void EnableAttacking()
+		{
+			isAttacking = true;
+			checkCollider = true;
+        }
+
+        public void DisableAttacking()
+        {
+			StartCoroutine(CoolDown());
+        }
+
+        private void Attack()
+		{
+			animator.SetBool("Attack", true);
+            animator.SetBool("Walk", false);
+        }
+
+		IEnumerator CoolDown()
+		{
+            animator.SetBool("Walk", true);
+            animator.SetBool("Attack", false);
+			checkCollider = false;
+            yield return new WaitForSeconds(attackCooldown);
+            isAttacking = false;
+		}
+
+        void MyCollisions()
+        {
+            Collider[] hitColliders = Physics.OverlapBox(attackPosition.position, attackSize,quaternion.identity, m_LayerMask);
+            if(0 < hitColliders.Length)
+            {
+				Debug.Log("hit");
+				DoDamage();
+            }
+        }
+
+		private void DoDamage()
+		{
+			checkCollider = false;
+            StartCoroutine(CoolDown());
+			target.GetComponent<PlayerHealth>().DoDamage(damage);
+        }
+
+        /// <summary>
+        /// Function that slerps to the lookPosition.
+        /// </summary>
+        /// <param name="lookPosition">The position to look at.</param>
+        private void LookAtTarget(Vector3 lookPosition)
 		{
 			lookPosition.y = transform.position.y;
 			Quaternion targetRotation = Quaternion.LookRotation(lookPosition - transform.position);
@@ -141,23 +204,15 @@ namespace GroepC.Enemies
 		}
 
 		/// <summary>
-		/// Lets the enemy attack and plays the animation.
-		/// </summary>
-		/// <returns>Wait for the animation to end.</returns>
-		private IEnumerator Attack()
-		{
-			animator.SetBool("Attack", true);
-			isAttacking = true;
-            AnimatorStateInfo animStateInfo = animator.GetCurrentAnimatorStateInfo(0);
-            float NTime = animStateInfo.normalizedTime;
-            yield return NTime > 1.0f;
-            isAttacking = false;
-        }
-
-		/// <summary>
 		/// Sets an new target for the EnemyMovement Class.
 		/// </summary>
 		/// <param name="newTarget">Is the new target.</param>
         public void SetTarget(GameObject newTarget) => target = newTarget;
-	}
+
+        private void OnDrawGizmos()
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireCube(attackPosition.position, attackSize);
+        }
+    }
 }
