@@ -20,6 +20,11 @@ namespace GroepC.Managers
         private bool gameHasStarted;
 
         /// <summary>
+        /// Defines wether the game has started.
+        /// </summary>
+        public bool GameHasStarted => gameHasStarted;
+
+        /// <summary>
         /// The selected <see cref="GameModes"/>.
         /// </summary>
         private GameModes selectGamemode;

@@ -28,7 +28,10 @@ public class PlayerManager : MonoBehaviour
     /// </summary>
     private void SpawnPlayer()
     {
-        Instantiate(playerPrefab, spawnLocation, quaternion.identity).GetComponentInChildren<PlayerHealth>().Setup();
+        PlayerHealth player = Instantiate(playerPrefab, spawnLocation, quaternion.identity).GetComponentInChildren<PlayerHealth>();
+        player.Setup();
         GameManager.Instance.StartGame();
+        TimeManager.Instance.GiveUI(player.GetComponent<PlayerController>());
+        SpawnManager.Instance.SetTarget(player.gameObject);
     }
 }

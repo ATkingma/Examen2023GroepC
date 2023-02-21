@@ -36,6 +36,8 @@ namespace GroepC.Weapons
                 if (other.gameObject.CompareTag(hitTags[i]))
                     if (other.GetComponent<EnemyHealthBase>())
                         other.GetComponent<EnemyHealthBase>().DoDamage(damageAmount);
+            //particle
+            Destroy(gameObject);
         }
     }
 }

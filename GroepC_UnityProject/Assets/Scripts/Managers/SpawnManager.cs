@@ -99,6 +99,12 @@ namespace GroepC.Managers
         private void Start() => InvokeRepeating(nameof(SpawnEnemy), 0f, spawnRate);
 
         /// <summary>
+        /// Sets the given gameobject as the new target.
+        /// </summary>
+        /// <param name="newtarget">The new target.</param>
+        public void SetTarget(GameObject newtarget) => player = newtarget;
+
+        /// <summary>
         /// Spawns enemies.
         /// </summary>
         private void SpawnEnemy()

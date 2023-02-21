@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using TMPro;
 
 namespace GroepC.Player
 {
@@ -47,6 +48,26 @@ namespace GroepC.Player
         /// The amount of gravity applied each second.
         /// </summary>
         [SerializeField] private float gravity;
+
+        /// <summary>
+        /// The object that displays the amount of time left.
+        /// </summary>
+        [SerializeField] private TextMeshProUGUI timeObjectText;
+
+        /// <summary>
+        /// The object that displays the amount of time left.
+        /// </summary>
+        public TextMeshProUGUI TimeObjectText => timeObjectText;
+
+        /// <summary>
+        /// The object that displays the amount of points left.
+        /// </summary>
+        [SerializeField] private TextMeshProUGUI endlessValueObjectText;
+
+        /// <summary>
+        /// The object that displays the amount of points left.
+        /// </summary>
+        public TextMeshProUGUI EndlessValueObjectText => endlessValueObjectText;
 
         /// <summary>
         /// The force on the y axis.
@@ -173,7 +194,11 @@ namespace GroepC.Player
             direction *= Time.deltaTime;
 
             if(isDashing)
+            {
+                downForce = -.1f;
+                direction.y = 0;
                 direction *= dashSpeed;
+            }
 
             controller.Move(direction);
         }
