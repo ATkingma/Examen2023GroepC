@@ -15,6 +15,11 @@ namespace GroepC.Managers
         public static GameManager Instance;
 
         /// <summary>
+        /// Defines wether the game has started.
+        /// </summary>
+        private bool gameHasStarted;
+
+        /// <summary>
         /// The selected <see cref="GameModes"/>.
         /// </summary>
         private GameModes selectGamemode;
@@ -27,11 +32,7 @@ namespace GroepC.Managers
         /// <summary>
         /// Sets the instance to the <see cref="GameManager"/>.
         /// </summary>
-        private void Awake()
-        {
-            Instance = this;
-            DontDestroyOnLoad(this);
-        }
+        private void Awake() => Instance = this;
 
         /// <summary>
         /// Sets the gamemode for the game.
@@ -44,15 +45,20 @@ namespace GroepC.Managers
         /// </summary>
         private void Update() => CheckFinishConditions();
 
+        public void StartGame() => gameHasStarted = true;
+
         /// <summary>
         /// Checks if the conditions are met for finishing the game.
         /// </summary>
         private void CheckFinishConditions()
         {
+            if (!gameHasStarted)
+                return;
+
             switch (selectGamemode)
             {
                 case GameModes.timed:
-                    if (TimeManager.Instance.Time.y >= 5)// 5 min
+                    if (SpawnManager.Instance.EnemiesLeft == 0)
                         EndGame();
                     break;
                 case GameModes.endless:

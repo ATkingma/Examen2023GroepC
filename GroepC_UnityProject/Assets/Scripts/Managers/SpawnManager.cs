@@ -79,6 +79,11 @@ namespace GroepC.Managers
         private List<GameObject> spawnedEnemies = new List<GameObject>();
 
         /// <summary>
+        /// The amount of enemies left.
+        /// </summary>
+        public int EnemiesLeft => spawnedEnemies.Count;
+
+        /// <summary>
         /// The time when this is higher or lower then the increase interval there will be things increased.
         /// </summary>
         private float increaseTime = 0f;
