@@ -29,17 +29,15 @@ namespace GroepC.Weapons
         /// <param name="damage">The amount of damage the projectile does.</param>
         public void Setup(float damage) => damageAmount = damage;
 
-        private void OnTriggerEnter(Collider other)
+        private void OnCollisionEnter(Collision collision)
         {
-
-            Debug.Log(other.transform.name);
             int count = hitTags.Length;
             for (int i = 0; i < count; i++)
-                if (other.gameObject.CompareTag(hitTags[i]))
-                    if (other.GetComponent<EnemyHealthBase>())
-                        other.GetComponent<EnemyHealthBase>().DoDamage(damageAmount);
+                if (collision.gameObject.CompareTag(hitTags[i]))
+                    if (collision.transform.GetComponent<EnemyHealthBase>())
+                        collision.transform.GetComponent<EnemyHealthBase>().DoDamage(damageAmount);
             //particle
-
+            Destroy(gameObject);
         }
     }
 }
