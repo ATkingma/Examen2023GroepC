@@ -1,4 +1,5 @@
 using GroepC.Managers;
+using System.Collections;
 using UnityEngine;
 
 namespace GroepC.Enemies
@@ -8,6 +9,11 @@ namespace GroepC.Enemies
 	/// </summary>
 	public class TargetHealth : EnemyHealthBase
 	{
+		/// <summary>
+		/// The time after dying before destroying the gameobject.
+		/// </summary>
+		[SerializeField]
+		private float destroyTime;
 		/// <summary>
 		/// Is the rigidbody of the target.
 		/// </summary>
@@ -20,24 +26,24 @@ namespace GroepC.Enemies
 		[SerializeField]
 		private float fallSpeed = 2;
 
-		private void Start() => rb.isKinematic = true;
-
 		/// <summary>
 		/// Inheranted death.
 		/// </summary>
 		public override void Death()
 		{
 			DropManager.Instance.DropAmmo(transform.position);
-			DoTargetDeath();
+			StartCoroutine(DoTargetDeath());
 		}
 
 		/// <summary>
 		///Sets the rigidbody to kinematic and usses velocity to let the target fall back.
 		/// </summary>
-		private void DoTargetDeath()
+		private IEnumerator DoTargetDeath()
 		{
 			rb.isKinematic = false;
 			rb.velocity = Vector3.back * fallSpeed;
+			yield return new WaitForSeconds(destroyTime);
+			Destroy(gameObject);
 		}
 	}
 }
