@@ -162,14 +162,11 @@ namespace GroepC.Enemies
 
         private void Attack()
 		{
-			animator.SetBool("Attack", true);
-            animator.SetBool("Walk", false);
+			animator.SetTrigger("Attack");
         }
 
 		IEnumerator CoolDown()
 		{
-            animator.SetBool("Walk", true);
-            animator.SetBool("Attack", false);
 			checkCollider = false;
             yield return new WaitForSeconds(attackCooldown);
             isAttacking = false;
@@ -180,7 +177,6 @@ namespace GroepC.Enemies
             Collider[] hitColliders = Physics.OverlapBox(attackPosition.position, attackSize,quaternion.identity, m_LayerMask);
             if(0 < hitColliders.Length)
             {
-				Debug.Log("hit");
 				DoDamage();
             }
         }
