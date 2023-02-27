@@ -46,7 +46,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 3727605880627860051, guid: 561c9846440fdb1478c91034e9856c99, type: 3}
+  m_Motion: {fileID: 3727605880627860051, guid: ee637be8d6c3fff4c9b932c305e442b1, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -150,7 +150,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 213643623766740787, guid: 561c9846440fdb1478c91034e9856c99, type: 3}
+  m_Motion: {fileID: -6207502986937150901, guid: ee637be8d6c3fff4c9b932c305e442b1, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -162,7 +162,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: EnemyController 1
+  m_Name: EnemyController 6
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: Hit
@@ -347,7 +347,7 @@ AnimatorStateMachine:
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: -2164719281031289278}
-    m_Position: {x: 350, y: 110, z: 0}
+    m_Position: {x: 350, y: 120, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []

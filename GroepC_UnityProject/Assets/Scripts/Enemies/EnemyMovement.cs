@@ -54,12 +54,6 @@ namespace GroepC.Enemies
 		private float lookSpeed = 5.5f;
 
 		/// <summary>
-		/// Distance before it stops in front of the target.
-		/// </summary>
-		[SerializeField]
-		private float stoppingDistance =3f;
-
-		/// <summary>
 		/// The target of the Enemy.
 		/// </summary>
 		[SerializeField]
@@ -125,13 +119,9 @@ namespace GroepC.Enemies
 				if (distance <= attackRange && !isAttacking)
 					Attack();
 
+                agent.destination = target.transform.position;
 
-				if (distance > stoppingDistance)
-					agent.destination = target.transform.position;
-				else
-					agent.destination = transform.position;
-
-				Ray lookRay = new Ray(transform.position, target.transform.position - transform.position);
+                Ray lookRay = new Ray(transform.position, target.transform.position - transform.position);
 				float lookDist = Vector3.Distance(transform.position, target.transform.position);
 
 				if (Physics.Raycast(lookRay, out RaycastHit hit, lookDist))
@@ -163,6 +153,7 @@ namespace GroepC.Enemies
         private void Attack()
 		{
 			animator.SetTrigger("Attack");
+			EnableAttacking();
         }
 
 		IEnumerator CoolDown()

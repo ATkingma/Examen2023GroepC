@@ -946,11 +946,10 @@ MonoBehaviour:
   agent: {fileID: 5145132800245851893}
   animator: {fileID: 5145132800245851896}
   damage: 20
-  attackRange: 4
+  attackRange: 2.4
   minSpeed: 3.5
   maxSpeed: 5
   lookSpeed: 5.5
-  stoppingDistance: 4
   target: {fileID: 0}
   attackCooldown: 1.87
   attackSize: {x: 1.2, y: 1.2, z: 1.2}

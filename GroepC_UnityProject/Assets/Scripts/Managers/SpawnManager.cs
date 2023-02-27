@@ -31,7 +31,7 @@ namespace GroepC.Managers
         /// The prefab that will be spawned.
         /// </summary>
         [SerializeField]
-        private GameObject enemyPrefab;
+        private List<GameObject> enemyPrefab;
 
         /// <summary>
         /// The player this is an target of the enemy this must be set when the enemy spawns.
@@ -164,7 +164,9 @@ namespace GroepC.Managers
             if (!player) return;
             int spawnPointIndex = Random.Range(0, spawnPoints.Length);
             Vector3 spawnPos = spawnPoints[spawnPointIndex].transform.position;
-            GameObject enemy = Instantiate(enemyPrefab, spawnPos, Quaternion.identity);
+            int rand = Random.Range(0, enemyPrefab.Count);
+            GameObject randomPrefab = enemyPrefab[rand];
+            GameObject enemy = Instantiate(randomPrefab, spawnPos, Quaternion.identity);
             spawnedEnemies.Add(enemy);
             enemy.GetComponent<EnemyMovement>().SetTarget(player);
             currentEnemies++;

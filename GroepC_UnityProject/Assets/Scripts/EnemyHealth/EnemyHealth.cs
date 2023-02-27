@@ -16,6 +16,18 @@ namespace GroepC.Enemies
         private float destroyTimer;
 
         /// <summary>
+        /// The ragdol of the enemy that will be enabled on death.
+        /// </summary>
+        [SerializeField]
+        private GameObject ragdollObject;
+
+        /// <summary>
+        /// The ragdol of the enemy that will be enabled on death.
+        /// </summary>
+        [SerializeField]
+        private GameObject baseEnemy;
+
+        /// <summary>
         /// Death Function that will be called from the base.
         /// </summary>
         public override void Death() => StartCoroutine(PlayEnemyDeath());
@@ -27,7 +39,8 @@ namespace GroepC.Enemies
 		private IEnumerator PlayEnemyDeath()
 		{
 			SpawnManager.Instance.RemoveEnemy(gameObject);
-			//enables ragdoll
+			baseEnemy.SetActive(false);
+            ragdollObject.SetActive(true);
 			yield return new WaitForSeconds(destroyTimer);
 			DropManager.Instance.DropAmmo(transform.position);
 			Destroy(gameObject);

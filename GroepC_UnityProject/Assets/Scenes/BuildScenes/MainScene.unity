@@ -712,7 +712,13 @@ MonoBehaviour:
   - {fileID: 1107069300}
   - {fileID: 702795303}
   targetPrefab: {fileID: 8451858154762254383, guid: f71116022168fa44b8f7ecd1500fba1d, type: 3}
-  enemyPrefab: {fileID: 1931150876459722296, guid: ecb03d42af9ffae4f936abda917da8d8, type: 3}
+  enemyPrefab:
+  - {fileID: 8723498589361041400, guid: cfb38a18fec5d0e499fc9dcb516222c8, type: 3}
+  - {fileID: 196351736585340720, guid: b07aec7cfcc510d469f12b4c6e729ca9, type: 3}
+  - {fileID: 218066291864067702, guid: 7fe44f5374226a8439619e2475e59200, type: 3}
+  - {fileID: 6290214582142477137, guid: a6ef3abeef4dd604aa8738201a2e9a9b, type: 3}
+  - {fileID: 6362343895305236193, guid: 8a5ad1050e0d67841b366129f290a35e, type: 3}
+  - {fileID: 2928881969939669575, guid: 35d92c3358ce8a24badbeadd34cd1e65, type: 3}
   player: {fileID: 0}
   spawnRate: 1
   maxEnemies: 10
