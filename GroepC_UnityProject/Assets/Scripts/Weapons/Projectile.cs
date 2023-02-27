@@ -1,5 +1,6 @@
 using UnityEngine;
 using GroepC.Enemies;
+using System.Collections.Generic;
 
 namespace GroepC.Weapons
 {
@@ -19,9 +20,14 @@ namespace GroepC.Weapons
         [SerializeField] private string[] hitTags;
 
         /// <summary>
+        /// The different amount of hit particles, index should corrospond to the <see cref="hitTags"/>.
+        /// </summary>
+        [SerializeField] private List<GameObject> hitParticles;
+
+        /// <summary>
         /// For now, destroys the projectile after 1 second.
         /// </summary>
-        //private void OnEnable() => Destroy(gameObject, 1);
+        private void OnEnable() => Destroy(gameObject, 1);
 
         /// <summary>
         /// Sets the damage for the projectile.
@@ -31,12 +37,18 @@ namespace GroepC.Weapons
 
         private void OnCollisionEnter(Collision collision)
         {
-            int count = hitTags.Length;
-            for (int i = 0; i < count; i++)
-                if (collision.gameObject.CompareTag(hitTags[i]))
-                    if (collision.transform.GetComponent<EnemyHealthBase>())
-                        collision.transform.GetComponent<EnemyHealthBase>().DoDamage(damageAmount);
-            //particle
+            if (collision.gameObject.CompareTag(hitTags[0]))
+            {
+                if (collision.transform.GetComponent<EnemyHealthBase>())
+                    collision.transform.GetComponent<EnemyHealthBase>().DoDamage(damageAmount);
+                // enemy particle hit.
+                Instantiate(hitParticles[0]);
+            }
+            else 
+            {
+                // wall particle
+                Instantiate(hitParticles[1]);
+            }
             Destroy(gameObject);
         }
     }
