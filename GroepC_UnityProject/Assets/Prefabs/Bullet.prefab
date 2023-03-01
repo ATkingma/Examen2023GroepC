@@ -129,3 +129,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitTags:
   - Enemy
+  hitParticles:
+  - {fileID: 8403775459309646435, guid: 27fb07d20af56de4a93bf1d416efcfb1, type: 3}

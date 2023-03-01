@@ -1,6 +1,7 @@
 using UnityEngine;
 using GroepC.Enemies;
 using System.Collections.Generic;
+using Unity.Mathematics;
 
 namespace GroepC.Weapons
 {
@@ -37,17 +38,16 @@ namespace GroepC.Weapons
 
         private void OnCollisionEnter(Collision collision)
         {
-            if (collision.gameObject.CompareTag(hitTags[0]))
+            if (!collision.gameObject.CompareTag(hitTags[0]))
             {
-                if (collision.transform.GetComponent<EnemyHealthBase>())
-                    collision.transform.GetComponent<EnemyHealthBase>().DoDamage(damageAmount);
-                // enemy particle hit.
-                Instantiate(hitParticles[0]);
+                Instantiate(hitParticles[0], transform.position, quaternion.identity);
             }
             else 
             {
+                if (collision.transform.GetComponent<EnemyHealthBase>())
+                    collision.transform.GetComponent<EnemyHealthBase>().DoDamage(damageAmount);
                 // wall particle
-                Instantiate(hitParticles[1]);
+                Instantiate(hitParticles[1], transform.position, quaternion.identity);
             }
             Destroy(gameObject);
         }
