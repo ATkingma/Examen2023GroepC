@@ -93,6 +93,7 @@ namespace GroepC.Managers
                     break;
                 case GameModes.Tutorial:
                     ScoreManager.Instance.SaveScoreTutorial();
+                    PlayerPrefs.SetInt("tutorialFinished", 1);
                     break;
             }
         }
