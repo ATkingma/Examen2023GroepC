@@ -11,17 +11,15 @@ namespace GroepC.UI
     public class MenuManager : MonoBehaviour
     {
         /// <summary>
+        /// The sceneindex where the gamemode is saved if the tuturial isnt played before.
+        /// </summary>
+        public static int turialSaveScene;
+        /// <summary>
         /// Enables an gameobject.
         /// </summary>
         /// <param name="objectToEnable">The object to enable.</param>
         public void EnableObject(GameObject objectToEnable)
         {
-            if (PlayerPrefs.GetInt("tutorialFinished") == 0)
-            {
-                SetGamemode(0);
-                LoadScene(3);
-                return;
-            }
             objectToEnable.SetActive(true);
         }
 
@@ -37,12 +35,28 @@ namespace GroepC.UI
         public void ExitApplication() => Application.Quit();
 
         /// <summary>
+        /// Loads an scene with the given sceneId if the tuturial is played otherwise it wil load the tuturial.
+        /// </summary>
+        /// <param name="sceneId">The scene id to load.</param>
+        public void LoadGameScene(int sceneID)
+        {
+            if (PlayerPrefs.GetInt("tutorialFinished") == 0)
+            {
+                SetGamemode(0);
+                LoadScene(3);
+                turialSaveScene = sceneID;
+                return;
+            }
+            LoadScene(sceneID);
+        }
+
+        /// <summary>
         /// Loads an scene with the given sceneId.
         /// </summary>
         /// <param name="sceneId">The scene id to load.</param>
         public void LoadScene(int sceneId) => SceneManager.LoadScene(sceneId);
 
-        /// <summary>
+        /// <summary>t
         /// Sets the gamemode.
         /// </summary>
         /// <param name="mode">The mode to set.</param>

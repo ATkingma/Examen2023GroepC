@@ -1,3 +1,5 @@
+using GroepC.Managers;
+using GroepC.UI;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -31,6 +33,14 @@ namespace GroepC.Utilities
         public void LoadScene()
         {
             SceneManager.LoadScene(sceneIndex);
+        }
+
+        public void LoadNextSceneTuturial()
+        {
+            int nextScene = 0;
+            nextScene = MenuManager.turialSaveScene;
+            GameManager.Instance.EndGame();
+            SceneManager.LoadScene(nextScene);
         }
     }
 }

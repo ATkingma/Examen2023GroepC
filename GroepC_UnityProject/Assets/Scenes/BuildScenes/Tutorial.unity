@@ -973,6 +973,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1241719200637231967, guid: 78fe25714b4bec4428382b3706e7f4a2, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 2253250547268943589, guid: 78fe25714b4bec4428382b3706e7f4a2, type: 3}
       propertyPath: m_Name
       value: 'PlayerObject '
@@ -1076,7 +1080,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6624440186fe731408c4c308c2f61e06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneIndex: 2
+  sceneIndex: 0
   loadOnStart: 0
 --- !u!4 &350165220
 Transform:
@@ -4395,7 +4399,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 350165219}
         m_TargetAssemblyTypeName: GroepC.Utilities.SceneLoader, Assembly-CSharp
-        m_MethodName: LoadScene
+        m_MethodName: LoadNextSceneTuturial
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
