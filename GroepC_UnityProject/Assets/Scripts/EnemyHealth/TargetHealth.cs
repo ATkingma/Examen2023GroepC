@@ -24,7 +24,7 @@ namespace GroepC.Enemies
 		/// The speed amount the target falls when dying.
 		/// </summary>
 		[SerializeField]
-		private float fallSpeed = 2;
+		private float fallSpeed = 100;
 
 		/// <summary>
 		/// Inheranted death.
@@ -41,7 +41,7 @@ namespace GroepC.Enemies
 		private IEnumerator DoTargetDeath()
 		{
 			rb.isKinematic = false;
-			rb.velocity = Vector3.back * fallSpeed;
+			rb.AddForce(Vector3.back * fallSpeed);
 			yield return new WaitForSeconds(destroyTime);
 			Destroy(gameObject);
 		}

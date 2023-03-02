@@ -60,16 +60,6 @@ namespace GroepC.Player
         public TextMeshProUGUI TimeObjectText => timeObjectText;
 
         /// <summary>
-        /// The object that displays the amount of points left.
-        /// </summary>
-        [SerializeField] private TextMeshProUGUI endlessValueObjectText;
-
-        /// <summary>
-        /// The object that displays the amount of points left.
-        /// </summary>
-        public TextMeshProUGUI EndlessValueObjectText => endlessValueObjectText;
-
-        /// <summary>
         /// The force on the y axis.
         /// </summary>
         private float downForce;

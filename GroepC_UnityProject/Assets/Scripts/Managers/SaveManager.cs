@@ -13,6 +13,11 @@ namespace GroepC.Managers
         public static SaveManager Instance;
 
         /// <summary>
+        /// Sets the instance.
+        /// </summary>
+        private void Awake() => Instance = this;
+
+        /// <summary>
         /// Saves the given class as Json.
         /// </summary>
         /// <param name="classType">The class to save.</param>

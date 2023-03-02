@@ -64,8 +64,16 @@ namespace GroepC.Managers
         public void SaveScoreTutorial()
         {
             PlayerSaves saves = JsonUtility.FromJson<PlayerSaves>(SaveManager.Instance.GetSaves("player"));
-            if (saves.HighestScoreTutorial < score)
+
+            if (saves == null)
+            {
+                saves = new PlayerSaves();
                 saves.HighestScoreTutorial = score;
+            }
+            else if (saves.HighestScoreTutorial < score)
+            {
+                saves.HighestScoreTutorial = score;
+            }
 
             SaveManager.Instance.Save(saves, "player");
         }

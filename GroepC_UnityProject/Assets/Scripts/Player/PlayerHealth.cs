@@ -1,3 +1,4 @@
+using GroepC.Managers;
 using UnityEngine;
 
 namespace GroepC.Player
@@ -37,10 +38,6 @@ namespace GroepC.Player
         /// <summary>
         /// Activates when the player health reaches 0.
         /// </summary>
-        private void Die()
-        {
-            // Player dies here!
-            // Please contact the GameManager.
-        }
+        private void Die() => GameManager.Instance.EndGame();
     }
 }

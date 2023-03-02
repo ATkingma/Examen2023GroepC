@@ -15,11 +15,6 @@ namespace GroepC.Managers
         private TextMeshProUGUI timeObjectText;
 
         /// <summary>
-        /// The object that displays the amount of points left.
-        /// </summary>
-        private TextMeshProUGUI endlessValueObjectText;
-
-        /// <summary>
         /// The instance of this class.
         /// </summary>
         public static TimeManager Instance;
@@ -35,21 +30,6 @@ namespace GroepC.Managers
         public Vector3 Time => currenTimeValues;
 
         /// <summary>
-        /// The start amount of points.
-        /// </summary>
-        [SerializeField] private float endlessPoints = 100;
-
-        /// <summary>
-        /// The decrease amount to reduce the point, get multiplied by minutes ingame.
-        /// </summary>
-        [SerializeField] private float startDecreaseValue = 1;
-
-        /// <summary>
-        /// The amount of points the player has left.
-        /// </summary>
-        public float EndlessPoints => endlessPoints;
-
-        /// <summary>
         /// Sets te instance of this class.
         /// </summary>
         private void Awake() => Instance = this;
@@ -58,21 +38,12 @@ namespace GroepC.Managers
         /// Grants the UI objects to this class.
         /// </summary>
         /// <param name="player">The player that contains the UI objects.</param>
-        public void GiveUI(PlayerController player)
-        {
-            timeObjectText = player.TimeObjectText;
-            endlessValueObjectText = player.EndlessValueObjectText;
-        }
+        public void GiveUI(PlayerController player) => timeObjectText = player.TimeObjectText;
 
         /// <summary>
         /// Adds time each frame.
         /// </summary>
-        private void Update()
-        {
-            AddTime();
-            if (GameManager.Instance.SelectGamemode == GameModes.endless)
-                DecreaseEndlessPoints();
-        }
+        private void Update() => AddTime();
 
         /// <summary>
         /// Adds time and calculates the minutes/hours.
@@ -94,22 +65,6 @@ namespace GroepC.Managers
         }
 
         /// <summary>
-        /// decreases points for the endless mode.
-        /// </summary>
-        private void DecreaseEndlessPoints()
-        {
-            float endlessDecreaseValue = startDecreaseValue * (1 + Time.y * .1f);
-            endlessPoints -= endlessDecreaseValue * UnityEngine.Time.deltaTime;
-            UpdateEndlessPoints();
-        }
-
-        /// <summary>
-        /// Adds points to the endless points.
-        /// </summary>
-        /// <param name="addAmount">The amount to add.</param>
-        public void AddEndlessPoints(float addAmount) => endlessPoints += addAmount;
-
-        /// <summary>
         /// Sets the time to the UI of the player.
         /// </summary>
         private void UpdateTimeObject()
@@ -121,10 +76,5 @@ namespace GroepC.Managers
             string timeString = $"{hourText} : {minuteText} : {secondText}";
             timeObjectText.text = timeString;
         }
-
-        /// <summary>
-        /// Sets the endlessPoints to the UI of the player.
-        /// </summary>
-        private void UpdateEndlessPoints() => endlessValueObjectText.text = Mathf.Round(Mathf.Clamp(endlessPoints, 0, Mathf.Infinity)).ToString();
     }
 }

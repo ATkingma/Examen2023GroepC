@@ -46,11 +46,6 @@ namespace GroepC.Managers
         public void SetGamemode(GameModes mode) => selectGamemode = mode;
 
         /// <summary>
-        /// Check the conditions every frame.
-        /// </summary>
-        private void Update() => CheckFinishConditions();
-
-        /// <summary>
         /// Sets the state of the game to started.
         /// </summary>
         public void StartGame() => gameHasStarted = true;
@@ -58,22 +53,13 @@ namespace GroepC.Managers
         /// <summary>
         /// Checks if the conditions are met for finishing the game.
         /// </summary>
-        private void CheckFinishConditions()
+        private void CheckFinishConditions()// When enemies die,
         {
             if (!gameHasStarted)
                 return;
 
-            switch (selectGamemode)
-            {
-                case GameModes.timed:
-                    if (SpawnManager.Instance.TargetsLeft == 0)
-                        EndGame();
-                    break;
-                case GameModes.endless:
-                    if (TimeManager.Instance.EndlessPoints <= 0)
-                        EndGame();
-                    break;
-            }
+            if (SpawnManager.Instance.TargetsLeft == 0)
+                EndGame();
         }
 
         /// <summary>

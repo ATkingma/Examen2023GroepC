@@ -40,14 +40,16 @@ namespace GroepC.Weapons
         {
             if (!collision.gameObject.CompareTag(hitTags[0]))
             {
-                Instantiate(hitParticles[0], transform.position, quaternion.identity);
-            }
+                GameObject particle = Instantiate(hitParticles[0], transform.position, quaternion.identity);
+                Destroy(particle, 1);
+            }   
             else 
             {
                 if (collision.transform.GetComponent<EnemyHealthBase>())
                     collision.transform.GetComponent<EnemyHealthBase>().DoDamage(damageAmount);
-                // wall particle
-                Instantiate(hitParticles[1], transform.position, quaternion.identity);
+                
+                GameObject particle = Instantiate(hitParticles[1], transform.position, quaternion.identity);
+                Destroy(particle, 1);
             }
             Destroy(gameObject);
         }
