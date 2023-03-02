@@ -7,11 +7,10 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: EnemyTexEmissive
+  m_Name: Desk
   m_Shader: {fileID: 4800000, guid: 6e4ae4064600d784cac1e41a9e6f2e59, type: 3}
   m_ValidKeywords:
   - _DISABLE_SSR_TRANSPARENT
-  - _EMISSIVE_COLOR_MAP
   - _MASKMAP
   - _NORMALMAP
   - _NORMALMAP_TANGENT_SPACE
@@ -35,7 +34,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BaseColorMap:
-        m_Texture: {fileID: 2800000, guid: 0f94da0933b3bd340bb081fe703633b7, type: 3}
+        m_Texture: {fileID: 2800000, guid: b37fad0ca81d9474a88263aad3fb9245, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BentNormalMap:
@@ -55,7 +54,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _EmissiveColorMap:
-        m_Texture: {fileID: 2800000, guid: edda70eace05d71438da5360fad78b27, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _HeightMap:
@@ -71,15 +70,15 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 0f94da0933b3bd340bb081fe703633b7, type: 3}
+        m_Texture: {fileID: 2800000, guid: b37fad0ca81d9474a88263aad3fb9245, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MaskMap:
-        m_Texture: {fileID: 2800000, guid: 70a243e1c5575504a96d1ed9271dfc39, type: 3}
+        m_Texture: {fileID: 2800000, guid: 278dfa66413f7b74d9ad3333f2e5e43b, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NormalMap:
-        m_Texture: {fileID: 2800000, guid: 090d03f7ee2b96248a41a41d39e3cea2, type: 3}
+        m_Texture: {fileID: 2800000, guid: 4da2d0c14fb9fd34cb567d33244a0a83, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NormalMapOS:
@@ -227,7 +226,7 @@ Material:
     - _UVBase: 0
     - _UVDetail: 0
     - _UVEmissive: 0
-    - _UseEmissiveIntensity: 1
+    - _UseEmissiveIntensity: 0
     - _UseShadowThreshold: 0
     - _ZTestDepthEqualForOpaque: 3
     - _ZTestGBuffer: 4
@@ -251,7 +250,7 @@ Material:
     - _UVMappingMask: {r: 1, g: 0, b: 0, a: 0}
     - _UVMappingMaskEmissive: {r: 1, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
---- !u!114 &2547718613923638589
+--- !u!114 &7368284504847464739
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
