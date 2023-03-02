@@ -1,6 +1,7 @@
 using GroepC.Managers;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.AI;
 
 namespace GroepC.Enemies
 {
@@ -9,6 +10,23 @@ namespace GroepC.Enemies
     /// </summary>
     public class EnemyHealth : EnemyHealthBase
 	{
+
+        /// <summary>
+        /// The behavior of the enemy where the movement is assigned;
+        /// </summary>
+        [SerializeField]
+        private EnemyMovement enemyMovement;
+        /// <summary>
+        /// Agent that is attached to the enemy.
+        /// </summary>
+        [SerializeField]
+        private NavMeshAgent agent;
+        /// <summary>
+        /// Animator of the enemy.
+        /// </summary>
+        [SerializeField]
+        private Animator anim;
+
 		/// <summary>
 		/// The time that will be waited for the object to be destroyed after dying.
 		/// </summary>
@@ -40,10 +58,22 @@ namespace GroepC.Enemies
 		{
 			SpawnManager.Instance.RemoveEnemy(gameObject);
 			baseEnemy.SetActive(false);
+            enemyMovement.enabled = false;
+            agent.destination = transform.position;
             ragdollObject.SetActive(true);
 			yield return new WaitForSeconds(destroyTimer);
 			DropManager.Instance.DropAmmo(transform.position);
 			Destroy(gameObject);
 		}
-	}
+
+        /// <summary>
+        /// Subtracks the damage from the current health
+        /// </summary>
+        /// <param name="_damage"></param>
+        public override void DoDamage(float _damage)
+        {
+            base.DoDamage(_damage);
+            anim.SetTrigger("Hit");
+        }
+    }
 }
