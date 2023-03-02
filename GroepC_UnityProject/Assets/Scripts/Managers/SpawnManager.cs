@@ -115,6 +115,8 @@ namespace GroepC.Managers
         /// </summary>
         private void Start()
         {
+            Cursor.lockState = CursorLockMode.Locked;
+
             switch (GameManager.Instance.SelectGamemode)
             {
                 case GameModes.timed:

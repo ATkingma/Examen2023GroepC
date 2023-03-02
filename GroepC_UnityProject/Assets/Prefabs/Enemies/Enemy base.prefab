@@ -4134,6 +4134,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthAmount: 100
+  enemyMovement: {fileID: 4297691316019089637}
+  agent: {fileID: 7946788696819547779}
+  anim: {fileID: 2202580374083010473}
   destroyTimer: 5
   ragdollObject: {fileID: 8752349712755375286}
   baseEnemy: {fileID: 3195221960180980799}

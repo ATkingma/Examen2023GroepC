@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace GroepC.UI
 {
@@ -27,7 +27,29 @@ namespace GroepC.UI
         private void ToggleMenu()
         {
             menuObject.SetActive(!menuObject.active);
+            CheckMenuState();
+
             ResetPanels();
+        }
+
+        public void CheckMenuState()
+        {
+            if (menuObject.activeInHierarchy)
+            {
+                Time.timeScale = 0;
+                Cursor.lockState = CursorLockMode.None;
+            }
+            else
+            {
+                Time.timeScale = 1;
+                Cursor.lockState = CursorLockMode.Locked;
+            }
+        }
+
+        public void ResetGameState()
+        {
+            Time.timeScale = 1;
+            Cursor.lockState = CursorLockMode.None;
         }
 
         private void ResetPanels()
