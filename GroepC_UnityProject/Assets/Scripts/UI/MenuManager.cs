@@ -14,7 +14,16 @@ namespace GroepC.UI
         /// Enables an gameobject.
         /// </summary>
         /// <param name="objectToEnable">The object to enable.</param>
-        public void EnableObject(GameObject objectToEnable) => objectToEnable.SetActive(true);
+        public void EnableObject(GameObject objectToEnable)
+        {
+            if (PlayerPrefs.GetInt("tutorialFinished") == 0)
+            {
+                SetGamemode(0);
+                LoadScene(3);
+                return;
+            }
+            objectToEnable.SetActive(true);
+        }
 
         /// <summary>
         /// Disables an gameobject.
