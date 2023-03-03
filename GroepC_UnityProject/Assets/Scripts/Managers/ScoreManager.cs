@@ -1,5 +1,6 @@
 using UnityEngine;
 using GroepC.Player;
+using TMPro;
 
 namespace GroepC.Managers
 {
@@ -29,10 +30,30 @@ namespace GroepC.Managers
         public int Score => score;
 
         /// <summary>
+        /// The object that displays the amount of time left.
+        /// </summary>
+        private TextMeshProUGUI scoreObjectText;
+
+        /// <summary>
+        /// Grants the UI objects to this class.
+        /// </summary>
+        /// <param name="player">The player that contains the UI objects.</param>
+        public void GiveUI(PlayerController player) => scoreObjectText = player.ScoreObjectText;
+
+        /// <summary>
         /// Adds score.
         /// </summary>
         /// <param name="addedScore">The amount of score to add.</param>
-        public void AddScore(int addedScore) => score += addedScore;
+        public void AddScore(int addedScore)
+        {
+            score += addedScore;
+            UpdateScoreUI();
+        }
+
+        /// <summary>
+        /// Updates the ui of the player.
+        /// </summary>
+        private void UpdateScoreUI() => scoreObjectText.text = "Score: " + score.ToString();
 
         /// <summary>
         /// Saves the score to the player saves. For the timed gamemode.

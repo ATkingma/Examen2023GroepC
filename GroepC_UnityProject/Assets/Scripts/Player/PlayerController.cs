@@ -55,9 +55,19 @@ namespace GroepC.Player
         [SerializeField] private TextMeshProUGUI timeObjectText;
 
         /// <summary>
+        /// The text object that will display the score of the player.
+        /// </summary>
+        [SerializeField] private TextMeshProUGUI scoreObjectText;
+
+        /// <summary>
         /// The object that displays the amount of time left.
         /// </summary>
         public TextMeshProUGUI TimeObjectText => timeObjectText;
+
+        /// <summary>
+        /// The text object that will display the score of the player.
+        /// </summary>
+        public TextMeshProUGUI ScoreObjectText => scoreObjectText;
 
         /// <summary>
         /// The force on the y axis.

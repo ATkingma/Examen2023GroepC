@@ -1,3 +1,4 @@
+using GroepC.Managers;
 using UnityEngine;
 namespace GroepC.Enemies
 {
@@ -13,27 +14,32 @@ namespace GroepC.Enemies
 		private float healthAmount;
 
 		/// <summary>
+		/// The max health of the enemy.
+		/// </summary>
+		private float maxHealth;
+
+		/// <summary>
 		/// Subtracks the damage from the current health
 		/// </summary>
 		/// <param name="_damage"></param>
 		public virtual void DoDamage(float _damage)
 		{
-			healthAmount -= _damage;
-			CheckHealth();
-		}
+            if (healthAmount == 0)
+                return;
 
-		/// <summary>
-		/// Checks if object is death
-		/// </summary>
-		private void CheckHealth()
-		{
-			if (healthAmount <= 0)
-				Death();
+            healthAmount = Mathf.Clamp(healthAmount - _damage, 0, maxHealth);
+
+            if (healthAmount == 0)
+                Death();
 		}
 
 		/// <summary>
 		/// function that handles the death of an health object
 		/// </summary>
-		public virtual void Death() => Destroy(gameObject);
+		public virtual void Death()
+		{
+			ScoreManager.Instance.AddScore(1);
+            Destroy(gameObject);
+        }
 	}
 }

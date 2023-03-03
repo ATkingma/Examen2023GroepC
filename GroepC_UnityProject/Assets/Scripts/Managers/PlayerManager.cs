@@ -32,6 +32,7 @@ public class PlayerManager : MonoBehaviour
         player.Setup();
         GameManager.Instance.StartGame();
         TimeManager.Instance.GiveUI(player.GetComponent<PlayerController>());
+        ScoreManager.Instance.GiveUI(player.GetComponent<PlayerController>());
         SpawnManager.Instance.SetTarget(player.gameObject);
     }
 }

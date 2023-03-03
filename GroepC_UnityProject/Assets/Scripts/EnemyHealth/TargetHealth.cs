@@ -1,4 +1,5 @@
 using GroepC.Managers;
+using GroepC.Player;
 using System.Collections;
 using UnityEngine;
 
@@ -31,7 +32,8 @@ namespace GroepC.Enemies
 		/// </summary>
 		public override void Death()
 		{
-			DropManager.Instance.DropAmmo(transform.position);
+            ScoreManager.Instance.AddScore(1);
+            DropManager.Instance.DropAmmo(transform.position);
 			StartCoroutine(DoTargetDeath());
 		}
 
@@ -41,7 +43,9 @@ namespace GroepC.Enemies
 		private IEnumerator DoTargetDeath()
 		{
 			rb.isKinematic = false;
-			rb.AddForce(Vector3.back * fallSpeed);
+			PlayerController player = FindObjectOfType<PlayerController>();
+			Vector3 fallDirection = player.transform.position - transform.position;
+			rb.AddForce(fallDirection.z > 0 ? transform.right : -transform.right * fallSpeed);
 			yield return new WaitForSeconds(destroyTime);
 			Destroy(gameObject);
 		}
