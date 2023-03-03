@@ -82,5 +82,14 @@ namespace GroepC.UI
 
             GameManager.Instance.SetGamemode(gameMode);
         }
+
+        /// <summary>
+        /// Plays audio that is given.
+        /// </summary>
+        /// <param name="audio">The audioSource that will be played.</param>
+        public void PlayAudio(AudioSource audio)
+        {
+            audio.Play();
+        }
     }
 }
