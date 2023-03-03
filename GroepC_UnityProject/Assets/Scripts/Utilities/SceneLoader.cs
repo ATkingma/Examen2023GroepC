@@ -30,16 +30,23 @@ namespace GroepC.Utilities
             }
         }
 
+        /// <summary>
+        /// Loads the scene with an given sceneIndex.
+        /// </summary>
         public void LoadScene()
         {
             SceneManager.LoadScene(sceneIndex);
         }
 
+        /// <summary>
+        /// Loads the next scene after the tuturial and also gets the right saves this is rarely used.
+        /// </summary>
         public void LoadNextSceneTuturial()
         {
             int nextScene = 0;
             nextScene = MenuManager.turialSaveScene;
             GameManager.Instance.EndGame();
+            GameManager.Instance.SetGamemode(MenuManager.tuturialSavedMode);
             SceneManager.LoadScene(nextScene);
         }
     }

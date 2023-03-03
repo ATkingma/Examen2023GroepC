@@ -10,6 +10,7 @@ namespace GroepC.UI
     /// </summary>
     public class MenuManager : MonoBehaviour
     {
+        public static GameModes tuturialSavedMode;
         /// <summary>
         /// The sceneindex where the gamemode is saved if the tuturial isnt played before.
         /// </summary>
@@ -42,9 +43,10 @@ namespace GroepC.UI
         {
             if (PlayerPrefs.GetInt("tutorialFinished") == 0)
             {
-                SetGamemode(0);
-                LoadScene(3);
                 turialSaveScene = sceneID;
+                tuturialSavedMode = GameManager.Instance.SelectGamemode;
+                LoadScene(3);
+                SetGamemode(0);
                 return;
             }
             LoadScene(sceneID);

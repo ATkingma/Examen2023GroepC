@@ -65,13 +65,23 @@ namespace GroepC.Enemies
 		[SerializeField]
 		private float attackCooldown;
 
+		/// <summary>
+		/// The size of the attack range detection.
+		/// </summary>
 		[SerializeField]
 		private Vector3 attackSize;
 
+		/// <summary>
+		/// The position where the attacks while be detected from.
+		/// </summary>
 		[SerializeField]
 		private Transform attackPosition;
 
-        public LayerMask m_LayerMask;
+		/// <summary>
+		/// The layer that will be checked for the player.
+		/// </summary>
+		[SerializeField]
+        private LayerMask m_LayerMask;
 
         /// <summary>
         /// Can be triggert in the future is an bool that keeps track if the enemy may move to the target.
@@ -139,23 +149,36 @@ namespace GroepC.Enemies
 			}
 		}
 
+		/// <summary>
+		/// Enabled the attack state and enabled the collider check.
+		/// </summary>
 		public void EnableAttacking()
 		{
 			isAttacking = true;
 			checkCollider = true;
         }
 
+		/// <summary>
+		/// Start an courtine where the attack state will be stopped.
+		/// </summary>
         public void DisableAttacking()
         {
 			StartCoroutine(CoolDown());
         }
 
+		/// <summary>
+		/// Attack call that wil trigger an animation.
+		/// </summary>
         private void Attack()
 		{
 			animator.SetTrigger("Attack");
 			EnableAttacking();
         }
 
+		/// <summary>
+		/// Start cool down and disables colliders.
+		/// </summary>
+		/// <returns>Waits for the time to be over</returns>
 		IEnumerator CoolDown()
 		{
 			checkCollider = false;
@@ -163,6 +186,9 @@ namespace GroepC.Enemies
             isAttacking = false;
 		}
 
+		/// <summary>
+		/// Checks colliders to do damage onto the player.
+		/// </summary>
         void MyCollisions()
         {
             Collider[] hitColliders = Physics.OverlapBox(attackPosition.position, attackSize,quaternion.identity, m_LayerMask);
@@ -172,6 +198,9 @@ namespace GroepC.Enemies
             }
         }
 
+		/// <summary>
+		/// Do damage on the target.
+		/// </summary>
 		private void DoDamage()
 		{
 			checkCollider = false;
