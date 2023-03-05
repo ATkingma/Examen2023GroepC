@@ -83,10 +83,16 @@ namespace GroepC.Enemies
 		[SerializeField]
         private LayerMask m_LayerMask;
 
-        /// <summary>
-        /// Can be triggert in the future is an bool that keeps track if the enemy may move to the target.
-        /// </summary>
-        private bool goToTarget;
+		/// <summary>
+		/// The sounds of the enemy this wil be called from an animation event.
+		/// </summary>
+		[SerializeField]
+		private AudioSource[] attackSounds;
+
+		/// <summary>
+		/// Can be triggert in the future is an bool that keeps track if the enemy may move to the target.
+		/// </summary>
+		private bool goToTarget;
 
 		/// <summary>
 		/// Can be triggert if the bool is attacking.
@@ -164,6 +170,11 @@ namespace GroepC.Enemies
         public void DisableAttacking()
         {
 			StartCoroutine(CoolDown());
+        }
+
+		public void PlayAttackSound(int index)
+		{
+			attackSounds[index].Play();
         }
 
 		/// <summary>
