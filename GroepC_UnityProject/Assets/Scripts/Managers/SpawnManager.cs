@@ -1,6 +1,5 @@
 using GroepC.Enemies;
 using System.Collections.Generic;
-using System.Linq.Expressions;
 using UnityEngine;
 
 namespace GroepC.Managers
@@ -115,8 +114,6 @@ namespace GroepC.Managers
         /// </summary>
         private void Start()
         {
-            Cursor.lockState = CursorLockMode.Locked;
-
             switch (GameManager.Instance.SelectGamemode)
             {
                 case GameModes.timed:
@@ -148,6 +145,10 @@ namespace GroepC.Managers
             }
         }
 
+        /// <summary>
+        /// Removes Target from list.
+        /// </summary>
+        /// <param name="target"></param>
         public void RemoveTarget(GameObject target)
         {
             if (spawnedTargets.Contains(target))
