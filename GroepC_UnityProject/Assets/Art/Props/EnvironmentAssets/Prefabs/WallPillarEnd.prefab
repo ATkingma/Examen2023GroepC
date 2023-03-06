@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4278538219490109230}
   - component: {fileID: 139882435830682624}
   - component: {fileID: 3064676751952634797}
+  - component: {fileID: 6725437839490871837}
   m_Layer: 0
   m_Name: WallPillarEnd
   m_TagString: Untagged
@@ -83,3 +84,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &6725437839490871837
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6078698924269488251}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.50725293, y: 1.1306831, z: 0.39275885}
+  m_Center: {x: 0.25362647, y: 0.56534153, z: 0}

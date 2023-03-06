@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7241277839323504266}
   - component: {fileID: 3896291523688911012}
   - component: {fileID: 5170789490331168409}
+  - component: {fileID: 6604023522987903716}
   m_Layer: 0
   m_Name: WallStantard
   m_TagString: Untagged
@@ -83,3 +84,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &6604023522987903716
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4528230636369555206}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.1749649, y: 0.025000019, z: 1.3333309}
+  m_Center: {x: 0.000017613176, y: 0.004166667, z: -0.00000008940697}

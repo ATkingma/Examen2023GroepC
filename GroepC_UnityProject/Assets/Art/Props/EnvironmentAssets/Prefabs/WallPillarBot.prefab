@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7435168726607690377}
   - component: {fileID: 6234886607375711114}
   - component: {fileID: 1327126155002000453}
+  - component: {fileID: 1362442131839294686}
   m_Layer: 0
   m_Name: WallPillarBot
   m_TagString: Untagged
@@ -83,3 +84,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &1362442131839294686
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8685641435227083546}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.41128957, y: 0.60007036, z: 0.39275885}
+  m_Center: {x: 0.20564479, y: 0.3000353, z: 0}

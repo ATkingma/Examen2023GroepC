@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5738657302710226074}
   - component: {fileID: 5304219489421729132}
   - component: {fileID: 7382110980260475442}
+  - component: {fileID: 6973913380100078107}
   m_Layer: 0
   m_Name: FloorTileQuad
   m_TagString: Untagged
@@ -83,3 +84,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &6973913380100078107
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6174222836778774323}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.6667023, y: 0.024168264, z: 2.6667023}
+  m_Center: {x: 0, y: 0.00303052, z: 0}

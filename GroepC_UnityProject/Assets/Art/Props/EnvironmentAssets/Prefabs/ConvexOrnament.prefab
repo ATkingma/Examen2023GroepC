@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 485920095671191718}
   - component: {fileID: 1644147612252176955}
   - component: {fileID: 7769602272457404039}
+  - component: {fileID: 7268424543714104952}
   m_Layer: 0
   m_Name: ConvexOrnament
   m_TagString: Untagged
@@ -83,3 +84,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &7268424543714104952
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2473881101135065058}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.06462998, y: 1.175, z: 0.21750998}
+  m_Center: {x: -0.14356211, y: 2.0606337, z: -1.918059}

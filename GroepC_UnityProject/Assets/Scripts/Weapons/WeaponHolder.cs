@@ -1,4 +1,7 @@
 using UnityEngine;
+using System.Collections;
+using GroepC.Player;
+using TMPro;
 
 namespace GroepC.Weapons
 {
@@ -7,6 +10,11 @@ namespace GroepC.Weapons
     /// </summary>
     public class WeaponHolder : MonoBehaviour
     {
+        /// <summary>
+        /// Reference to the player cotroller.
+        /// </summary>
+        private TextMeshProUGUI ammoText;
+
         /// <summary>
         /// The start weapon: <see cref="WeaponBase"/>.
         /// </summary>
@@ -48,9 +56,14 @@ namespace GroepC.Weapons
         private float Cooldown => 1 / weapon.FireRate;
 
         /// <summary>
+        /// Gets the player controller.
+        /// </summary>
+        private void Awake() => ammoText = GetComponentInParent<PlayerController>().AmmoText;
+
+        /// <summary>
         /// Sets a new <see cref="WeaponBase"/>. Removes old weapon model and places the new one.
         /// </summary>
-        /// <param name="newWeapon"></param>
+        /// <param name="newWeapon">The new weapon to swap to.</param>
         public void SwapWeapon(WeaponBase newWeapon)
         {
             weapon = newWeapon;
@@ -75,11 +88,26 @@ namespace GroepC.Weapons
         /// </summary>
         public void Fire()
         {
-            if(Time.time > nextShot)
+            if(Time.time > nextShot && weapon.CurrentAmmo > 0)
             {
                 nextShot = Time.time + cooldown;
                 FireProjectile();
+                ammoText.text = weapon.CurrentAmmo + "/" + weapon.MaxAmmo;
             }
+            else
+            {
+                ReloadWeapon();
+            }
+        }
+
+        /// <summary>
+        /// Reloads the weapon.
+        /// </summary>
+        /// <returns>Wait for the reload time.</returns>
+        private IEnumerator ReloadWeapon()
+        {
+            yield return new WaitForSeconds(weapon.ReloadTime);
+            weapon.CurrentAmmo = weapon.MaxAmmo;
         }
 
         /// <summary>

@@ -60,6 +60,11 @@ namespace GroepC.Player
         [SerializeField] private TextMeshProUGUI scoreObjectText;
 
         /// <summary>
+        /// The ammo text, displays the current/max ammo.
+        /// </summary>
+        [SerializeField] private TextMeshProUGUI ammoText;
+
+        /// <summary>
         /// The object that displays the amount of time left.
         /// </summary>
         public TextMeshProUGUI TimeObjectText => timeObjectText;
@@ -68,6 +73,11 @@ namespace GroepC.Player
         /// The text object that will display the score of the player.
         /// </summary>
         public TextMeshProUGUI ScoreObjectText => scoreObjectText;
+
+        /// <summary>
+        /// The ammo text, displays the current/max ammo.
+        /// </summary>
+        public TextMeshProUGUI AmmoText => ammoText;
 
         /// <summary>
         /// The force on the y axis.

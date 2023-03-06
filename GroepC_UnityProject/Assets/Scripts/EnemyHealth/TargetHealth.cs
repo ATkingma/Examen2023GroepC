@@ -34,6 +34,7 @@ namespace GroepC.Enemies
 		{
             ScoreManager.Instance.AddScore(1);
             DropManager.Instance.DropAmmo(transform.position);
+			GameManager.Instance.CheckFinishConditions();
 			StartCoroutine(DoTargetDeath());
 		}
 

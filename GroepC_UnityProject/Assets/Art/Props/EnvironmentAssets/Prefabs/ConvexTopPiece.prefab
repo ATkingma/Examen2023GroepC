@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7102908226752651758}
   - component: {fileID: 3739782256207123860}
   - component: {fileID: 493382835981424225}
+  - component: {fileID: 76257085046572843}
   m_Layer: 0
   m_Name: ConvexTopPiece
   m_TagString: Untagged
@@ -83,3 +84,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &76257085046572843
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3090317448403555793}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.049998, y: 1.05, z: 1.05}
+  m_Center: {x: 0.5249976, y: -0.525, z: -0.525}

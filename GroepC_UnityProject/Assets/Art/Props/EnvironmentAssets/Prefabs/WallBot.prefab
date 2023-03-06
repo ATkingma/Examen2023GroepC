@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6770871196173259113}
   - component: {fileID: 8024663471560812454}
   - component: {fileID: 6541491613426964063}
+  - component: {fileID: 5533447714427281580}
   m_Layer: 0
   m_Name: WallBot
   m_TagString: Untagged
@@ -83,3 +84,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &5533447714427281580
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6476359592291269479}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.25, y: 0.5999999, z: 4}
+  m_Center: {x: 0.12499994, y: 0.29999995, z: 0}

@@ -1,6 +1,7 @@
 using Unity.Mathematics;
 using UnityEngine;
 using GroepC.Player;
+using UnityEngine.SceneManagement;
 
 namespace GroepC.Managers
 {
@@ -53,7 +54,7 @@ namespace GroepC.Managers
         /// <summary>
         /// Checks if the conditions are met for finishing the game.
         /// </summary>
-        private void CheckFinishConditions()// When enemies die,
+        public void CheckFinishConditions()
         {
             if (!gameHasStarted)
                 return;
@@ -82,6 +83,8 @@ namespace GroepC.Managers
                     PlayerPrefs.SetInt("tutorialFinished", 1);
                     break;
             }
+
+            SceneManager.LoadSceneAsync(1);
         }
     }
 

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5787812029099110091}
   - component: {fileID: 5190140932704730526}
   - component: {fileID: 2695165080178550564}
+  - component: {fileID: 7215065673663980431}
   m_Layer: 0
   m_Name: FloorTileCross
   m_TagString: Untagged
@@ -83,3 +84,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &7215065673663980431
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 38497551679477997}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.6667025, y: 0.022245998, z: 2.6667025}
+  m_Center: {x: 0, y: -0.011122999, z: -0.00000047683716}

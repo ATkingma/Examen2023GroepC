@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4327344460067934351}
   - component: {fileID: 7952898460373337698}
   - component: {fileID: 5644036023124945536}
+  - component: {fileID: 3965450368770151568}
   m_Layer: 0
   m_Name: FloorTileAlt
   m_TagString: Untagged
@@ -83,3 +84,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &3965450368770151568
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 144299045344962404}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.6665978, y: 0.018311327, z: 2.6666985}
+  m_Center: {x: 0, y: 0.009155664, z: 0}

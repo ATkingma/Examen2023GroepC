@@ -34,6 +34,11 @@ namespace GroepC.Weapons
         public int MaxAmmo;
 
         /// <summary>
+        /// the current ammo of the held gun.
+        /// </summary>
+        public int CurrentAmmo;
+
+        /// <summary>
         /// The speed of the projectiles.
         /// </summary>
         public float Velocity;
