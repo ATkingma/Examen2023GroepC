@@ -11,12 +11,12 @@ namespace GroepC.Managers
         /// <summary>
         /// The instance for this class.
         /// </summary>
-        public static SettingsManager Instance;
+        private static SettingsManager instance;
 
         /// <summary>
         /// The instance of this class.
         /// </summary>
-        public static SettingsManager InstanceInstance;
+        public static SettingsManager Instance=>instance;
 
         /// <summary>
         /// The Save name of this class that will be used for the playerPrefs.
@@ -28,7 +28,7 @@ namespace GroepC.Managers
         /// </summary>
         private void Awake()
         {
-            Instance = this;
+            instance = this;
 
             string savedjson = PlayerPrefs.GetString(playerPrefName);
             if (savedjson == string.Empty)
