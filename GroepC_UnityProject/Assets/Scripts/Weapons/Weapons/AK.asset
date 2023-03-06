@@ -12,11 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcef9842def760e448ea8796d9283f6f, type: 3}
   m_Name: AK
   m_EditorClassIdentifier: 
-  modelPrefab: {fileID: 2367208807140852627, guid: 40c179ded428537459d41ef290d7184e, type: 3}
+  WeaponId: 1
+  ModelPrefab: {fileID: 2367208807140852627, guid: 40c179ded428537459d41ef290d7184e, type: 3}
   FireRate: 5
   Damage: 3
   ReloadTime: 2
   MaxAmmo: 16
+  CurrentAmmo: 0
   Velocity: 500
   ProjectileOrigin: {x: 0.038, y: -0.172, z: 1.144}
   ExtraProjectiles: 0
