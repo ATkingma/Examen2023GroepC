@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcef9842def760e448ea8796d9283f6f, type: 3}
   m_Name: Pistol
   m_EditorClassIdentifier: 
-  modelPrefab: {fileID: 2849647627470965191, guid: 9eb4f2f16c6a0aa49a9485d76faf6dcb, type: 3}
+  modelPrefab: {fileID: 3891385382412520809, guid: 539fef68c8cdf9e408885037ece7cf2c, type: 3}
   FireRate: 2
   Damage: 10
   ReloadTime: 1
   MaxAmmo: 6
   Velocity: 100
-  ProjectileOrigin: {x: 0.217, y: -0.244, z: 1}
+  ProjectileOrigin: {x: 0.221, y: -0.33, z: 1.02}
   ExtraProjectiles: 0
   ProjectileSpread: 0

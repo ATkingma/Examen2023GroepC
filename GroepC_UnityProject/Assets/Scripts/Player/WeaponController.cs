@@ -33,7 +33,11 @@ namespace GroepC.Player
         /// <summary>
         /// Sets the weapon stats on startup.
         /// </summary>
-        private void Start() => holder.CalculateStats();
+        private void Start()
+        {
+            holder.SwapWeapon(heldWeapons[0]);
+            holder.CalculateStats();
+        }
 
         /// <summary>
         /// See: <see cref="CheckFire"/>.

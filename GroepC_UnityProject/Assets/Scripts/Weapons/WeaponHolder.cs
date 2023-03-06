@@ -23,9 +23,14 @@ namespace GroepC.Weapons
         [SerializeField] private Transform projectileOrigin;
 
         /// <summary>
-        /// 
+        /// The parent for the weapons.
         /// </summary>
         [SerializeField] private Transform WeaponParent;
+
+        /// <summary>
+        /// The audio source of the current weapon.
+        /// </summary>
+        [SerializeField] private AudioSource weaponAudioSource;
 
         /// <summary>
         /// The cooldown for shooting.
@@ -54,7 +59,8 @@ namespace GroepC.Weapons
             foreach (Transform oldWeapon in WeaponParent)
                 Destroy(oldWeapon.gameObject);
 
-            Instantiate(weapon.modelPrefab, WeaponParent);
+            GameObject newModel =  Instantiate(weapon.modelPrefab, WeaponParent);
+            weaponAudioSource = newModel.GetComponent<AudioSource>();
 
             projectileOrigin.transform.localPosition = weapon.ProjectileOrigin;
         }
@@ -62,10 +68,7 @@ namespace GroepC.Weapons
         /// <summary>
         /// Sets the current cooldown for shooting.
         /// </summary>
-        public void CalculateStats()
-        {
-            cooldown = Cooldown;
-        }
+        public void CalculateStats() => cooldown = Cooldown;
 
         /// <summary>
         /// Checks if the next shot may be fired.
@@ -86,6 +89,8 @@ namespace GroepC.Weapons
         {
             if(projectilePrefab != null)
             {
+                weaponAudioSource.Play();
+
                 int projectileCount = 1 + weapon.ExtraProjectiles;
                 Vector3 spawnPosition = projectileOrigin.position;
                 Quaternion spawnRotation = transform.rotation;
