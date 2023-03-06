@@ -21,6 +21,11 @@ namespace GroepC.Player
         [SerializeField] private Camera playerCamera;
 
         /// <summary>
+        /// The <see cref="WeaponController"/> of the player.
+        /// </summary>
+        [SerializeField] private WeaponController holder;
+
+        /// <summary>
         /// Determents the speed of the camera.
         /// </summary>
         [SerializeField] private float cameraSensitivity;
@@ -117,6 +122,7 @@ namespace GroepC.Player
         {
             Cursor.visible = false;
             Cursor.lockState= CursorLockMode.Locked;
+            holder = GetComponentInChildren<WeaponController>();
         }
 
         /// <summary>
@@ -228,9 +234,6 @@ namespace GroepC.Player
         /// Grants the weapon to the player.
         /// </summary>
         /// <param name="weapon">The weapon to give.</param>
-        public void PickUpWeapon(WeaponBase weapon)
-        {
-
-        }
+        public void PickUpWeapon(WeaponBase weapon) => holder.SetWeapon(weapon, WeaponType.pistol);
     }
 }

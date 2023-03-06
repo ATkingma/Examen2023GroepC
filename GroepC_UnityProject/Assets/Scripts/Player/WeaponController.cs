@@ -17,7 +17,7 @@ namespace GroepC.Player
         /// <summary>
         /// All held weapons.
         /// </summary>
-        [SerializeField] private List<WeaponBase> heldWeapons;
+        [SerializeField] private WeaponBase[] heldWeapons = new WeaponBase[4];
 
         /// <summary>
         /// The amount of weapons to swap to.
@@ -35,6 +35,9 @@ namespace GroepC.Player
         /// </summary>
         private void Start()
         {
+            if (heldWeapons.Length == 0)
+                return;
+
             holder.SwapWeapon(heldWeapons[0]);
             holder.CalculateStats();
         }
@@ -66,6 +69,11 @@ namespace GroepC.Player
             for (int i = 0; i < keyCount; i++)
                 if (Input.GetKeyDown(numberKeys[i]))
                     holder.SwapWeapon(heldWeapons[i]);
+        }
+
+        public void SetWeapon(WeaponBase weapon, WeaponType type)
+        {
+            heldWeapons[(int)type] = weapon;
         }
     }
 }

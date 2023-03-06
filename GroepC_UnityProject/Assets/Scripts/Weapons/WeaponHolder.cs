@@ -56,6 +56,11 @@ namespace GroepC.Weapons
         private float Cooldown => 1 / weapon.FireRate;
 
         /// <summary>
+        /// States the state of the reload.
+        /// </summary>
+        private bool reload;
+
+        /// <summary>
         /// Gets the player controller.
         /// </summary>
         private void Awake() => ammoText = GetComponentInParent<PlayerController>().AmmoText;
@@ -76,6 +81,7 @@ namespace GroepC.Weapons
             weaponAudioSource = newModel.GetComponent<AudioSource>();
 
             projectileOrigin.transform.localPosition = weapon.ProjectileOrigin;
+            UpdateAmmoText();
         }
 
         /// <summary>
@@ -88,17 +94,24 @@ namespace GroepC.Weapons
         /// </summary>
         public void Fire()
         {
-            if(Time.time > nextShot && weapon.CurrentAmmo > 0)
+            if(Time.time > nextShot)
             {
-                nextShot = Time.time + cooldown;
-                FireProjectile();
-                ammoText.text = weapon.CurrentAmmo + "/" + weapon.MaxAmmo;
-            }
-            else
-            {
-                ReloadWeapon();
+                if (weapon.CurrentAmmo > 0)
+                {
+                    nextShot = Time.time + cooldown;
+                    FireProjectile();
+                    weapon.CurrentAmmo--;
+                    UpdateAmmoText();
+                }
+                else if (!reload)
+                {
+                    reload = true;
+                    StartCoroutine(ReloadWeapon());
+                }
             }
         }
+
+        private void UpdateAmmoText() => ammoText.text = weapon.CurrentAmmo + "/" + weapon.MaxAmmo;
 
         /// <summary>
         /// Reloads the weapon.
@@ -108,6 +121,8 @@ namespace GroepC.Weapons
         {
             yield return new WaitForSeconds(weapon.ReloadTime);
             weapon.CurrentAmmo = weapon.MaxAmmo;
+            UpdateAmmoText();
+            reload = false;
         }
 
         /// <summary>

@@ -13,6 +13,6 @@ namespace GroepC.Weapons
         /// Activates the jump pad.
         /// </summary>
         /// <param name="player">The player controller.</param>
-        protected override void Interact(PlayerController player) => player.PickUpWeapon(droppedWeapon);        /// 
+        protected override void Interact(PlayerController player) => player.PickUpWeapon(droppedWeapon);
     }
 }
