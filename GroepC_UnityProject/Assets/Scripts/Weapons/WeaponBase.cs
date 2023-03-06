@@ -9,9 +9,14 @@ namespace GroepC.Weapons
     public class WeaponBase : ScriptableObject
     {
         /// <summary>
+        /// The type of the weapon.
+        /// </summary>
+        public WeaponType WeaponId;
+
+        /// <summary>
         /// Holds the model for the weapon.
         /// </summary>
-        public GameObject modelPrefab;
+        public GameObject ModelPrefab;
 
         /// <summary>
         /// The amount of bullets the weapon will shoot per second.
@@ -57,5 +62,16 @@ namespace GroepC.Weapons
         /// The amount of spread the projectile(s) will have.
         /// </summary>
         public float ProjectileSpread;
+    }
+
+    /// <summary>
+    /// The amount of different weapons, used for picking the weapon up.
+    /// </summary>
+    public enum WeaponType
+    {
+        pistol,
+        assaultRifle,
+        shotgun,
+        sniper,
     }
 }

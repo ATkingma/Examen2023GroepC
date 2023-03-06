@@ -72,7 +72,7 @@ namespace GroepC.Weapons
             foreach (Transform oldWeapon in WeaponParent)
                 Destroy(oldWeapon.gameObject);
 
-            GameObject newModel =  Instantiate(weapon.modelPrefab, WeaponParent);
+            GameObject newModel =  Instantiate(weapon.ModelPrefab, WeaponParent);
             weaponAudioSource = newModel.GetComponent<AudioSource>();
 
             projectileOrigin.transform.localPosition = weapon.ProjectileOrigin;

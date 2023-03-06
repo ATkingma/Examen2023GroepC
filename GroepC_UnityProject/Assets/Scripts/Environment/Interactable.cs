@@ -1,7 +1,7 @@
 using UnityEngine;
 using GroepC.Player;
 
-namespace GroepC.Interactable
+namespace GroepC.Interactables
 {
     /// <summary>
     /// The base for environment interactables.

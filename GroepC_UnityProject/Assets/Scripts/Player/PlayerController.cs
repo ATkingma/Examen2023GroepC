@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using TMPro;
+using GroepC.Weapons;
 
 namespace GroepC.Player
 {
@@ -221,6 +222,15 @@ namespace GroepC.Player
         {
             jumpPower = power;
             isJumping = true;
+        }
+
+        /// <summary>
+        /// Grants the weapon to the player.
+        /// </summary>
+        /// <param name="weapon">The weapon to give.</param>
+        public void PickUpWeapon(WeaponBase weapon)
+        {
+
         }
     }
 }

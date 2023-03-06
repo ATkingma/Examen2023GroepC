@@ -1,7 +1,7 @@
 using GroepC.Player;
 using UnityEngine;
 
-namespace GroepC.Interactable
+namespace GroepC.Interactables
 {
     /// <summary>
     /// Makes the player jump upwards when entering the trigger area.
