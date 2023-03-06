@@ -47,6 +47,7 @@ namespace GroepC.Enemies
         [SerializeField]
 		private float maxSpeed = 5f;
 
+
 		/// <summary>
 		/// Lookspeed that amount of speed the enemy may rotate.
 		/// </summary>

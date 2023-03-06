@@ -74,6 +74,7 @@ namespace GroepC.Enemies
             agent.destination = transform.position;
             ragdollObject.SetActive(true);
             dyingAudio.Play();
+            ScoreManager.Instance.AddScore(1);
 			yield return new WaitForSeconds(destroyTimer);
 			DropManager.Instance.DropAmmo(transform.position);
 			Destroy(gameObject);
