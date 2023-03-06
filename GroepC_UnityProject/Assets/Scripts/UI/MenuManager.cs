@@ -10,6 +10,9 @@ namespace GroepC.UI
     /// </summary>
     public class MenuManager : MonoBehaviour
     {
+        /// <summary>
+        /// The selected game mode to be activated after the tuturial.
+        /// </summary>
         public static GameModes tuturialSavedMode;
         /// <summary>
         /// The sceneindex where the gamemode is saved if the tuturial isnt played before.
