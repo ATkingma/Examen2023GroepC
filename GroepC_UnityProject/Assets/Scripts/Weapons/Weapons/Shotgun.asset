@@ -12,11 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcef9842def760e448ea8796d9283f6f, type: 3}
   m_Name: Shotgun
   m_EditorClassIdentifier: 
-  modelPrefab: {fileID: 5636951035364415078, guid: 943d64dee51f2f24a9738d76c2e1d4bd, type: 3}
+  WeaponId: 2
+  ModelPrefab: {fileID: 5636951035364415078, guid: 943d64dee51f2f24a9738d76c2e1d4bd, type: 3}
   FireRate: 1
   Damage: 5
   ReloadTime: 2
   MaxAmmo: 6
+  CurrentAmmo: 0
   Velocity: 300
   ProjectileOrigin: {x: 0.101, y: -0.18, z: 1.039}
   ExtraProjectiles: 6
