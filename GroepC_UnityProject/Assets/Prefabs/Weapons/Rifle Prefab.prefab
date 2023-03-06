@@ -98,8 +98,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7851ecfae7a44842b2a43412af62486, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  smooth: 10
-  multiplier: 5
+  smooth: 3
+  multiplier: 2
 --- !u!82 &-5550572173402225976
 AudioSource:
   m_ObjectHideFlags: 0
