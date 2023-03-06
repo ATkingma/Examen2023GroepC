@@ -4833,7 +4833,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agent: {fileID: 7946788696819547779}
   animator: {fileID: 2202580374083010473}
-  damage: 50
+  damage: 10
   attackRange: 4
   minSpeed: 3.5
   maxSpeed: 5
