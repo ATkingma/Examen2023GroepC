@@ -547,7 +547,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 257
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8207f243d32de284686aedb0838817bf, type: 2}
+  - {fileID: 2100000, guid: 1538d759dfe586c4db8d0d8a8b3a1ecf, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2324,7 +2324,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 257
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -2625508170847589869, guid: 561c9846440fdb1478c91034e9856c99, type: 3}
+  - {fileID: 2100000, guid: 1538d759dfe586c4db8d0d8a8b3a1ecf, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2502,8 +2502,8 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 257
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 7e7f8d3e663a5bd4985db24fc9d72f5f, type: 2}
-  - {fileID: 7501382507254896561, guid: 561c9846440fdb1478c91034e9856c99, type: 3}
+  - {fileID: 2100000, guid: 1538d759dfe586c4db8d0d8a8b3a1ecf, type: 2}
+  - {fileID: 2100000, guid: 90a0010cd4137e845a275a9fe60619c3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2891,7 +2891,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 257
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 40d1ffc16b8a9294f96c1f15c2b0c99f, type: 2}
+  - {fileID: 2100000, guid: 1538d759dfe586c4db8d0d8a8b3a1ecf, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3070,7 +3070,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 257
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -2625508170847589869, guid: 561c9846440fdb1478c91034e9856c99, type: 3}
+  - {fileID: 2100000, guid: 1538d759dfe586c4db8d0d8a8b3a1ecf, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3457,7 +3457,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 257
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 5173052817010037418, guid: 561c9846440fdb1478c91034e9856c99, type: 3}
+  - {fileID: 2100000, guid: eb1ece3ba3f9f5f42b11a0e7a3989878, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4833,7 +4833,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agent: {fileID: 7946788696819547779}
   animator: {fileID: 2202580374083010473}
-  damage: 2.15
+  damage: 50
   attackRange: 4
   minSpeed: 3.5
   maxSpeed: 5
