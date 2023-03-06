@@ -46,6 +46,18 @@ namespace GroepC.Enemies
         private GameObject baseEnemy;
 
         /// <summary>
+        /// The hit audio that will be called when the enemy is hit.
+        /// </summary>
+        [SerializeField]
+        private AudioSource hitAudio;
+
+        /// <summary>
+        /// Dying sound will be played when the enemy dies.
+        /// </summary>
+        [SerializeField]
+        private AudioSource dyingAudio;
+
+        /// <summary>
         /// Death Function that will be called from the base.
         /// </summary>
         public override void Death() => StartCoroutine(PlayEnemyDeath());
@@ -61,6 +73,7 @@ namespace GroepC.Enemies
             enemyMovement.enabled = false;
             agent.destination = transform.position;
             ragdollObject.SetActive(true);
+            dyingAudio.Play();
 			yield return new WaitForSeconds(destroyTimer);
 			DropManager.Instance.DropAmmo(transform.position);
 			Destroy(gameObject);
@@ -73,6 +86,8 @@ namespace GroepC.Enemies
         public override void DoDamage(float _damage)
         {
             base.DoDamage(_damage);
+            if (!hitAudio.isPlaying)
+                hitAudio.Play();
             anim.SetTrigger("Hit");
         }
     }
