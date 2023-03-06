@@ -9,7 +9,10 @@ namespace GroepC.Data
 	[Serializable]
 	public class AmmoDrops
 	{
-		[SerializeField]
+        /// <summary>
+        /// The prefab of the dropped ammo.
+        /// </summary>
+        [SerializeField]
 		public GameObject prefab;
 
 		/// <summary>

@@ -172,6 +172,10 @@ namespace GroepC.Enemies
 			StartCoroutine(CoolDown());
         }
 
+		/// <summary>
+		/// Plays an attacking sound with the given index.
+		/// </summary>
+		/// <param name="index">The given index of an enemy sound.</param>
 		public void PlayAttackSound(int index)
 		{
 			attackSounds[index].Play();
