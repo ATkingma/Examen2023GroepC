@@ -1,10 +1,16 @@
 using GroepC.Managers;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace GroepC.Player
 {
     public class PlayerHealth : MonoBehaviour
     {
+        /// <summary>
+        /// The player healthbar.
+        /// </summary>
+        [SerializeField] private Slider healthBar;
+
         /// <summary>
         /// The player max health.
         /// </summary>
@@ -30,6 +36,7 @@ namespace GroepC.Player
                 return;
 
             currentHealth = Mathf.Clamp(currentHealth - damageAmount, 0, maxHealth);
+            healthBar.value = currentHealth / maxHealth;
 
             if (currentHealth == 0)
                 Die();

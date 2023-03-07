@@ -171,6 +171,9 @@ namespace GroepC.Player
             else
                 downForce = -.1f;
 
+            if(CheckCeiling())
+                downForce = -.1f;
+
             if (isJumping)
             {
                 downForce += jumpPower;
@@ -179,6 +182,12 @@ namespace GroepC.Player
 
             return downForce;
         }
+
+        /// <summary>
+        /// Checks if the playeer hits a ceiling.
+        /// </summary>
+        /// <returns>If the player hits the ceiling.</returns>
+        private bool CheckCeiling() => Physics.Raycast(transform.position, transform.up, 1);
 
         /// <summary>
         /// Rotates the camera according to the mouse.
