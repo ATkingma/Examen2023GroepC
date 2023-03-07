@@ -71,6 +71,9 @@ namespace GroepC.Weapons
         /// <param name="newWeapon">The new weapon to swap to.</param>
         public void SwapWeapon(WeaponBase newWeapon)
         {
+            if (newWeapon == null)
+                return;
+
             weapon = newWeapon;
             CalculateStats();
 
@@ -111,6 +114,9 @@ namespace GroepC.Weapons
             }
         }
 
+        /// <summary>
+        /// Updates the ammo text.
+        /// </summary>
         private void UpdateAmmoText() => ammoText.text = weapon.CurrentAmmo + "/" + weapon.MaxAmmo;
 
         /// <summary>
