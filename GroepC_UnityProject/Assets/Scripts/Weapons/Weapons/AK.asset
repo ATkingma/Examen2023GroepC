@@ -18,7 +18,7 @@ MonoBehaviour:
   Damage: 3
   ReloadTime: 2
   MaxAmmo: 16
-  CurrentAmmo: 0
+  CurrentAmmo: 16
   Velocity: 500
   ProjectileOrigin: {x: 0.038, y: -0.172, z: 1.144}
   ExtraProjectiles: 0

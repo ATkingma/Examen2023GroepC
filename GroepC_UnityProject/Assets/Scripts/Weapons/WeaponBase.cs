@@ -62,6 +62,11 @@ namespace GroepC.Weapons
         /// The amount of spread the projectile(s) will have.
         /// </summary>
         public float ProjectileSpread;
+
+        /// <summary>
+        /// Sets the current ammo to max.
+        /// </summary>
+        private void OnEnable() => CurrentAmmo = MaxAmmo;
     }
 
     /// <summary>
