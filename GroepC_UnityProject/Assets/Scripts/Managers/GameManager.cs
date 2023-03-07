@@ -2,6 +2,7 @@ using Unity.Mathematics;
 using UnityEngine;
 using GroepC.Player;
 using UnityEngine.SceneManagement;
+using System;
 
 namespace GroepC.Managers
 {
@@ -36,9 +37,23 @@ namespace GroepC.Managers
         public GameModes SelectGamemode => selectGamemode;
 
         /// <summary>
+        /// Get activated when opening the menu.
+        /// </summary>
+        public Action MenuOpened;
+
+        /// <summary>
         /// Sets the instance to the <see cref="GameManager"/>.
         /// </summary>
         private void Awake() => Instance = this;
+
+        /// <summary>
+        /// Checks if the menu needs to open.
+        /// </summary>
+        private void Update()
+        {
+            if (Input.GetKeyUp(KeyCode.Escape))
+                MenuOpened?.Invoke();
+        }
 
         /// <summary>
         /// Sets the gamemode for the game.

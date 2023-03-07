@@ -34,5 +34,8 @@ public class PlayerManager : MonoBehaviour
         TimeManager.Instance.GiveUI(player.GetComponent<PlayerController>());
         ScoreManager.Instance.GiveUI(player.GetComponent<PlayerController>());
         SpawnManager.Instance.SetTarget(player.gameObject);
+
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 }

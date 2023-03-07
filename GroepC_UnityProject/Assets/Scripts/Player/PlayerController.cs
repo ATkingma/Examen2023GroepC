@@ -2,6 +2,7 @@ using System.Collections;
 using UnityEngine;
 using TMPro;
 using GroepC.Weapons;
+using GroepC.Managers;
 
 namespace GroepC.Player
 {
@@ -116,24 +117,42 @@ namespace GroepC.Player
         private float nextDash;
 
         /// <summary>
+        /// States whether the menu is open.
+        /// </summary>
+        private bool menuIsOpen;
+
+        /// <summary>
+        /// Adds opening the menu to the esc button.
+        /// </summary>
+        private void OnEnable() => GameManager.Instance.MenuOpened += MenuOpened;
+
+        /// <summary>
+        /// Removes opening the menu to the esc button.
+        /// </summary>
+        private void OnDisable() => GameManager.Instance.MenuOpened -= MenuOpened;
+
+        /// <summary>
         /// Turns off the cursor.
         /// </summary>
-        private void Awake()
-        {
-            Cursor.visible = false;
-            Cursor.lockState= CursorLockMode.Locked;
-            holder = GetComponentInChildren<WeaponController>();
-        }
+        private void Awake() => holder = GetComponentInChildren<WeaponController>();
 
         /// <summary>
         /// This update is used to call the movement for the player.
         /// </summary>
         private void Update()
         {
+            if (menuIsOpen)
+                return;
+
             RotateCamera();
             StartCoroutine(Dash());
             ApplyMovement();
         }
+
+        /// <summary>
+        /// Toggles <see cref="menuIsOpen"/>.
+        /// </summary>
+        public void MenuOpened() => menuIsOpen = !menuIsOpen;
 
         /// <summary>
         /// Calculates the movement direction based on the player input.

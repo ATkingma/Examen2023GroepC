@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using GroepC.Managers;
 
 namespace GroepC.UI
 {
@@ -29,22 +30,21 @@ namespace GroepC.UI
         private List<GameObject> panels;
 
         /// <summary>
-        /// Checks for input.
+        /// Adds opening the menu to the esc button.
         /// </summary>
-        private void Update()
-        {
-            if (Input.GetKeyUp(KeyCode.Escape))
-            {
-                ToggleMenu();
-            }
-        }
+        private void OnEnable() => GameManager.Instance.MenuOpened += ToggleMenu;
+
+        /// <summary>
+        /// Removes opening the menu to the esc button.
+        /// </summary>
+        private void OnDisable() => GameManager.Instance.MenuOpened -= ToggleMenu;
 
         /// <summary>
         /// Toggles ingamemenu.
         /// </summary>
         private void ToggleMenu()
         {
-            menuObject.SetActive(!menuObject.active);
+            menuObject.SetActive(!menuObject.activeSelf);
             CheckMenuState();
 
             ResetPanels();
@@ -59,11 +59,13 @@ namespace GroepC.UI
             {
                 Time.timeScale = 0;
                 Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
             }
             else
             {
                 Time.timeScale = 1;
                 Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
             }
         }
 
@@ -72,8 +74,8 @@ namespace GroepC.UI
         /// </summary>
         public void ResetGameState()
         {
-            Time.timeScale = 1;
-            Cursor.lockState = CursorLockMode.None;
+            menuObject.SetActive(!menuObject.activeSelf);
+            GameManager.Instance.MenuOpened.Invoke();
         }
 
         /// <summary>
