@@ -227,9 +227,9 @@ MonoBehaviour:
   holder: {fileID: 1241719200077116293}
   heldWeapons:
   - {fileID: 11400000, guid: 2b584182b38803143ad05c9344be5238, type: 2}
-  - {fileID: 11400000, guid: 53e1192de6a81dc44ad8756f575d24bc, type: 2}
-  - {fileID: 11400000, guid: 6b78f7343aad8454891ceba053b31f46, type: 2}
-  - {fileID: 11400000, guid: 9860b527ef34bd549b63dafe8f32dffe, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!114 &2699053694794350641
 MonoBehaviour:
   m_ObjectHideFlags: 0

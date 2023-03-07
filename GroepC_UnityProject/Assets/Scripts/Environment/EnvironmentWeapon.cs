@@ -1,18 +1,27 @@
 using GroepC.Interactables;
 using GroepC.Player;
-using GroepC.Weapons;
 using UnityEngine;
 
 namespace GroepC.Weapons
 {
+    /// <summary>
+    /// This class enables picking up weapons from the ground.
+    /// </summary>
     public class EnvironmentWeapon : Interactable
     {
+        /// <summary>
+        /// The weapon to pick up.
+        /// </summary>
         [SerializeField] private WeaponBase droppedWeapon;
 
         /// <summary>
         /// Activates the jump pad.
         /// </summary>
         /// <param name="player">The player controller.</param>
-        protected override void Interact(PlayerController player) => player.PickUpWeapon(droppedWeapon);
+        protected override void Interact(PlayerController player)
+        {
+            player.PickUpWeapon(droppedWeapon);
+            Debug.Log(droppedWeapon);
+        }
     }
 }
