@@ -17,7 +17,7 @@ namespace GroepC.Player
         /// <summary>
         /// All held weapons.
         /// </summary>
-        [SerializeField] private WeaponBase[] heldWeapons = new WeaponBase[4];
+        [SerializeField] private WeaponBase[] heldWeapons;
 
         /// <summary>
         /// The amount of weapons to swap to.
@@ -71,9 +71,11 @@ namespace GroepC.Player
                     holder.SwapWeapon(heldWeapons[i]);
         }
 
-        public void SetWeapon(WeaponBase weapon, WeaponType type)
-        {
-            heldWeapons[(int)type] = weapon;
-        }
+        /// <summary>
+        /// Sets the weapon in the designed slot.
+        /// </summary>
+        /// <param name="weapon">The weapon to set.</param>
+        /// <param name="type">The slot for the weapon type.</param>
+        public void SetWeapon(WeaponBase weapon, WeaponType type) => heldWeapons[(int)type] = weapon;
     }
 }

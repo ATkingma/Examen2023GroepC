@@ -234,6 +234,6 @@ namespace GroepC.Player
         /// Grants the weapon to the player.
         /// </summary>
         /// <param name="weapon">The weapon to give.</param>
-        public void PickUpWeapon(WeaponBase weapon) => holder.SetWeapon(weapon, WeaponType.pistol);
+        public void PickUpWeapon(WeaponBase weapon) => holder.SetWeapon(weapon, weapon.WeaponId);
     }
 }

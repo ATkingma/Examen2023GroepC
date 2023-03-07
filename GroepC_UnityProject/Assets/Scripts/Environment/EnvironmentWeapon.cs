@@ -21,7 +21,7 @@ namespace GroepC.Weapons
         protected override void Interact(PlayerController player)
         {
             player.PickUpWeapon(droppedWeapon);
-            Debug.Log(droppedWeapon);
+            Destroy(gameObject);
         }
     }
 }

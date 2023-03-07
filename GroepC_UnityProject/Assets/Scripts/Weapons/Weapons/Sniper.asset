@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WeaponId: 3
   ModelPrefab: {fileID: 6817159946028957876, guid: c24ea480a9c85bf4bb0663b2aa9e854d, type: 3}
-  FireRate: 1
+  FireRate: 2
   Damage: 25
   ReloadTime: 0.5
   MaxAmmo: 1

@@ -41,6 +41,11 @@ namespace GroepC.Weapons
         [SerializeField] private AudioSource weaponAudioSource;
 
         /// <summary>
+        /// Controls the animations of the weapon model.
+        /// </summary>
+        [SerializeField] private Animator weaponAnimator;
+
+        /// <summary>
         /// The cooldown for shooting.
         /// </summary>
         private float cooldown;
@@ -65,6 +70,12 @@ namespace GroepC.Weapons
         /// </summary>
         private void Awake() => ammoText = GetComponentInParent<PlayerController>().AmmoText;
 
+        private void Update()
+        {
+            if(Input.GetKeyDown(KeyCode.R) && !reload)
+                StartCoroutine(ReloadWeapon());
+        }
+
         /// <summary>
         /// Sets a new <see cref="WeaponBase"/>. Removes old weapon model and places the new one.
         /// </summary>
@@ -82,6 +93,8 @@ namespace GroepC.Weapons
 
             GameObject newModel =  Instantiate(weapon.ModelPrefab, WeaponParent);
             weaponAudioSource = newModel.GetComponent<AudioSource>();
+            weaponAnimator = newModel.GetComponent<Animator>();
+            weaponAnimator.SetFloat("ReloadTime", 1 / weapon.ReloadTime);
 
             projectileOrigin.transform.localPosition = weapon.ProjectileOrigin;
             UpdateAmmoText();
@@ -105,10 +118,11 @@ namespace GroepC.Weapons
                     FireProjectile();
                     weapon.CurrentAmmo--;
                     UpdateAmmoText();
+                    if (weapon.CurrentAmmo == 0)
+                        StartCoroutine(ReloadWeapon());
                 }
                 else if (!reload)
                 {
-                    reload = true;
                     StartCoroutine(ReloadWeapon());
                 }
             }
@@ -125,10 +139,14 @@ namespace GroepC.Weapons
         /// <returns>Wait for the reload time.</returns>
         private IEnumerator ReloadWeapon()
         {
+            reload = true;
+            weaponAnimator.SetInteger("Random", Random.Range(0,6));
+            weaponAnimator.SetTrigger("Reload");
             yield return new WaitForSeconds(weapon.ReloadTime);
             weapon.CurrentAmmo = weapon.MaxAmmo;
             UpdateAmmoText();
             reload = false;
+            weaponAnimator.ResetTrigger("Reload");
         }
 
         /// <summary>
