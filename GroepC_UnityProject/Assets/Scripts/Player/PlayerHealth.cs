@@ -45,6 +45,11 @@ namespace GroepC.Player
         /// <summary>
         /// Activates when the player health reaches 0.
         /// </summary>
-        private void Die() => GameManager.Instance.EndGame();
+        private void Die()
+        {
+            GameManager.Instance.EndGame();
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+        }
     }
 }
