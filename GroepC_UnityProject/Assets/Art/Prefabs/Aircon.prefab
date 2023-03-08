@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2410596711207233612}
   - component: {fileID: 2225496539424751454}
   - component: {fileID: 5416655355196610113}
+  - component: {fileID: 6212047201905109649}
   m_Layer: 0
   m_Name: Aircon
   m_TagString: Untagged
@@ -83,3 +84,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &6212047201905109649
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1490751744946425904}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.12597421, y: 0.60005957, z: 0.60005957}
+  m_Center: {x: -0.043969996, y: 0, z: 0}

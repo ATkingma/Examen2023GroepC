@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8687373285130110552}
   - component: {fileID: 8543886746397230526}
   - component: {fileID: 8118776956866131506}
+  - component: {fileID: 9077278227347976624}
   m_Layer: 0
   m_Name: Gas Canister
   m_TagString: Untagged
@@ -83,3 +84,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &9077278227347976624
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3186848557412846455}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.39749998, y: 0.39749992, z: 0.64316547}
+  m_Center: {x: 0, y: 0, z: 0.32158273}

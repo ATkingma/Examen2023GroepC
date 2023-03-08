@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2458640393639094193}
   - component: {fileID: 4269056912079017202}
   - component: {fileID: 4772563519437245815}
+  - component: {fileID: 7691204682187906874}
   m_Layer: 0
   m_Name: Vent1
   m_TagString: Untagged
@@ -83,3 +84,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &7691204682187906874
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 239148297595364412}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.037820235, y: 1.0710974, z: 0.57109743}
+  m_Center: {x: -0.016347319, y: 0, z: 0.000000029802319}
