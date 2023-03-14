@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 644845031738130882}
   - component: {fileID: 4565850361753128551}
   - component: {fileID: 1781701415655357101}
+  - component: {fileID: 5274010892571582643}
   m_Layer: 0
   m_Name: Rocket Launcher Unwrapped
   m_TagString: Untagged
@@ -84,3 +85,17 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &5274010892571582643
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 268284751257607032}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 5684062649852812809, guid: 41c6f8f1f2faab6429aeb43364cbd1b9, type: 3}
