@@ -58,6 +58,12 @@ namespace GroepC.Enemies
         private AudioSource dyingAudio;
 
         /// <summary>
+        /// The collider that needs to be disabled after an enemy dying.
+        /// </summary>
+        [SerializeField]
+        private BoxCollider enemyCollider;
+
+        /// <summary>
         /// Death Function that will be called from the base.
         /// </summary>
         public override void Death() => StartCoroutine(PlayEnemyDeath());
@@ -69,7 +75,8 @@ namespace GroepC.Enemies
 		private IEnumerator PlayEnemyDeath()
 		{
 			SpawnManager.Instance.RemoveEnemy(gameObject);
-			baseEnemy.SetActive(false);
+            enemyCollider.enabled= false;
+            baseEnemy.SetActive(false);
             enemyMovement.enabled = false;
             agent.destination = transform.position;
             ragdollObject.SetActive(true);

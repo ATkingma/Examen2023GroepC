@@ -4819,6 +4819,7 @@ MonoBehaviour:
   baseEnemy: {fileID: 3195221960180980799}
   hitAudio: {fileID: 225617513046399971}
   dyingAudio: {fileID: 2309074279168443346}
+  enemyCollider: {fileID: 7946788696819547776}
 --- !u!114 &4297691316019089637
 MonoBehaviour:
   m_ObjectHideFlags: 0
