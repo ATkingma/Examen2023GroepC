@@ -35,7 +35,7 @@ namespace GroepC.Utilities
         /// </summary>
         public void LoadScene()
         {
-            SceneManager.LoadScene(sceneIndex);
+            SceneManager.LoadSceneAsync(sceneIndex);
         }
 
         /// <summary>
@@ -47,7 +47,7 @@ namespace GroepC.Utilities
             nextScene = MenuManager.turialSaveScene;
             GameManager.Instance.EndGame();
             GameManager.Instance.SetGamemode(MenuManager.tuturialSavedMode);
-            SceneManager.LoadScene(nextScene);
+            SceneManager.LoadSceneAsync(nextScene);
         }
     }
 }

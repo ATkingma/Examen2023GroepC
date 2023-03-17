@@ -59,7 +59,7 @@ namespace GroepC.UI
         /// Loads an scene with the given sceneId.
         /// </summary>
         /// <param name="sceneId">The scene id to load.</param>
-        public void LoadScene(int sceneId) => SceneManager.LoadScene(sceneId);
+        public void LoadScene(int sceneId) => SceneManager.LoadSceneAsync(sceneId);
 
         /// <summary>t
         /// Sets the gamemode.
