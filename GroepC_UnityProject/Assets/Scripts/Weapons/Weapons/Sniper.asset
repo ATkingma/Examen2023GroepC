@@ -20,6 +20,6 @@ MonoBehaviour:
   MaxAmmo: 1
   CurrentAmmo: 1
   Velocity: 1000
-  ProjectileOrigin: {x: 0.14, y: -0.238, z: 1.435}
+  ProjectileOrigin: {x: 0.203, y: -0.311, z: 1.327}
   ExtraProjectiles: 0
   ProjectileSpread: 0
