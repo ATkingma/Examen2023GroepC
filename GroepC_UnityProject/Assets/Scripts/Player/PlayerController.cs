@@ -122,6 +122,11 @@ namespace GroepC.Player
         private bool menuIsOpen;
 
         /// <summary>
+        /// Indecates wether the player is sprinting or not.
+        /// </summary>
+        private bool isSprinting;
+
+        /// <summary>
         /// Adds opening the menu to the esc button.
         /// </summary>
         private void OnEnable() => GameManager.Instance.MenuOpened += MenuOpened;
@@ -147,6 +152,9 @@ namespace GroepC.Player
             RotateCamera();
             StartCoroutine(Dash());
             ApplyMovement();
+
+            if (Input.GetButtonUp("Dash"))
+                isSprinting = false;
         }
 
         /// <summary>
@@ -171,7 +179,7 @@ namespace GroepC.Player
             else
                 downForce = -.1f;
 
-            if(CheckCeiling())
+            if(CheckCeiling() && downForce > 0)
                 downForce = -.1f;
 
             if (isJumping)
@@ -187,7 +195,7 @@ namespace GroepC.Player
         /// Checks if the playeer hits a ceiling.
         /// </summary>
         /// <returns>If the player hits the ceiling.</returns>
-        private bool CheckCeiling() => Physics.Raycast(transform.position, transform.up, 1);
+        private bool CheckCeiling() => Physics.Raycast(transform.position, transform.up, 2);
 
         /// <summary>
         /// Rotates the camera according to the mouse.
@@ -216,6 +224,7 @@ namespace GroepC.Player
                 nextDash = Time.time + cooldown;
 
                 isDashing = true;
+                isSprinting = true;
                 yield return new WaitForSeconds(.1f);
                 isDashing = false;
             }
@@ -244,6 +253,8 @@ namespace GroepC.Player
                 direction.y = 0;
                 direction *= dashSpeed;
             }
+            if (isSprinting)
+                direction *= 1.3f;
 
             controller.Move(direction);
         }

@@ -74,6 +74,8 @@ namespace GroepC.Weapons
         {
             if(Input.GetKeyDown(KeyCode.R) && !reload)
                 StartCoroutine(ReloadWeapon());
+
+            //WeaponParent.transform.rotation = Quaternion.Lerp(transform.rotation, WeaponParent.transform.rotation, .5f);
         }
 
         /// <summary>
@@ -82,6 +84,7 @@ namespace GroepC.Weapons
         /// <param name="newWeapon">The new weapon to swap to.</param>
         public void SwapWeapon(WeaponBase newWeapon)
         {
+            CancelReload();
             if (newWeapon == null)
                 return;
 
@@ -112,12 +115,13 @@ namespace GroepC.Weapons
         {
             if(Time.time > nextShot)
             {
-                if (weapon.CurrentAmmo > 0)
+                if (weapon.CurrentAmmo > 0 && !reload)
                 {
                     nextShot = Time.time + cooldown;
                     FireProjectile();
                     weapon.CurrentAmmo--;
                     UpdateAmmoText();
+                    ApplyRecoil();
                     if (weapon.CurrentAmmo == 0)
                         StartCoroutine(ReloadWeapon());
                 }
@@ -126,6 +130,29 @@ namespace GroepC.Weapons
                     StartCoroutine(ReloadWeapon());
                 }
             }
+        }
+
+        /// <summary>
+        /// Makes the weapon wiggle when shooting.
+        /// </summary>
+        private void ApplyRecoil()
+        {
+            float playerYRotation = (float)(Mathf.Atan2(transform.rotation.y, transform.rotation.w) / Mathf.PI) * 360;
+            if (playerYRotation > 180)
+                playerYRotation -= 360;
+
+            float playerXRotation = (float)(Mathf.Atan2(transform.rotation.x, transform.rotation.w) / Mathf.PI) * 360;
+            if (playerXRotation > 180)
+                playerXRotation -= 360;
+
+            float playerZXRotation = (float)(Mathf.Atan2(transform.rotation.z, transform.rotation.w) / Mathf.PI) * 360;
+            if (playerXRotation > 180)
+                playerXRotation -= 360;
+
+            float spread = Random.Range(-1, 1);
+
+            Quaternion randomRotation = Quaternion.Euler(new Vector3(playerXRotation + spread, playerYRotation, playerZXRotation));
+            //WeaponParent.transform.rotation = randomRotation;
         }
 
         /// <summary>
@@ -140,6 +167,7 @@ namespace GroepC.Weapons
         private IEnumerator ReloadWeapon()
         {
             reload = true;
+            weaponAnimator.enabled = true;
             weaponAnimator.SetInteger("Random", Random.Range(0,6));
             weaponAnimator.SetTrigger("Reload");
             yield return new WaitForSeconds(weapon.ReloadTime);
@@ -147,6 +175,7 @@ namespace GroepC.Weapons
             UpdateAmmoText();
             reload = false;
             weaponAnimator.ResetTrigger("Reload");
+            weaponAnimator.enabled = false;
         }
 
         /// <summary>
@@ -177,8 +206,6 @@ namespace GroepC.Weapons
 
                     float spreadY = Random.Range(-angle, angle);
                     float spreadX = Random.Range(-angle, angle);
-
-                    // ook nog omhoog
                     Quaternion randomRotation = Quaternion.Euler(new Vector3(playerXRotation + spreadX, playerYRotation + spreadY, 0));
 
                     Rigidbody spawnedProjectile = Instantiate(projectilePrefab, spawnPosition, randomRotation);
@@ -189,5 +216,10 @@ namespace GroepC.Weapons
                 }
             }
         }
+
+        /// <summary>
+        /// Cancels the reload.
+        /// </summary>
+        private void CancelReload() => StopCoroutine(ReloadWeapon());
     }
 }

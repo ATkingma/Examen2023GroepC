@@ -20,6 +20,11 @@ namespace GroepC.Player
         [SerializeField] private WeaponBase[] heldWeapons;
 
         /// <summary>
+        /// Current held weapon;
+        /// </summary>
+        private float weaponNumber;
+
+        /// <summary>
         /// The amount of weapons to swap to.
         /// </summary>
         private readonly KeyCode[] numberKeys =
@@ -60,6 +65,7 @@ namespace GroepC.Player
                 holder.Fire();
         }
 
+
         /// <summary>
         /// Checks the buttons 1,2,3,4 to swap weapons.
         /// </summary>
@@ -69,6 +75,15 @@ namespace GroepC.Player
             for (int i = 0; i < keyCount; i++)
                 if (Input.GetKeyDown(numberKeys[i]))
                     holder.SwapWeapon(heldWeapons[i]);
+
+            weaponNumber += Input.GetAxis("Mouse ScrollWheel") * 5;
+            if (weaponNumber > 3)
+                weaponNumber = 0;
+            else if (weaponNumber < 0)
+                weaponNumber = 3;
+
+            if(Input.GetAxis("Mouse ScrollWheel") != 0)
+                holder.SwapWeapon(heldWeapons[(int)weaponNumber]);
         }
 
         /// <summary>
