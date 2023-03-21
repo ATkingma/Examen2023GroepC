@@ -1,5 +1,6 @@
 using GroepC.Managers;
 using System;
+using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -93,6 +94,15 @@ namespace GroepC.UI
         public void PlayAudio(AudioSource audio)
         {
             audio.Play();
+        }
+
+        public void LoadTutorial()
+        {
+            SetGamemode(0);
+            turialSaveScene = 2;
+            tuturialSavedMode = GameModes.endless;
+            LoadScene(3);
+            SetGamemode(0);
         }
     }
 }
