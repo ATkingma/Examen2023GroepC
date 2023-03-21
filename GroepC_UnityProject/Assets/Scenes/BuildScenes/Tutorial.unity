@@ -1789,6 +1789,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 150367626357932905, guid: 78fe25714b4bec4428382b3706e7f4a2, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 150367626357932905, guid: 78fe25714b4bec4428382b3706e7f4a2, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1076342343033072227, guid: 78fe25714b4bec4428382b3706e7f4a2, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -16273,8 +16281,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 10, y: 2.220446e-16, z: 10}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 9.999999, y: 5.1972837, z: 10}
+  m_Center: {x: 0, y: -2.5986419, z: 0}
 --- !u!23 &1510627368
 MeshRenderer:
   m_ObjectHideFlags: 0
