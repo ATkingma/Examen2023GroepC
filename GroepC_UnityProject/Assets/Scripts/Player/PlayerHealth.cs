@@ -1,11 +1,21 @@
 using GroepC.Managers;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.HighDefinition;
 
 namespace GroepC.Player
 {
+    /// <summary>
+    /// Controls the player health.
+    /// </summary>
     public class PlayerHealth : MonoBehaviour
     {
+        /// <summary>
+        /// Controls the blood amount on the screen.
+        /// </summary>
+        [SerializeField] private Volume volume; 
+
         /// <summary>
         /// The player healthbar.
         /// </summary>
@@ -41,7 +51,33 @@ namespace GroepC.Player
             if (currentHealth == 0)
                 Die();
         }
-        
+
+        /// <summary>
+        /// Regens life ddor the player overtime.
+        /// </summary>
+        private void Update() => RegenLife();
+
+        /// <summary>
+        /// Regens life for the player overtime;
+        /// </summary>
+        private void RegenLife()
+        {
+            if(currentHealth > 0 && currentHealth < maxHealth)
+                currentHealth = Mathf.Clamp(currentHealth + 10 * Time.deltaTime, 0, maxHealth);
+
+            UpdateBloodValue();
+        }
+
+        /// <summary>
+        /// Updates the blood amount on th screen.
+        /// </summary>
+        private void UpdateBloodValue()
+        {
+            float bloodValue = 1 - (currentHealth / maxHealth - .5f);
+            if (volume.profile.TryGet(out Vignette vignette))
+                vignette.intensity.value = bloodValue;
+        }
+
         /// <summary>
         /// Activates when the player health reaches 0.
         /// </summary>
