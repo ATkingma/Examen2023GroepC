@@ -1,6 +1,7 @@
 using GroepC.Weapons;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace GroepC.Player
 {
@@ -18,6 +19,16 @@ namespace GroepC.Player
         /// All held weapons.
         /// </summary>
         [SerializeField] private WeaponBase[] heldWeapons;
+
+        /// <summary>
+        /// The Image the holds the icons.
+        /// </summary>
+        [SerializeField] private Image iconHolder;
+
+        /// <summary>
+        /// The icons for the weapons.
+        /// </summary>
+        [SerializeField] private Sprite[] weaponIcons;
 
         /// <summary>
         /// Current held weapon;
@@ -43,7 +54,7 @@ namespace GroepC.Player
             if (heldWeapons.Length == 0)
                 return;
 
-            holder.SwapWeapon(heldWeapons[0]);
+            Swap(0);
             holder.CalculateStats();
         }
 
@@ -74,7 +85,7 @@ namespace GroepC.Player
             int keyCount = numberKeys.Length;
             for (int i = 0; i < keyCount; i++)
                 if (Input.GetKeyDown(numberKeys[i]))
-                    holder.SwapWeapon(heldWeapons[i]);
+                    Swap(i);
 
             weaponNumber += Input.GetAxis("Mouse ScrollWheel") * 5;
             if (weaponNumber > 3)
@@ -82,9 +93,30 @@ namespace GroepC.Player
             else if (weaponNumber < 0)
                 weaponNumber = 3;
 
-            if(Input.GetAxis("Mouse ScrollWheel") != 0)
-                holder.SwapWeapon(heldWeapons[(int)weaponNumber]);
+            if (Input.GetAxis("Mouse ScrollWheel") != 0)
+                Swap((int)weaponNumber);
         }
+
+        /// <summary>
+        /// Swaps the currently held weapon for the given weapon id.
+        /// </summary>
+        /// <param name="newWeaponID">The new weapon to swap to.</param>
+        private void Swap(int newWeaponID)
+        {
+            holder.SwapWeapon(heldWeapons[newWeaponID]);
+
+            if (heldWeapons[newWeaponID] != null)
+            {
+                iconHolder.gameObject.SetActive(true);
+                SetWeaponSprite(weaponIcons[newWeaponID]);
+            }
+        }
+
+        /// <summary>
+        /// Sets the new weapons sprite.
+        /// </summary>
+        /// <param name="newSprite">The sprite to set.</param>
+        private void SetWeaponSprite(Sprite newSprite) => iconHolder.sprite = newSprite;
 
         /// <summary>
         /// Sets the weapon in the designed slot.
