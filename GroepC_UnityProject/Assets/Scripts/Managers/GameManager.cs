@@ -89,17 +89,17 @@ namespace GroepC.Managers
             {
                 case GameModes.timed:
                     ScoreManager.Instance.SaveScoreTimed();
+                    SceneManager.LoadSceneAsync(1);
                     break;
                 case GameModes.endless:
                     ScoreManager.Instance.SaveScoreEndless();
+                    SceneManager.LoadSceneAsync(1);
                     break;
                 case GameModes.Tutorial:
                     ScoreManager.Instance.SaveScoreTutorial();
                     PlayerPrefs.SetInt("tutorialFinished", 1);
                     break;
             }
-
-            SceneManager.LoadSceneAsync(1);
         }
     }
 

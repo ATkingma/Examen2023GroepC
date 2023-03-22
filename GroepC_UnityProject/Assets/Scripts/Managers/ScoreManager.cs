@@ -53,7 +53,15 @@ namespace GroepC.Managers
         /// <summary>
         /// Updates the ui of the player.
         /// </summary>
-        private void UpdateScoreUI() => scoreObjectText.text = "Score: " + score.ToString();
+        private void UpdateScoreUI()
+        {
+            if (scoreObjectText == null)
+            {
+                return;
+            }
+
+            scoreObjectText.text = "Score: " + score.ToString();
+        }
 
         /// <summary>
         /// Saves the score to the player saves. For the timed gamemode.
