@@ -9,27 +9,33 @@ namespace GroepC.Enemies
     /// Health of the enemy that will be walking.
     /// </summary>
     public class EnemyHealth : EnemyHealthBase
-	{
+    {
+        /// <summary>
+        /// Dropable items;
+        /// </summary>
+        [SerializeField] private GameObject[] itemDrops;
 
         /// <summary>
         /// The behavior of the enemy where the movement is assigned;
         /// </summary>
         [SerializeField]
         private EnemyMovement enemyMovement;
+
         /// <summary>
         /// Agent that is attached to the enemy.
         /// </summary>
         [SerializeField]
         private NavMeshAgent agent;
+
         /// <summary>
         /// Animator of the enemy.
         /// </summary>
         [SerializeField]
         private Animator anim;
 
-		/// <summary>
-		/// The time that will be waited for the object to be destroyed after dying.
-		/// </summary>
+        /// <summary>
+        /// The time that will be waited for the object to be destroyed after dying.
+        /// </summary>
         [SerializeField]
         private float destroyTimer;
 
@@ -68,24 +74,25 @@ namespace GroepC.Enemies
         /// </summary>
         public override void Death() => StartCoroutine(PlayEnemyDeath());
 
-		/// <summary>
-		/// Animation player that will drop ammo when animation isplayed and then destroy the object holder.
-		/// </summary>
-		/// <returns></returns>
-		private IEnumerator PlayEnemyDeath()
-		{
-			SpawnManager.Instance.RemoveEnemy(gameObject);
-            enemyCollider.enabled= false;
+        /// <summary>
+        /// Animation player that will drop ammo when animation isplayed and then destroy the object holder.
+        /// </summary>
+        /// <returns></returns>
+        private IEnumerator PlayEnemyDeath()
+        {
+            SpawnManager.Instance.RemoveEnemy(gameObject);
+            enemyCollider.enabled = false;
             baseEnemy.SetActive(false);
             enemyMovement.enabled = false;
             agent.destination = transform.position;
             ragdollObject.SetActive(true);
             dyingAudio.Play();
             ScoreManager.Instance.AddScore(1);
-			yield return new WaitForSeconds(destroyTimer);
-			DropManager.Instance.DropAmmo(transform.position);
-			Destroy(gameObject);
-		}
+            yield return new WaitForSeconds(destroyTimer);
+            DropManager.Instance.DropAmmo(transform.position);
+            DropItems();
+            Destroy(gameObject);
+        }
 
         /// <summary>
         /// Subtracks the damage from the current health
@@ -97,6 +104,16 @@ namespace GroepC.Enemies
             if (!hitAudio.isPlaying)
                 hitAudio.Play();
             anim.SetTrigger("Hit");
+        }
+
+        private void DropItems()
+        {
+            int roll = Random.Range(0, 100);
+            if(roll <= 20)
+            {
+                roll = Random.Range(0, itemDrops.Length);
+                Instantiate(itemDrops[roll], transform.position, Quaternion.identity);
+            }
         }
     }
 }

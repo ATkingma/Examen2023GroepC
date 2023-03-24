@@ -36,7 +36,7 @@ namespace GroepC.Weapons
         /// <summary>
         /// The max amount of ammo the weapon can hold in one magazine.
         /// </summary>
-        public int MaxAmmo;
+        public int ClipSize;
 
         /// <summary>
         /// the current ammo of the held gun.
@@ -64,9 +64,19 @@ namespace GroepC.Weapons
         public float ProjectileSpread;
 
         /// <summary>
+        /// The maximum amount of ammo that can be carried.
+        /// </summary>
+        public int AmmoCarrySize;
+
+        /// <summary>
+        /// The current amount of ammo for this weapon.
+        /// </summary>
+        public int AmmoAmount;
+
+        /// <summary>
         /// Sets the current ammo to max.
         /// </summary>
-        private void OnEnable() => CurrentAmmo = MaxAmmo;
+        private void OnEnable() => CurrentAmmo = ClipSize;
     }
 
     /// <summary>
@@ -78,5 +88,6 @@ namespace GroepC.Weapons
         assaultRifle,
         shotgun,
         sniper,
+        all,
     }
 }

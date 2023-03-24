@@ -15,7 +15,7 @@ namespace GroepC.Weapons
         [SerializeField] private WeaponBase droppedWeapon;
 
         /// <summary>
-        /// Activates the jump pad.
+        /// Picks up the <see cref="droppedWeapon"/>.
         /// </summary>
         /// <param name="player">The player controller.</param>
         protected override void Interact(PlayerController player)

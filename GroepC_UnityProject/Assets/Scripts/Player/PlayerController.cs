@@ -274,5 +274,12 @@ namespace GroepC.Player
         /// </summary>
         /// <param name="weapon">The weapon to give.</param>
         public void PickUpWeapon(WeaponBase weapon) => holder.SetWeapon(weapon, weapon.WeaponId);
+
+        /// <summary>
+        /// Give ammo the the type weapon.
+        /// </summary>
+        /// <param name="ammoType">The type of weapon to fill.</param>
+        /// <param name="ammoAmount">The amount.</param>
+        public void PickUpAmmo(WeaponType ammoType, int ammoAmount) => holder.GiveAmmo(ammoType, ammoAmount);
     }
 }

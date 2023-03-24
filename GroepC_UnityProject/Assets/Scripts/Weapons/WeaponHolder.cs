@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections;
 using GroepC.Player;
 using TMPro;
+using Unity.VisualScripting;
 
 namespace GroepC.Weapons
 {
@@ -74,8 +75,6 @@ namespace GroepC.Weapons
         {
             if(Input.GetKeyDown(KeyCode.R) && !reload)
                 StartCoroutine(ReloadWeapon());
-
-            //WeaponParent.transform.rotation = Quaternion.Lerp(transform.rotation, WeaponParent.transform.rotation, .5f);
         }
 
         /// <summary>
@@ -115,17 +114,17 @@ namespace GroepC.Weapons
         {
             if(Time.time > nextShot)
             {
-                if (weapon.CurrentAmmo > 0 && !reload)
+                if (weapon.CurrentAmmo > 0 && weapon.AmmoAmount > 0 && !reload)
                 {
                     nextShot = Time.time + cooldown;
                     FireProjectile();
                     weapon.CurrentAmmo--;
                     UpdateAmmoText();
-                    ApplyRecoil();
+                    //ApplyRecoil();
                     if (weapon.CurrentAmmo == 0)
                         StartCoroutine(ReloadWeapon());
                 }
-                else if (!reload)
+                else if (!reload && weapon.AmmoAmount > 0)
                 {
                     StartCoroutine(ReloadWeapon());
                 }
@@ -158,7 +157,7 @@ namespace GroepC.Weapons
         /// <summary>
         /// Updates the ammo text.
         /// </summary>
-        private void UpdateAmmoText() => ammoText.text = weapon.CurrentAmmo + "/" + weapon.MaxAmmo;
+        private void UpdateAmmoText() => ammoText.text = weapon.CurrentAmmo + "/" + weapon.ClipSize;
 
         /// <summary>
         /// Reloads the weapon.
@@ -171,7 +170,20 @@ namespace GroepC.Weapons
             weaponAnimator.SetInteger("Random", Random.Range(0,6));
             weaponAnimator.SetTrigger("Reload");
             yield return new WaitForSeconds(weapon.ReloadTime);
-            weapon.CurrentAmmo = weapon.MaxAmmo;
+            if (!reload)
+                yield return null;
+
+            if(weapon.ClipSize <= weapon.AmmoAmount)
+            {
+                weapon.CurrentAmmo = weapon.ClipSize;
+                weapon.AmmoAmount -= weapon.ClipSize;
+            }
+            else
+            {
+                weapon.CurrentAmmo = weapon.AmmoAmount;
+                weapon.AmmoAmount = 0;
+            }
+
             UpdateAmmoText();
             reload = false;
             weaponAnimator.ResetTrigger("Reload");
@@ -220,6 +232,6 @@ namespace GroepC.Weapons
         /// <summary>
         /// Cancels the reload.
         /// </summary>
-        private void CancelReload() => StopCoroutine(ReloadWeapon());
+        private void CancelReload() => reload = false;
     }
 }

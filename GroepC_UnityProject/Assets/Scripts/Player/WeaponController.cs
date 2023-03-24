@@ -124,5 +124,23 @@ namespace GroepC.Player
         /// <param name="weapon">The weapon to set.</param>
         /// <param name="type">The slot for the weapon type.</param>
         public void SetWeapon(WeaponBase weapon, WeaponType type) => heldWeapons[(int)type] = weapon;
+
+        /// <summary>
+        /// Gives Ammo to the weapon type.
+        /// </summary>
+        /// <param name="ammoType">The weapon to give ammo to.</param>
+        /// <param name="ammoAmount">The amount of ammo.</param>
+        public void GiveAmmo(WeaponType ammoType, int ammoAmount)
+        {
+            if (ammoType == WeaponType.all)
+            {
+                foreach (var item in heldWeapons)
+                    item.AmmoAmount = Mathf.Clamp(item.AmmoAmount + ammoAmount, 0, item.AmmoCarrySize);
+            }
+            else
+            {
+                heldWeapons[(int)ammoType].AmmoAmount = Mathf.Clamp(heldWeapons[(int)ammoType].AmmoAmount + ammoAmount, 0, heldWeapons[(int)ammoType].AmmoCarrySize);
+            }
+        }
     }
 }

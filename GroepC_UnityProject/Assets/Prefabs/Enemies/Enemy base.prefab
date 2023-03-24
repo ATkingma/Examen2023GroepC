@@ -4812,6 +4812,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthAmount: 100
+  itemDrops:
+  - {fileID: 1485717928393352111, guid: db076362e86a42d4aac58865caa38e9e, type: 3}
+  - {fileID: 8106173123178751683, guid: 6130ba7ba18b51e4ba1fafea917b7eec, type: 3}
+  - {fileID: 313246202396211580, guid: 18f3a104a6a3c904488c5259754231c7, type: 3}
+  - {fileID: 2197320625306914106, guid: 7a0bc98a7266ac04f9da4717d5a12922, type: 3}
+  - {fileID: 8652197715608697005, guid: 2b0a0ae97f8f45a4e8bbc5c699072e40, type: 3}
   enemyMovement: {fileID: 4297691316019089637}
   agent: {fileID: 7946788696819547779}
   anim: {fileID: 2202580374083010473}
