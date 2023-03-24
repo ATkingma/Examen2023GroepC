@@ -83,7 +83,7 @@ MonoBehaviour:
   decalLayerName5: Decal Layer 5
   decalLayerName6: Decal Layer 6
   decalLayerName7: Decal Layer 7
-  shaderVariantLogLevel: 0
+  shaderVariantLogLevel: 2
   lensAttenuationMode: 0
   diffusionProfileSettingsList:
   - {fileID: 11400000, guid: a973f1a865d53414a97582d2394c2a49, type: 2}
@@ -92,7 +92,7 @@ MonoBehaviour:
   DLSSProjectId: 000000
   useDLSSCustomProjectId: 0
   supportProbeVolumes: 0
-  supportRuntimeDebugDisplay: 0
+  supportRuntimeDebugDisplay: 1
   apvScenesData:
     serializedBounds: []
     serializedHasVolumes: []
