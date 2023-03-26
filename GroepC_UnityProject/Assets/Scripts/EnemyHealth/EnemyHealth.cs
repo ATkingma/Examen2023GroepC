@@ -80,6 +80,7 @@ namespace GroepC.Enemies
         /// <returns></returns>
         private IEnumerator PlayEnemyDeath()
         {
+            SaveManager.Instance.AddEnemyKilled();
             SpawnManager.Instance.RemoveEnemy(gameObject);
             enemyCollider.enabled = false;
             baseEnemy.SetActive(false);

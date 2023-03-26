@@ -45,6 +45,7 @@ namespace GroepC.Player
             if (currentHealth == 0)
                 return;
 
+            SaveManager.Instance.AddDamageTaken(damageAmount);
             currentHealth = Mathf.Clamp(currentHealth - damageAmount, 0, maxHealth);
             healthBar.value = currentHealth / maxHealth;
 
@@ -83,6 +84,7 @@ namespace GroepC.Player
         /// </summary>
         private void Die()
         {
+            SaveManager.Instance.AddDeath();
             GameManager.Instance.EndGame();
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;

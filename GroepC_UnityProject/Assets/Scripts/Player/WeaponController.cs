@@ -1,3 +1,4 @@
+using GroepC.Managers;
 using GroepC.Weapons;
 using System.Collections.Generic;
 using UnityEngine;
@@ -103,6 +104,7 @@ namespace GroepC.Player
         /// <param name="newWeaponID">The new weapon to swap to.</param>
         private void Swap(int newWeaponID)
         {
+            SaveManager.Instance.AddReload();
             holder.SwapWeapon(heldWeapons[newWeaponID]);
 
             if (heldWeapons[newWeaponID] != null)
