@@ -42,6 +42,11 @@ namespace GroepC.Managers
         public Action MenuOpened;
 
         /// <summary>
+        /// Get activated when opening the scoremenu.
+        /// </summary>
+        public Action ScoreOpend;
+
+        /// <summary>
         /// Sets the instance to the <see cref="GameManager"/>.
         /// </summary>
         private void Awake() => Instance = this;
@@ -53,6 +58,15 @@ namespace GroepC.Managers
         {
             if (Input.GetKeyUp(KeyCode.Escape))
                 MenuOpened?.Invoke();
+
+            if (Input.GetKeyDown(KeyCode.Tab))
+            {
+        
+            }
+            else if (Input.GetKeyUp(KeyCode.Tab))
+            {
+
+            }
         }
 
         /// <summary>
