@@ -17,9 +17,11 @@ MonoBehaviour:
   FireRate: 2
   Damage: 10
   ReloadTime: 1
-  MaxAmmo: 6
+  ClipSize: 6
   CurrentAmmo: 6
   Velocity: 200
   ProjectileOrigin: {x: 0.2, y: -0.2, z: 1}
   ExtraProjectiles: 0
   ProjectileSpread: 0
+  AmmoCarrySize: 50
+  AmmoAmount: 10

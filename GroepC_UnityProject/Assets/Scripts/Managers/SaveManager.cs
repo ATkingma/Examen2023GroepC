@@ -1,3 +1,4 @@
+using GroepC.Player;
 using UnityEngine;
 
 namespace GroepC.Managers
@@ -13,9 +14,23 @@ namespace GroepC.Managers
         public static SaveManager Instance;
 
         /// <summary>
+        /// The current player saves.
+        /// </summary>
+        private PlayerSaves playerSaves = new PlayerSaves();
+
+        /// <summary>
+        /// The current player saves.
+        /// </summary>
+        public PlayerSaves PlayerSaves => playerSaves;
+
+        /// <summary>
         /// Sets the instance.
         /// </summary>
-        private void Awake() => Instance = this;
+        private void Awake()
+        {
+            Instance = this;
+            playerSaves = JsonUtility.FromJson<PlayerSaves>(SaveManager.Instance.GetSaves("player"));
+        }
 
         /// <summary>
         /// Saves the given class as Json.
@@ -30,5 +45,66 @@ namespace GroepC.Managers
         /// <param name="saveKey">The key of the save.</param>
         /// <returns>The saved value as a string.</returns>
         public string GetSaves(string saveKey) => PlayerPrefs.GetString(saveKey);
+
+
+        /// <summary>
+        /// Adds the score to the corrosponding value.
+        /// </summary>
+        #region specific scores
+        public void AddDeath()
+        {
+
+        }
+
+        public void AddGame()
+        {
+
+        }
+
+        public void AddEnemy()
+        {
+
+        }
+
+        public void AddReload()
+        {
+
+        }
+
+        public void AddWeaponSwap()
+        {
+
+        }
+
+        public void AddShot()
+        {
+
+        }
+
+        public void AddHit()
+        {
+
+        }
+
+        public void AddSelfHit()
+        {
+
+        }
+
+        public void AddDamageTaken(float amount)
+        {
+
+        }
+
+        public void AddDashes()
+        {
+
+        }
+
+        public void AddJumppad()
+        {
+
+        }
+        #endregion
     }
 }

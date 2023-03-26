@@ -16,11 +16,6 @@ namespace GroepC.Player
         public float HighestScoreEndless;
 
         /// <summary>
-        /// The highest score in the tutorial gamemode.
-        /// </summary>
-        public float HighestScoreTutorial;
-
-        /// <summary>
         /// The amount of deaths of the player.
         /// </summary>
         public float Deaths;
@@ -33,6 +28,51 @@ namespace GroepC.Player
         /// <summary>
         /// The amount of enemies killed.
         /// </summary>
-        public float enemiesKilled;
+        public float EnemiesKilled;
+
+        /// <summary>
+        /// The amount of times the player has reloaded.
+        /// </summary>
+        public float Reloads;
+
+        /// <summary>
+        /// The amount of times the player has swapped weapons.
+        /// </summary>
+        public float WeaponSwaps;
+
+        /// <summary>
+        /// The amount of times the player has shot.
+        /// </summary>
+        public float Shots;
+
+        /// <summary>
+        /// The amount of times the player has actually hit an enemy.
+        /// </summary>
+        public float Hits;
+
+        /// <summary>
+        /// shots / hits;
+        /// </summary>
+        public float Accuracy;
+
+        /// <summary>
+        /// The amount of times the player has been hit.
+        /// </summary>
+        public float SelfHits;
+
+        /// <summary>
+        /// The amount of damage the player has taken.
+        /// </summary>
+        public float DamageTaken;
+
+        /// <summary>
+        /// The amount of times the player has dashed
+        /// </summary>
+        public float Dashes;
+
+        /// <summary>
+        /// The amount of times the player has used a jump pad.
+        /// </summary>
+        public float JumppadsTaken;
     }
 }

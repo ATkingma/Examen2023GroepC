@@ -56,9 +56,7 @@ namespace GroepC.Managers
         private void UpdateScoreUI()
         {
             if (scoreObjectText == null)
-            {
                 return;
-            }
 
             scoreObjectText.text = "Score: " + score.ToString();
         }
@@ -83,26 +81,6 @@ namespace GroepC.Managers
             PlayerSaves saves = JsonUtility.FromJson<PlayerSaves>(SaveManager.Instance.GetSaves("player"));
             if (saves.HighestScoreEndless < score)
                 saves.HighestScoreEndless = score;
-
-            SaveManager.Instance.Save(saves, "player");
-        }
-
-        /// <summary>
-        /// Save the score to the player saves. For the tutorial gamemode.
-        /// </summary>
-        public void SaveScoreTutorial()
-        {
-            PlayerSaves saves = JsonUtility.FromJson<PlayerSaves>(SaveManager.Instance.GetSaves("player"));
-
-            if (saves == null)
-            {
-                saves = new PlayerSaves();
-                saves.HighestScoreTutorial = score;
-            }
-            else if (saves.HighestScoreTutorial < score)
-            {
-                saves.HighestScoreTutorial = score;
-            }
 
             SaveManager.Instance.Save(saves, "player");
         }
