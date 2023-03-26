@@ -27,6 +27,7 @@ namespace GroepC.Enemies
             if (healthAmount == 0)
                 return;
 
+			SaveManager.Instance.AddHit();
             healthAmount = Mathf.Clamp(healthAmount - _damage, 0, maxHealth);
 
             if (healthAmount == 0)
@@ -38,7 +39,8 @@ namespace GroepC.Enemies
 		/// </summary>
 		public virtual void Death()
 		{
-			ScoreManager.Instance.AddScore(1);
+            SaveManager.Instance.AddEnemyKilled();
+            ScoreManager.Instance.AddScore(1);
             Destroy(gameObject);
         }
 	}

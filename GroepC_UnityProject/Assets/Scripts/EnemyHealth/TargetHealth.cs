@@ -32,6 +32,7 @@ namespace GroepC.Enemies
 		/// </summary>
 		public override void Death()
 		{
+            SaveManager.Instance.AddEnemyKilled();
             ScoreManager.Instance.AddScore(1);
             DropManager.Instance.DropAmmo(transform.position);
 			GameManager.Instance.CheckFinishConditions();

@@ -223,6 +223,8 @@ namespace GroepC.Player
             {
                 nextDash = Time.time + cooldown;
 
+                SaveManager.Instance.AddDashes();
+
                 isDashing = true;
                 isSprinting = true;
                 yield return new WaitForSeconds(.1f);
@@ -265,6 +267,7 @@ namespace GroepC.Player
         /// <param name="power">The amount of power for the jump.</param>
         public void SetJumpPower(float power)
         {
+            SaveManager.Instance.AddJumppad();
             jumpPower = power;
             isJumping = true;
         }

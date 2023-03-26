@@ -3,6 +3,7 @@ using System.Collections;
 using GroepC.Player;
 using TMPro;
 using Unity.VisualScripting;
+using GroepC.Managers;
 
 namespace GroepC.Weapons
 {
@@ -100,6 +101,7 @@ namespace GroepC.Weapons
 
             projectileOrigin.transform.localPosition = weapon.ProjectileOrigin;
             UpdateAmmoText();
+            SaveManager.Instance.AddWeaponSwap();
         }
 
         /// <summary>
@@ -117,6 +119,7 @@ namespace GroepC.Weapons
                 if (weapon.CurrentAmmo > 0 && weapon.AmmoAmount > 0 && !reload)
                 {
                     nextShot = Time.time + cooldown;
+                    SaveManager.Instance.AddShot();
                     FireProjectile();
                     weapon.CurrentAmmo--;
                     UpdateAmmoText();

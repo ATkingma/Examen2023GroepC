@@ -83,6 +83,7 @@ namespace GroepC.Managers
         /// </summary>
         public void EndGame()
         {
+            SaveManager.Instance.AddGame();
             gameHasStarted = false;
 
             switch (selectGamemode)

@@ -29,7 +29,7 @@ namespace GroepC.Managers
         private void Awake()
         {
             Instance = this;
-            playerSaves = JsonUtility.FromJson<PlayerSaves>(SaveManager.Instance.GetSaves("player"));
+            playerSaves = JsonUtility.FromJson<PlayerSaves>(Instance.GetSaves("player"));
         }
 
         /// <summary>
@@ -46,65 +46,35 @@ namespace GroepC.Managers
         /// <returns>The saved value as a string.</returns>
         public string GetSaves(string saveKey) => PlayerPrefs.GetString(saveKey);
 
-
         /// <summary>
         /// Adds the score to the corrosponding value.
         /// </summary>
         #region specific scores
-        public void AddDeath()
-        {
+        public void AddDeath() => playerSaves.Deaths++;
 
-        }
+        public void AddGame() => playerSaves.GamesPlayed++;
 
-        public void AddGame()
-        {
+        public void AddEnemyKilled() => playerSaves.EnemiesKilled++;
 
-        }
+        public void AddReload() => playerSaves.Reloads++;
 
-        public void AddEnemy()
-        {
+        public void AddWeaponSwap() => playerSaves.WeaponSwaps++;
 
-        }
+        public void AddShot() => playerSaves.WeaponSwaps++;
 
-        public void AddReload()
-        {
+        public void AddHit() => playerSaves.Hits++;
 
-        }
-
-        public void AddWeaponSwap()
-        {
-
-        }
-
-        public void AddShot()
-        {
-
-        }
-
-        public void AddHit()
-        {
-
-        }
-
-        public void AddSelfHit()
-        {
-
-        }
+        public void AddSelfHit() => playerSaves.SelfHits++;
 
         public void AddDamageTaken(float amount)
         {
-
+            playerSaves.DamageTaken += amount;
+            AddSelfHit();
         }
 
-        public void AddDashes()
-        {
+        public void AddDashes() => playerSaves.Dashes++;
 
-        }
-
-        public void AddJumppad()
-        {
-
-        }
+        public void AddJumppad() => playerSaves.Dashes++;
         #endregion
     }
 }
