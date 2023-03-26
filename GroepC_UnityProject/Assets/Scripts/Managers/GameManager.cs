@@ -59,14 +59,8 @@ namespace GroepC.Managers
             if (Input.GetKeyUp(KeyCode.Escape))
                 MenuOpened?.Invoke();
 
-            if (Input.GetKeyDown(KeyCode.Tab))
-            {
-                
-            }
-            else if (Input.GetKeyUp(KeyCode.Tab))
-            {
-
-            }
+            if (Input.GetKeyDown(KeyCode.Tab) || Input.GetKeyUp(KeyCode.Tab))
+                ScoreOpend?.Invoke();
         }
 
         /// <summary>
