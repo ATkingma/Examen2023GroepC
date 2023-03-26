@@ -18,6 +18,12 @@ namespace GroepC.UI
         private GameObject menuObject;
 
         /// <summary>
+        /// Contains the score of the player.
+        /// </summary>
+        [SerializeField]
+        private GameObject scoreboardObject;
+
+        /// <summary>
         /// Main panel that will be enabled when the menu is closed.
         /// </summary>
         [SerializeField]
@@ -32,12 +38,20 @@ namespace GroepC.UI
         /// <summary>
         /// Adds opening the menu to the esc button.
         /// </summary>
-        private void OnEnable() => GameManager.Instance.MenuOpened += ToggleMenu;
+        private void OnEnable()
+        {
+            GameManager.Instance.MenuOpened += ToggleMenu;
+            GameManager.Instance.ScoreOpend += ToggleScoreBoard;
+        }
 
         /// <summary>
         /// Removes opening the menu to the esc button.
         /// </summary>
-        private void OnDisable() => GameManager.Instance.MenuOpened -= ToggleMenu;
+        private void OnDisable()
+        {
+            GameManager.Instance.MenuOpened -= ToggleMenu;
+            GameManager.Instance.ScoreOpend -= ToggleScoreBoard;
+        }
 
         /// <summary>
         /// Toggles ingamemenu.
@@ -48,6 +62,12 @@ namespace GroepC.UI
             CheckMenuState();
 
             ResetPanels();
+        }
+
+        private void ToggleScoreBoard()
+        {
+            //get score en zet in scoreboard?
+            scoreboardObject.SetActive(!scoreboardObject.activeSelf);
         }
 
         /// <summary>

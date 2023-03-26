@@ -61,7 +61,7 @@ namespace GroepC.Managers
 
             if (Input.GetKeyDown(KeyCode.Tab))
             {
-        
+                
             }
             else if (Input.GetKeyUp(KeyCode.Tab))
             {

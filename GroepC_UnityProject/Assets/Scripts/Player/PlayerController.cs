@@ -24,7 +24,7 @@ namespace GroepC.Player
         /// <summary>
         /// The <see cref="WeaponController"/> of the player.
         /// </summary>
-        [SerializeField] private WeaponController holder;
+       private WeaponController holder;
 
         /// <summary>
         /// Determents the speed of the camera.

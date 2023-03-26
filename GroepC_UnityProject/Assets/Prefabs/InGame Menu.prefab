@@ -1659,6 +1659,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   menuObject: {fileID: 8251697832023843409}
+  scoreboardObject: {fileID: 6187390895466678633}
   mainPanel: {fileID: 8251697831707676352}
   panels:
   - {fileID: 8251697830945316282}
