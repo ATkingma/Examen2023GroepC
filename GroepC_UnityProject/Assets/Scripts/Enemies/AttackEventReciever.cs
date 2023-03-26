@@ -27,4 +27,13 @@ public class AttackEventReciever : MonoBehaviour
     {
         enemyBase.EnableAttacking();
     }
+
+    /// <summary>
+    /// The base enemy script had 3 types of audio and this wil be played from index 0 - 2
+    /// </summary>
+    /// <param name="index"></param>
+    public void PlayAttackAudio(int index)
+    {
+        enemyBase.PlayAttackSound(index);
+    }
 }
