@@ -19,4 +19,12 @@ public class AttackEventReciever : MonoBehaviour
     {
         enemyBase.DisableAttacking();
     }
+
+    /// <summary>
+    /// Event that wil be called.
+    /// </summary>
+    public void EnableAttacking()
+    {
+        enemyBase.EnableAttacking();
+    }
 }

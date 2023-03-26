@@ -4848,7 +4848,7 @@ MonoBehaviour:
   lookSpeed: 5.5
   target: {fileID: 0}
   attackCooldown: 1.87
-  attackSize: {x: 1.2, y: 1.2, z: 1.2}
+  attackSize: {x: 0.6, y: 0.6, z: 0.6}
   attackPosition: {fileID: 8880321996180694703}
   m_LayerMask:
     serializedVersion: 2

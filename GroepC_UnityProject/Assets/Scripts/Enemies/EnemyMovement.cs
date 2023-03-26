@@ -188,7 +188,6 @@ namespace GroepC.Enemies
         private void Attack()
 		{
 			animator.SetTrigger("Attack");
-			EnableAttacking();
         }
 
 		/// <summary>
