@@ -78,7 +78,7 @@ namespace GroepC.Weapons
         private void Awake()
         {
             ammoText = GetComponentInParent<PlayerController>().AmmoText;
-            ammoCarriedText = GetComponentInParent<PlayerController>().AmmoText;
+            ammoCarriedText = GetComponentInParent<PlayerController>().AmmoMaxText;
         }
 
         private void Update()
@@ -125,7 +125,7 @@ namespace GroepC.Weapons
         {
             if(Time.time > nextShot)
             {
-                if (weapon.CurrentAmmo > 0 && weapon.AmmoAmount > 0 && !reload)
+                if (weapon.CurrentAmmo > 0 && !reload)
                 {
                     nextShot = Time.time + cooldown;
                     SaveManager.Instance.AddShot();
@@ -169,7 +169,11 @@ namespace GroepC.Weapons
         /// <summary>
         /// Updates the ammo text.
         /// </summary>
-        private void UpdateAmmoText() => ammoText.text = weapon.CurrentAmmo + "/" + weapon.ClipSize;
+        private void UpdateAmmoText()
+        {
+            ammoText.text = weapon.CurrentAmmo + "/" + weapon.ClipSize;
+            ammoCarriedText.text = weapon.AmmoAmount + "/" + weapon.AmmoCarrySize;
+        }
 
         /// <summary>
         /// Reloads the weapon.
