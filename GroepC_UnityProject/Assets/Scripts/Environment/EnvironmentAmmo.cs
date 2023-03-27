@@ -22,6 +22,10 @@ namespace GroepC.Interactables
         /// Activates the jump pad.
         /// </summary>
         /// <param name="player">The player controller.</param>
-        protected override void Interact(PlayerController player) => player.PickUpAmmo(ammoType, ammoAmount);
+        protected override void Interact(PlayerController player)
+        {
+            player.PickUpAmmo(ammoType, ammoAmount);
+            Destroy(gameObject);
+        }
     }
 }

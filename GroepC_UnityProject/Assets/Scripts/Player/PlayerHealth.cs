@@ -74,7 +74,7 @@ namespace GroepC.Player
         /// </summary>
         private void UpdateBloodValue()
         {
-            float bloodValue = 1 - (currentHealth / maxHealth - .5f);
+            float bloodValue = 1 - (currentHealth / maxHealth - .7f);
             if (volume.profile.TryGet(out Vignette vignette))
                 vignette.intensity.value = bloodValue;
         }

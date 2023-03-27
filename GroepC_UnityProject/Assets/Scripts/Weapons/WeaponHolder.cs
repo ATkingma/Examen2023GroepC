@@ -13,9 +13,14 @@ namespace GroepC.Weapons
     public class WeaponHolder : MonoBehaviour
     {
         /// <summary>
-        /// Reference to the player cotroller.
+        /// Ammo text display.
         /// </summary>
         private TextMeshProUGUI ammoText;
+
+        /// <summary>
+        /// Ammo max text display.
+        /// </summary>
+        private TextMeshProUGUI ammoCarriedText;
 
         /// <summary>
         /// The start weapon: <see cref="WeaponBase"/>.
@@ -70,7 +75,11 @@ namespace GroepC.Weapons
         /// <summary>
         /// Gets the player controller.
         /// </summary>
-        private void Awake() => ammoText = GetComponentInParent<PlayerController>().AmmoText;
+        private void Awake()
+        {
+            ammoText = GetComponentInParent<PlayerController>().AmmoText;
+            ammoCarriedText = GetComponentInParent<PlayerController>().AmmoText;
+        }
 
         private void Update()
         {
