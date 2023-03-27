@@ -133,7 +133,7 @@ MonoBehaviour:
   - Enemy
   hitParticles:
   - {fileID: 8403775459309646435, guid: 27fb07d20af56de4a93bf1d416efcfb1, type: 3}
-  - {fileID: 8403775459309646435, guid: 27fb07d20af56de4a93bf1d416efcfb1, type: 3}
+  - {fileID: 8403775459309646435, guid: 90cdf4452c2e2644ab1f0f58fe68cad4, type: 3}
 --- !u!198 &-718282525701684987
 ParticleSystem:
   m_ObjectHideFlags: 0

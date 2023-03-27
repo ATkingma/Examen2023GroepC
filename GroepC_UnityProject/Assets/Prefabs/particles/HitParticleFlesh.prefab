@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 1847042921802450614}
   - component: {fileID: 2562683527431146988}
   - component: {fileID: 2698491425687129929}
-  - component: {fileID: 9021785653169617286}
+  - component: {fileID: 1599152991108254768}
   m_Layer: 0
-  m_Name: HitParticleWall
+  m_Name: HitParticleFlesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -72,33 +72,33 @@ VisualEffect:
       m_Array:
       - m_Value:
           serializedVersion: 2
-          key0: {r: 0.6415094, g: 0.003025995, b: 0.041281685, a: 1}
-          key1: {r: 1, g: 0.61752665, b: 0, a: 1}
-          key2: {r: 0, g: 0, b: 0, a: 1}
+          key0: {r: 0.6431373, g: 0.017544394, b: 0.003921565, a: 1}
+          key1: {r: 0.6431373, g: 0.003921569, b: 0.043137256, a: 1}
+          key2: {r: 1, g: 0.61752665, b: 0, a: 0}
           key3: {r: 0, g: 0, b: 0, a: 0}
           key4: {r: 0, g: 0, b: 0, a: 0}
           key5: {r: 0, g: 0, b: 0, a: 0}
           key6: {r: 0, g: 0, b: 0, a: 0}
           key7: {r: 0, g: 0, b: 0, a: 0}
           ctime0: 0
-          ctime1: 65535
-          ctime2: 0
+          ctime1: 58211
+          ctime2: 65535
           ctime3: 0
           ctime4: 0
           ctime5: 0
           ctime6: 0
           ctime7: 0
           atime0: 0
-          atime1: 65535
-          atime2: 60716
+          atime1: 44718
+          atime2: 64764
           atime3: 64957
           atime4: 0
           atime5: 0
           atime6: 0
           atime7: 0
           m_Mode: 0
-          m_NumColorKeys: 2
-          m_NumAlphaKeys: 2
+          m_NumColorKeys: 3
+          m_NumAlphaKeys: 3
         m_Name: New Gradient
         m_Overridden: 1
     m_NamedObject:
@@ -145,7 +145,7 @@ VFXRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!82 &9021785653169617286
+--- !u!82 &1599152991108254768
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -155,7 +155,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -6474924752701098275, guid: 1dbb833c63badc947952879e11ada729, type: 2}
-  m_audioClip: {fileID: 8300000, guid: f37552d4cc913ee468436bb235c64222, type: 3}
+  m_audioClip: {fileID: 8300000, guid: de26e36a477a5b34e9938ac4ae2e086d, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.065
   m_Pitch: 1
