@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.HighDefinition;
+using System.Collections;
 
 namespace GroepC.Player
 {
@@ -25,6 +26,21 @@ namespace GroepC.Player
         /// The player max health.
         /// </summary>
         [SerializeField] private float maxHealth;
+
+        /// <summary>
+        /// End scoreBord
+        /// </summary>
+        [SerializeField] private GameObject endScorebord;
+
+        /// <summary>
+        /// camera that wil be enalbed when dying.
+        /// </summary>
+        [SerializeField] private GameObject deathCam;
+
+        /// <summary>
+        /// End scoreBord
+        /// </summary>
+        [SerializeField] private PlayerController controller;
 
         /// <summary>
         /// The current health of the player.
@@ -50,7 +66,7 @@ namespace GroepC.Player
             healthBar.value = currentHealth / maxHealth;
 
             if (currentHealth == 0)
-                Die();
+                StartCoroutine(Die());
         }
 
         /// <summary>
@@ -74,7 +90,7 @@ namespace GroepC.Player
         /// </summary>
         private void UpdateBloodValue()
         {
-            float bloodValue = 1 - (currentHealth / maxHealth - .5f);
+            float bloodValue = 1 - (currentHealth / maxHealth - .2f);
             if (volume.profile.TryGet(out Vignette vignette))
                 vignette.intensity.value = bloodValue;
         }
@@ -82,8 +98,13 @@ namespace GroepC.Player
         /// <summary>
         /// Activates when the player health reaches 0.
         /// </summary>
-        private void Die()
+        private IEnumerator Die()
         {
+            deathCam.SetActive(true);
+            CameraLerper.Instance.SetCameraObject(deathCam);
+            controller.MenuOpened();
+            endScorebord.SetActive(true);
+            yield return new WaitForSeconds(10);
             SaveManager.Instance.AddDeath();
             GameManager.Instance.EndGame();
             Cursor.visible = true;

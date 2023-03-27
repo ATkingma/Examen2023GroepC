@@ -40,7 +40,7 @@ namespace GroepC.Weapons
         {
             if (!collision.gameObject.CompareTag(hitTags[0]))
             {
-                GameObject particle = Instantiate(hitParticles[0], transform.position, quaternion.identity);
+                GameObject particle = Instantiate(hitParticles[1], transform.position, quaternion.identity);
                 Destroy(particle, 1);
             }   
             else 
@@ -48,7 +48,7 @@ namespace GroepC.Weapons
                 if (collision.transform.GetComponent<EnemyHealthBase>())
                     collision.transform.GetComponent<EnemyHealthBase>().DoDamage(damageAmount);
                 
-                GameObject particle = Instantiate(hitParticles[1], transform.position, quaternion.identity);
+                GameObject particle = Instantiate(hitParticles[0], transform.position, quaternion.identity);
                 Destroy(particle, 1);
             }
             Destroy(gameObject);

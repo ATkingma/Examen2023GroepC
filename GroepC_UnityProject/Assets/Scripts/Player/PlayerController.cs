@@ -24,7 +24,7 @@ namespace GroepC.Player
         /// <summary>
         /// The <see cref="WeaponController"/> of the player.
         /// </summary>
-       private WeaponController holder;
+        private WeaponController holder;
 
         /// <summary>
         /// Determents the speed of the camera.
@@ -72,6 +72,11 @@ namespace GroepC.Player
         [SerializeField] private TextMeshProUGUI ammoText;
 
         /// <summary>
+        /// The ammo text, displays the held current/max ammo.
+        /// </summary>
+        [SerializeField] private TextMeshProUGUI ammoMaxText;
+
+        /// <summary>
         /// The object that displays the amount of time left.
         /// </summary>
         public TextMeshProUGUI TimeObjectText => timeObjectText;
@@ -85,6 +90,11 @@ namespace GroepC.Player
         /// The ammo text, displays the current/max ammo.
         /// </summary>
         public TextMeshProUGUI AmmoText => ammoText;
+
+        /// <summary>
+        /// The object that displays the amount of time left.
+        /// </summary>
+        public TextMeshProUGUI AmmoMaxText => ammoMaxText;
 
         /// <summary>
         /// The force on the y axis.

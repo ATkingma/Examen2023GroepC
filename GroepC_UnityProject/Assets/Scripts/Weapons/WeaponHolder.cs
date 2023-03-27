@@ -13,9 +13,14 @@ namespace GroepC.Weapons
     public class WeaponHolder : MonoBehaviour
     {
         /// <summary>
-        /// Reference to the player cotroller.
+        /// Ammo text display.
         /// </summary>
         private TextMeshProUGUI ammoText;
+
+        /// <summary>
+        /// Ammo max text display.
+        /// </summary>
+        private TextMeshProUGUI ammoCarriedText;
 
         /// <summary>
         /// The start weapon: <see cref="WeaponBase"/>.
@@ -70,7 +75,11 @@ namespace GroepC.Weapons
         /// <summary>
         /// Gets the player controller.
         /// </summary>
-        private void Awake() => ammoText = GetComponentInParent<PlayerController>().AmmoText;
+        private void Awake()
+        {
+            ammoText = GetComponentInParent<PlayerController>().AmmoText;
+            ammoCarriedText = GetComponentInParent<PlayerController>().AmmoMaxText;
+        }
 
         private void Update()
         {
@@ -116,7 +125,7 @@ namespace GroepC.Weapons
         {
             if(Time.time > nextShot)
             {
-                if (weapon.CurrentAmmo > 0 && weapon.AmmoAmount > 0 && !reload)
+                if (weapon.CurrentAmmo > 0 && !reload)
                 {
                     nextShot = Time.time + cooldown;
                     SaveManager.Instance.AddShot();
@@ -160,7 +169,11 @@ namespace GroepC.Weapons
         /// <summary>
         /// Updates the ammo text.
         /// </summary>
-        private void UpdateAmmoText() => ammoText.text = weapon.CurrentAmmo + "/" + weapon.ClipSize;
+        private void UpdateAmmoText()
+        {
+            ammoText.text = weapon.CurrentAmmo + "/" + weapon.ClipSize;
+            ammoCarriedText.text = weapon.AmmoAmount + "/" + weapon.AmmoCarrySize;
+        }
 
         /// <summary>
         /// Reloads the weapon.
