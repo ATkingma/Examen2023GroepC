@@ -161,7 +161,6 @@ namespace GroepC.Enemies
 		/// </summary>
 		public void EnableAttacking()
 		{
-			isAttacking = true;
 			checkCollider = true;
         }
 
@@ -188,6 +187,7 @@ namespace GroepC.Enemies
         private void Attack()
 		{
 			animator.SetTrigger("Attack");
+			isAttacking = true;
         }
 
 		/// <summary>
