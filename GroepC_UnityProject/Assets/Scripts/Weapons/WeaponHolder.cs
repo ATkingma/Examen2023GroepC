@@ -189,7 +189,11 @@ namespace GroepC.Weapons
             if (!reload)
                 yield return null;
 
-            if(weapon.ClipSize <= weapon.AmmoAmount)
+            if(weapon.WeaponId == WeaponType.pistol)
+            {
+                weapon.CurrentAmmo = weapon.ClipSize;
+            }
+            else if(weapon.ClipSize <= weapon.AmmoAmount)
             {
                 weapon.CurrentAmmo = weapon.ClipSize;
                 weapon.AmmoAmount -= weapon.ClipSize;

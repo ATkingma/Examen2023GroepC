@@ -24,8 +24,18 @@ namespace GroepC.Player
         /// <summary>
         /// The Image the holds the icons.
         /// </summary>
-        [SerializeField] private Image iconHolder;
+        [SerializeField] private Image ammoIconHolder;
 
+        /// <summary>
+        /// The Image the holds the icons.
+        /// </summary>
+        [SerializeField] private Image weaponsIconHolder;
+
+        /// <summary>
+        /// The icons for the ammo types.
+        /// </summary>
+        [SerializeField] private Sprite[] weaponAmmoIcons;
+        
         /// <summary>
         /// The icons for the weapons.
         /// </summary>
@@ -109,16 +119,24 @@ namespace GroepC.Player
 
             if (heldWeapons[newWeaponID] != null)
             {
-                iconHolder.gameObject.SetActive(true);
+                ammoIconHolder.gameObject.SetActive(true);
+                weaponsIconHolder.gameObject.SetActive(true);
+                SetWeaponAmmoSprite(weaponAmmoIcons[newWeaponID]);
                 SetWeaponSprite(weaponIcons[newWeaponID]);
             }
         }
 
         /// <summary>
-        /// Sets the new weapons sprite.
+        /// Sets the new weapons ammo sprite.
         /// </summary>
         /// <param name="newSprite">The sprite to set.</param>
-        private void SetWeaponSprite(Sprite newSprite) => iconHolder.sprite = newSprite;
+        private void SetWeaponAmmoSprite(Sprite newSprite) => ammoIconHolder.sprite = newSprite;
+
+        /// <summary>
+        /// Sets the new weapons ammo sprite.
+        /// </summary>
+        /// <param name="newSprite">The sprite to set.</param>
+        private void SetWeaponSprite(Sprite newSprite) => weaponsIconHolder.sprite = newSprite;
 
         /// <summary>
         /// Sets the weapon in the designed slot.
