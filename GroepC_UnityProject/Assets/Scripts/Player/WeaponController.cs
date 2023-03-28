@@ -155,7 +155,11 @@ namespace GroepC.Player
             if (ammoType == WeaponType.all)
             {
                 foreach (var item in heldWeapons)
-                    item.AmmoAmount = Mathf.Clamp(item.AmmoAmount + ammoAmount, 0, item.AmmoCarrySize);
+                {
+                    if(item != null)
+                        item.AmmoAmount = Mathf.Clamp(item.AmmoAmount + ammoAmount, 0, item.AmmoCarrySize);
+                }
+                   
             }
             else
             {

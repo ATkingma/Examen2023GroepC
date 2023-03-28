@@ -1,7 +1,5 @@
 using GroepC.Player;
 using GroepC.Weapons;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace GroepC.Interactables

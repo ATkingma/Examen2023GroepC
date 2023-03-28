@@ -4,6 +4,8 @@ using GroepC.Player;
 using TMPro;
 using Unity.VisualScripting;
 using GroepC.Managers;
+using UnityEngine.UI;
+using System.Threading;
 
 namespace GroepC.Weapons
 {
@@ -51,6 +53,11 @@ namespace GroepC.Weapons
         /// Controls the animations of the weapon model.
         /// </summary>
         [SerializeField] private Animator weaponAnimator;
+
+        /// <summary>
+        /// The reload image.
+        /// </summary>
+        [SerializeField] private Image reloadImage;
 
         /// <summary>
         /// The cooldown for shooting.
@@ -184,7 +191,11 @@ namespace GroepC.Weapons
             reload = true;
             weaponAnimator.enabled = true;
             weaponAnimator.SetInteger("Random", Random.Range(0,6));
-            weaponAnimator.SetTrigger("Reload");
+            //weaponAnimator.SetTrigger("Reload");
+
+            if(weapon.AmmoAmount > 0)
+                StartCoroutine(ReloadImage());
+    
             yield return new WaitForSeconds(weapon.ReloadTime);
             if (!reload)
                 yield return null;
@@ -208,6 +219,18 @@ namespace GroepC.Weapons
             reload = false;
             weaponAnimator.ResetTrigger("Reload");
             weaponAnimator.enabled = false;
+        }
+
+        private IEnumerator ReloadImage()
+        {
+            reloadImage.fillAmount = 0;
+            float increaseAmount = 1 / weapon.ReloadTime;
+            while (reloadImage.fillAmount < 1)
+            {
+                reloadImage.fillAmount += increaseAmount * Time.deltaTime;
+                yield return new WaitForSeconds(increaseAmount * Time.deltaTime * .7f);
+            }
+            reloadImage.fillAmount = 0;
         }
 
         /// <summary>
