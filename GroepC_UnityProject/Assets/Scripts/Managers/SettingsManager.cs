@@ -72,6 +72,7 @@ namespace GroepC.Managers
         {
             string jsonString = PlayerPrefs.GetString(playerPrefName);
             SavedSettings newSettings = JsonUtility.FromJson<SavedSettings>(jsonString);
+            newSettings ??= new SavedSettings();
             newSettings.IsFullScreen = fullScreen;
             newSettings.SavedResolution = res;
 
@@ -95,6 +96,12 @@ namespace GroepC.Managers
         public SavedSettings GetSavedSettings()
         {
             string jsonString = PlayerPrefs.GetString(playerPrefName);
+            if (jsonString == null)
+            {
+                SetupSaves();
+                return new SavedSettings();
+            }
+
             return JsonUtility.FromJson<SavedSettings>(jsonString);
         }
     }

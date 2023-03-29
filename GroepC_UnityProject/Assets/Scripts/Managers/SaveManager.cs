@@ -30,6 +30,8 @@ namespace GroepC.Managers
         {
             Instance = this;
             playerSaves = JsonUtility.FromJson<PlayerSaves>(Instance.GetSaves("player"));
+            if (playerSaves == null)
+                playerSaves = new PlayerSaves();
         }
 
         /// <summary>

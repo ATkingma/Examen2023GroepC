@@ -66,7 +66,8 @@ namespace GroepC.Player
                 return;
 
             Swap(0);
-            holder.CalculateStats();
+            if(heldWeapons[0] != null)
+                holder.CalculateStats();
         }
 
         /// <summary>
@@ -114,7 +115,9 @@ namespace GroepC.Player
         /// <param name="newWeaponID">The new weapon to swap to.</param>
         private void Swap(int newWeaponID)
         {
-            SaveManager.Instance.AddReload();
+            if(SaveManager.Instance.PlayerSaves != null)
+                SaveManager.Instance.AddReload();
+
             holder.SwapWeapon(heldWeapons[newWeaponID]);
 
             if (heldWeapons[newWeaponID] != null)
@@ -163,7 +166,8 @@ namespace GroepC.Player
             }
             else
             {
-                heldWeapons[(int)ammoType].AmmoAmount = Mathf.Clamp(heldWeapons[(int)ammoType].AmmoAmount + ammoAmount, 0, heldWeapons[(int)ammoType].AmmoCarrySize);
+                if(heldWeapons[(int)ammoType] != null)
+                    heldWeapons[(int)ammoType].AmmoAmount = Mathf.Clamp(heldWeapons[(int)ammoType].AmmoAmount + ammoAmount, 0, heldWeapons[(int)ammoType].AmmoCarrySize);
             }
         }
     }

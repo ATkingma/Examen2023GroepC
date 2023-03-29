@@ -47,6 +47,9 @@ namespace GroepC.UI
         private void Start()
         {
             SavedSettings saves = SettingsManager.Instance.GetSavedSettings();
+            if (saves == null)
+                return;
+
             mainVolumeSlider.value = saves.MasterVolume;
             SetVolumeLevel("Master", saves.MasterVolume);
             musicVolumeSlider.value = saves.MusicVolume;

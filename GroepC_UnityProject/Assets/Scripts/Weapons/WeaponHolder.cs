@@ -47,7 +47,7 @@ namespace GroepC.Weapons
         /// <summary>
         /// The audio source of the current weapon.
         /// </summary>
-        [SerializeField] private AudioSource weaponAudioSource;
+        private AudioSource weaponAudioSource;
 
         /// <summary>
         /// Controls the animations of the weapon model.
@@ -117,7 +117,9 @@ namespace GroepC.Weapons
 
             projectileOrigin.transform.localPosition = weapon.ProjectileOrigin;
             UpdateAmmoText();
-            SaveManager.Instance.AddWeaponSwap();
+
+            if (SaveManager.Instance.PlayerSaves != null)
+                SaveManager.Instance.AddWeaponSwap();
         }
 
         /// <summary>
@@ -130,6 +132,9 @@ namespace GroepC.Weapons
         /// </summary>
         public void Fire()
         {
+            if (weapon == null)
+                return;
+
             if(Time.time > nextShot)
             {
                 if (weapon.CurrentAmmo > 0 && !reload)
@@ -240,7 +245,8 @@ namespace GroepC.Weapons
         {
             if(projectilePrefab != null)
             {
-                weaponAudioSource.Play();
+                if (weaponAudioSource != null)
+                    weaponAudioSource.Play();
 
                 int projectileCount = 1 + weapon.ExtraProjectiles;
                 Vector3 spawnPosition = projectileOrigin.position;

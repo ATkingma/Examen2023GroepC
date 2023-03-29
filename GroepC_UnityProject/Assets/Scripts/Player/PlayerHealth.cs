@@ -52,6 +52,11 @@ namespace GroepC.Player
         /// </summary>
         public void Setup() => currentHealth = maxHealth;
 
+        private void Awake()
+        {
+            Setup();
+        }
+
         /// <summary>
         /// Makes the player take damage.
         /// </summary>

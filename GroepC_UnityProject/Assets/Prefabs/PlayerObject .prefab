@@ -277,7 +277,6 @@ MonoBehaviour:
   projectilePrefab: {fileID: 8360509090518933815, guid: 1777d955d0c5ea04caa9700c119dcb1b, type: 3}
   projectileOrigin: {fileID: 1241719200635941959}
   WeaponParent: {fileID: 1241719200758988927}
-  weaponAudioSource: {fileID: 0}
   weaponAnimator: {fileID: 0}
   reloadImage: {fileID: 26150814655248011}
 --- !u!1 &1241719200635941960
@@ -2302,10 +2301,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5879586364115404314, guid: f00874502c2143947ae7980e49fc62cd, type: 3}
-      propertyPath: sharedProfile
-      value: 
-      objectReference: {fileID: 11400000, guid: 1b5f56c20001d894e994aa0678f393d2, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

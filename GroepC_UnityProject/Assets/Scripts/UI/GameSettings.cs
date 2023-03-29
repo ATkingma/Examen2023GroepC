@@ -66,6 +66,8 @@ namespace GroepC.UI
             resolutionDropdown.RefreshShownValue();
 
             SavedSettings saves = SettingsManager.Instance.GetSavedSettings();
+            saves ??= new SavedSettings();
+
             Screen.SetResolution(saves.SavedResolution.width, saves.SavedResolution.height, Screen.fullScreen);
             Screen.fullScreen = saves.IsFullScreen;
             isFullscreen = saves.IsFullScreen;
